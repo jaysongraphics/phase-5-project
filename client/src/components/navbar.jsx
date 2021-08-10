@@ -7,7 +7,7 @@ function NavBar() {
         <div>
             <nav>
                 <div className="logo">
-                     <h2>Title</h2>
+                    <h2 className="logo-text">Selflax</h2>
                 </div>
             <ul className="navnav">
                 <li><a href="#">Home</a></li>

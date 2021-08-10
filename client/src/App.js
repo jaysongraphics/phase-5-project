@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import NavBar from './components/navbar'
 import Therapist from './components/therapist';
 import Banner from './components/banner'
+import MidBanner from  './components/midbanner'
 
 function App() {
   const therapistsUrl = 'http://localhost:4000/therapists'
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
       <NavBar />
       <Banner />
-      
+      <MidBanner />
       {/* <Therapist 
         therapists={therapists}
         /> */}
