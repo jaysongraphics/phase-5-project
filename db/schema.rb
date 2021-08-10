@@ -19,12 +19,10 @@ ActiveRecord::Schema.define(version: 2021_08_10_015952) do
     t.string "appointment_date"
     t.string "appointment_time"
     t.string "location"
-    t.bigint "user_id", null: false
-    t.bigint "therapist_id", null: false
+    t.integer "user_id"
+    t.integer "therapist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["therapist_id"], name: "index_appointments_on_therapist_id"
-    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "therapists", force: :cascade do |t|
@@ -48,6 +46,4 @@ ActiveRecord::Schema.define(version: 2021_08_10_015952) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "appointments", "therapists"
-  add_foreign_key "appointments", "users"
 end
