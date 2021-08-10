@@ -1,0 +1,23 @@
+import {useState, useEffect} from 'react'
+
+
+
+function TherapistCards({therapist}) {
+
+  return (
+    <div className="therapist-cards">
+        <div id="id-card" className="ui card">
+            <div className="image"><img id="img-div"src={therapist.image} alt="image1"/></div>
+            <div className="content">
+                <div className="header">{therapist.name}</div>
+                <div className="meta"> {therapist.phone_number}</div>
+                <div className="description">{therapist.speciality}</div>
+                <br />
+                <button className="ui violet button">test</button>
+            </div>
+        </div>
+    </div>
+  );
+}
+
+export default TherapistCards;

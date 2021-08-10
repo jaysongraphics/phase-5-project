@@ -36,3 +36,121 @@
     transform: rotate(360deg);
   }
 }
+
+/* therapits doctors cards */
+#id-card{
+  padding:0;
+  margin: 10px;
+  display: inline-block;
+  float: left;
+}
+
+#id-card{
+  width: 250px;
+  height: 450px;
+}
+
+#img-div{
+  width: 250px;
+  height: 280px;
+}
+
+
+/* body {
+  font-family: Arial, Tahoma, Serif;
+  color: #263238;
+} */
+
+/* navbar */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  display: flex; 
+  justify-content: space-between; 
+  padding: 4rem 3rem; 
+  background: #dfdfdf; 
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  padding-right: 4rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000000;
+  transition: background-color .5s;
+}
+
+nav a:hover {
+  color: gold;
+}
+
+/* a:hover{
+  color: gold;
+  background-color: rgb(83, 219, 49);
+} */
+
+.navnav{
+  float: right;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+
+@media only screen and (max-width: 400px) {
+  nav {
+    flex-direction: column;
+  }
+  nav ul {
+    flex-direction: column;
+    padding-top: 0.5rem;
+  }
+  nav li {
+    padding: 0.5rem 0;
+  }
+} 
+
+@media only screen and (max-width: 1000px) {
+  .logo  {
+    flex-direction: column;
+  }
+  .logo  {
+    flex-direction: column;
+    padding-top: 0.5rem;
+  }
+  .logo  {
+    padding: 0.5rem 0;
+  }
+} 
+
+/* logo */
+.logo {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+/* banner */
+.bannerimg{
+  width: 600px;
+  height: 500px;
+  float: right;
+  padding: 1rem 2rem;
+
+}
+
+
+/* logo */
+/* .logo {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+} */

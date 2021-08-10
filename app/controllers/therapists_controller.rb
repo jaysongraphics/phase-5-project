@@ -2,7 +2,7 @@ class TherapistsController < ApplicationController
 
 
     def index
-        therapists = Therapists.all
+        therapists = Therapist.all
         render json: therapists
     end 
 

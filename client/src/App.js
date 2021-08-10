@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css';
+import NavBar from './components/navbar'
+import Therapist from './components/therapist';
+import Banner from './components/banner'
 
 function App() {
+  const therapistsUrl = 'http://localhost:4000/therapists'
+  const [therapists, setTherapists] = useState ([])
+
+  useEffect(() =>{
+  fetch(therapistsUrl)
+      .then((res) => res.json())
+      .then((data) => setTherapists(data))
+}, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Banner />
+      
+      {/* <Therapist 
+        therapists={therapists}
+        /> */}
+
+
     </div>
   );
 }
