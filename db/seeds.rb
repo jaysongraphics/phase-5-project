@@ -14,6 +14,7 @@ Therapist.reset_pk_sequence
 
 #users 
 puts "🙇 Seeding Users..."
+
 10.times do 
     User.create(image: Faker::Avatar.unique.image, 
         name: Faker::Name.unique.name, 
@@ -65,8 +66,18 @@ Therapist.create(image: "https://images.unsplash.com/photo-1559548331-f9cb980014
 Therapist.create(image: "https://images.unsplash.com/photo-1590086783191-a0694c7d1e6e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80", name: Faker::Name.name_with_middle , age: 41, speciality: 'Addiction counselor', phone_number: Faker::PhoneNumber.cell_phone)
 
 Therapist.create(image: "https://images.unsplash.com/photo-1619380061814-58f03707f082?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80", name: Faker::Name.name_with_middle , age: 40, speciality: 'Psychotherapist', phone_number: Faker::PhoneNumber.cell_phone)
-#appointments
+
 puts "📅 Seeding Appointments..."
+
+10.times do
+    Appointment.create(
+        appointment_date: Faker::Date.between(from: '2021-01-23', to: '2022-12-31'), 
+        appointment_time: Faker::Time.backward(period: :morning, format: :short), 
+        location: Faker::Address.unique.street_address, 
+        user_id: User.ids.sample, 
+        therapist_id: Therapist.ids.sample
+    )
+end 
 # Appointment.create(
 #     appointment_date: Faker::Date.between(from: '2021-01-23', to: '2022-12-31'), 
 #     appointment_time: "8:30 A.M", 
@@ -82,15 +93,6 @@ puts "📅 Seeding Appointments..."
 
 # Appointment.create(appointment_date: "%d:/%m:/%Y:", appointment_time: "%d:/%m:/%Y: %H:%M:%S:", location: Faker::Address.unique.street_address, user_id: User.ids.sample, therapist_id: Therapist.ids.sample)
 
-10.times do
-    Appointment.create(
-        appointment_date: Faker::Date.between(from: '2021-01-23', to: '2022-12-31'), 
-        appointment_time: Faker::Time.backward(period: :morning, format: :short), 
-        location: Faker::Address.unique.street_address, 
-        user_id: User.ids.sample, 
-        therapist_id: Therapist.ids.sample
-    )
-end 
 
 
 
@@ -110,18 +112,18 @@ end
 # # Faker::Address.unique.street_address
 # end 
 
-#Reviews
-puts "✍️ Seeding Reviews..."
-# 10.times do
-#     Review.create(review: 'hello let me go in', user_id: User.ids.sampale, therapist_id: Therapist.ids.sample
-#     )
-# end 
 
-#Tweets
-# puts "🐦 Seeding Tweets..."
-# 10.times do
-#     Tweet.create(tweet: 'this is a test', user_id: User.ids.sample)
-# end 
+puts "✍️ Seeding Reviews..."
+10.times do
+    Review.create(review: 'hello let me go in', user_id: User.ids.sample, therapist_id: Therapist.ids.sample
+    )
+end 
+
+
+puts "🐦 Seeding Tweets..."
+10.times do
+    Tweet.create(tweet: 'this is a test', user_id: User.ids.sample)
+end 
 
 
 
