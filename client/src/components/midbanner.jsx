@@ -8,11 +8,15 @@ function MidBanner() {
     return (
         <div className="mid-section">
                 <div>
-                <img className ="mid-bannerimg" src={image}/>
-                </div>
-            <div className="mid-banner-div">
-                <p className="mid-banner-title">Our Services</p>
+                    <img className ="mid-bannerimg" src={image}/>
+                    </div>
 
+                    <div className="mid-banner-div">
+                     <p className="mid-banner-title">Our Services</p>
+                  </div>
+
+
+        <div className="mid-services-div">
                 <div className="mid-book">
                     <img id="midbanner-image" class="ui medium circular image" src={image2}/>
                     <p className="mid-banner-paragraph">Book appointments</p>
@@ -40,8 +44,8 @@ function MidBanner() {
                 <p className="mid-paragraph">Talk to your friends online.</p>
                 </div>
 
-            </div>
-         </div>
+        </div>
+    </div>
 
   )
 }

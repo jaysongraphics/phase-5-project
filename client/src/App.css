@@ -191,11 +191,15 @@ nav a:hover {
 }
 .mid-banner-div{
   margin-top: 90px;
-  justify-content: space-between;
-  padding-top: 50px;
-  /* margin-right: 50px; */
+  /* margin-right: 80px; */
+
+  /* justify-content: space-between; */
 }
 
+.mid-services-div{
+   margin-left: 500px;
+   padding-top: 50px;
+}
 .mid-bannerimg{
   width: 600px;
   height: 500px;
@@ -217,7 +221,7 @@ nav a:hover {
   /* margin: 3rem 2rem; */
   padding: 2rem 2rem;
   display: block;  
-  text-align: left;
+  text-align: center;
 }
 
 .mid-paragraph{
@@ -230,26 +234,26 @@ nav a:hover {
 #midbanner-image{
   width: 90px;
   height: 80px;
-  /* display:inline-block; */
+  display:inline-block;
 }
 
 .mid-book{
 float: left;
-  margin-right: 50px;
-  margin-left: 0px;
+  margin-right: 40px;
+  margin-left: 100px;
 }
 
 .mid-review{
   float: left;
-  margin-right: 150px;
-  margin-left: 50px;
+  margin-right: 50px;
+  margin-left: 0px;
 
 }
 
 .mid-share{
   float: left;
-  margin-right: 80px;
-  margin-left: 0px;
+  margin-right: 90px;
+  margin-left: 100px;
 
 }
 
@@ -262,7 +266,7 @@ float: left;
 /* influencers */
 .influencers-section{
   margin-left: 250px;
-  margin-top: 400px;
+  margin-top: 250px;
   padding-top: 150px;
 }
 
@@ -276,22 +280,32 @@ float: left;
   float: left;
   display: flex; 
   justify-content: space-between; 
-  width: 300px;
-  height: 250px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 250px;
 }
 
-#influencers-img{
+/* #influencers-img{
   margin-left: 70px;
+  margin-bottom: 30px;
+
+} */
+
+/* #influencers-img-revealed{
+  margin-left: 70px;
+  width: 100px;
+  height: 100px;
+} */
+
+.influencer-paragraph{
+  /* margin-bottom: 400px; */
+  /* padding-bottom: 500px; */
 }
 
 .footer-div{
-  margin-left: 0px;
-  margin-top: 400px;
-  padding-top: 150px;
+  margin-top: 600px;
   display: flex; 
   justify-content: space-between; 
-  padding: 4rem 3rem; 
+  padding: 4rem 8rem; 
   background-color: azure;
 }
