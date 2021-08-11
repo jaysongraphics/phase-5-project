@@ -38,6 +38,11 @@
 }
 
 
+/* logo */
+.logo-image{
+  width: 100px;
+  height: 90px;
+}
 
 /* therapits doctors cards */
 #id-card{
@@ -57,11 +62,6 @@
   height: 280px;
 }
 
-/* body {
-  font-family: Arial, Tahoma, Serif;
-  color: #263238;
-} */
-
 /* navbar */
 * {
   padding: 0;
@@ -72,7 +72,7 @@ nav {
   display: flex; 
   justify-content: space-between; 
   padding: 4rem 3rem; 
-  background: #dfdfdf; 
+  background: #ffffff; 
 }
 
 nav ul {
@@ -82,19 +82,22 @@ nav ul {
 
 nav li {
   padding-right: 4rem;
+  margin-top: -80px;
 }
 
 nav a {
   text-decoration: none;
   color: #000000;
   transition: color .3s;
-   font-size: 15px;
-   font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+  font-family: 'Rubik', sans-serif;
+  /* font-weight: bold; */
 }
 
 nav a:hover {
   color: gold;
 }
+
 
 /* a:hover{
   color: gold;
@@ -160,17 +163,10 @@ nav a:hover {
   padding: 1rem 2rem;
 }
 
-.bannerimg{
-  width: 600px;
-  height: 500px;
-  float: right;
-  padding: 1rem 2rem;
-}
-
 .banner-title{
   font-family: 'Rubik', sans-serif;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 50px;
 }
 
 .banner-paragraph{
@@ -186,9 +182,10 @@ nav a:hover {
 
 /* midbanner */
 .mid-banner-div{
-  margin-top: 300px;
+  margin-top: 90px;
   justify-content: space-between;
   padding-top: 90px;
+  /* margin-right: 50px; */
 }
 
 .mid-bannerimg{
@@ -197,21 +194,56 @@ nav a:hover {
   float: left;
 }
 
-
 .mid-banner-title{
   font-family: 'Rubik', sans-serif;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 50px;
+  /* margin-bottom: -10px; */
+  /* text-align: center; */
 }
 
 .mid-banner-paragraph{
   font-family: 'Rubik', sans-serif;
   font-size: 25px;
+  /* margin: 3rem 2rem; */
+  padding: 2rem 2rem;
   display: block;  
   text-align: left;
 }
 
-#mid-banner-button{
-  /* float: left; */
-  padding: 1rem 2rem;
+.mid-paragraph{
+  font-family: 'Rubik', sans-serif;
+  font-size: 12px;
+  margin-top: -40px;
+  float:inline-end;
+}
+
+#midbanner-image{
+  width: 90px;
+  height: 80px;
+  /* margin-top: -40px; */
+  display:inline-block;
+}
+
+.mid-book{
+float: left;
+  margin-right: 100px;
+}
+
+.mid-review{
+  float: left;
+  margin-right: 100px;
+
+}
+
+.mid-share{
+  float: left;
+  margin-right: 100px;
+
+}
+
+.mid-div3{
+  float: left;
+  margin-right: 100px;
+
 }

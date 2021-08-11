@@ -6,6 +6,10 @@ import NavBar from './components/navbar'
 import Therapist from './components/therapist';
 import Banner from './components/banner'
 import MidBanner from  './components/midbanner'
+import Influencers from  './components/influencers'
+import SiteReviews from  './components/sitereviews'
+import Footer from './components/footer'
+
 
 function App() {
   const therapistsUrl = 'http://localhost:4000/therapists'
@@ -25,8 +29,9 @@ function App() {
       {/* <Therapist 
         therapists={therapists}
         /> */}
-
-
+      <SiteReviews />
+      <Influencers />
+      <Footer />
     </div>
   );
 }
