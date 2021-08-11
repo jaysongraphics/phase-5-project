@@ -98,17 +98,24 @@ nav a:hover {
   color: gold;
 }
 
+.navnav{
+  float: left;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  margin-left: 870px;
+
+}
+
+.nav-buttons{
+  margin-top: -10px;
+  float: right
+}
 
 /* a:hover{
   color: gold;
   background-color: rgb(83, 219, 49);
 } */
 
-.navnav{
-  float: right;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-}
 
 
 /* @media only screen and (max-width: 400px) {

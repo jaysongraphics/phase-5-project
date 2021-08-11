@@ -9,6 +9,10 @@ import MidBanner from  './components/midbanner'
 import Influencers from  './components/influencers'
 import SiteReviews from  './components/sitereviews'
 import Footer from './components/footer'
+import SignIn from './components/signin'
+import Signup from './components/signup'
+import Profile from './components/profile'
+import Home from './components/home'
 
 
 function App() {
@@ -23,15 +27,36 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
-      <Banner />
-      <MidBanner />
-      {/* <Therapist 
-        therapists={therapists}
-        /> */}
-      {/* <SiteReviews /> */}
-      <Influencers />
-      <Footer />
+          <NavBar />
+          <>
+              <Switch>
+                
+                  <Route exact path='/home'>
+                  </Route>
+
+                  <Route path='/profile'>
+                    <Profile />
+                  </Route>
+
+                  <Route path ='/Signup'>
+                    <Signup />
+                  </Route>
+
+                  <Route path ='/Signin'>
+                   <SignIn />
+                  </Route>
+
+                  <Route path ='/Therapist '>
+                    {/* <Therapist 
+                      therapists={therapists}
+                      /> */}
+                </Route>
+              </Switch>
+          {/* <SiteReviews /> */}
+        </>
+                   <MidBanner />
+                    <Influencers />
+                    <Footer />
     </div>
   );
 }
