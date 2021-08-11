@@ -6,7 +6,7 @@ import image5 from '../images/laying.png'
 
 function MidBanner() {
     return (
-        <div>
+        <div className="mid-section">
                 <div>
                 <img className ="mid-bannerimg" src={image}/>
                 </div>
@@ -34,7 +34,7 @@ function MidBanner() {
                 </div>
 
 
-                <div className="mid-div3">
+                <div className="mid-chat">
                 <img id="midbanner-image" class="ui medium circular image" src={image5}/>
                 <p className="mid-banner-paragraph">Chat with friends</p>
                 <p className="mid-paragraph">Talk to your friends online.</p>

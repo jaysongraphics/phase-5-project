@@ -4,7 +4,7 @@ function Banner() {
 
 
     return (
-        <div>
+        <div className="banner-section">
             <div>
             <img className ="bannerimg" src={imageone}/>
             </div>

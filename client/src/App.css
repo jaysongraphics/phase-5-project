@@ -72,7 +72,7 @@ nav {
   display: flex; 
   justify-content: space-between; 
   padding: 4rem 3rem; 
-  background: #ffffff; 
+  background-color: azure;
 }
 
 nav ul {
@@ -82,7 +82,7 @@ nav ul {
 
 nav li {
   padding-right: 4rem;
-  margin-top: -80px;
+  margin-top: -20px;
 }
 
 nav a {
@@ -111,7 +111,7 @@ nav a:hover {
 }
 
 
-@media only screen and (max-width: 400px) {
+/* @media only screen and (max-width: 400px) {
   nav {
     flex-direction: column;
   }
@@ -124,18 +124,18 @@ nav a:hover {
   }
 } 
 
-@media only screen and (max-width: 1000px) {
-  .logo  {
+@media only screen and (max-width: 800px) {
+  .logo-image  {
     flex-direction: column;
   }
-  .logo  {
+  .logo-image  {
     flex-direction: column;
     padding-top: 0.5rem;
   }
-  .logo  {
-    padding: 0.5rem 0;
+  .logo-image  {
+    padding: 1rem 1;
   }
-} 
+}  */
 
 /* logo */
 .logo {
@@ -150,6 +150,11 @@ nav a:hover {
 }
 
 /* banner */
+.banner-section{
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
 .banner-div{
   justify-content: space-between;
   padding: 1rem 2rem;
@@ -181,10 +186,13 @@ nav a:hover {
 }
 
 /* midbanner */
+.mid-section{
+  margin-left: 80px;
+}
 .mid-banner-div{
   margin-top: 90px;
   justify-content: space-between;
-  padding-top: 90px;
+  padding-top: 50px;
   /* margin-right: 50px; */
 }
 
@@ -199,6 +207,7 @@ nav a:hover {
   font-weight: bold;
   font-size: 50px;
   /* margin-bottom: -10px; */
+
   /* text-align: center; */
 }
 
@@ -221,29 +230,68 @@ nav a:hover {
 #midbanner-image{
   width: 90px;
   height: 80px;
-  /* margin-top: -40px; */
-  display:inline-block;
+  /* display:inline-block; */
 }
 
 .mid-book{
 float: left;
-  margin-right: 100px;
+  margin-right: 50px;
+  margin-left: 0px;
 }
 
 .mid-review{
   float: left;
-  margin-right: 100px;
+  margin-right: 150px;
+  margin-left: 50px;
 
 }
 
 .mid-share{
   float: left;
-  margin-right: 100px;
+  margin-right: 80px;
+  margin-left: 0px;
 
 }
 
-.mid-div3{
+.mid-chat{
   float: left;
   margin-right: 100px;
+  margin-left: 0px;
+}
 
+/* influencers */
+.influencers-section{
+  margin-left: 250px;
+  margin-top: 400px;
+  padding-top: 150px;
+}
+
+.influencers-title{
+  font-family: 'Rubik', sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+#influencers-div{
+  float: left;
+  display: flex; 
+  justify-content: space-between; 
+  width: 300px;
+  height: 250px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#influencers-img{
+  margin-left: 70px;
+}
+
+.footer-div{
+  margin-left: 0px;
+  margin-top: 400px;
+  padding-top: 150px;
+  display: flex; 
+  justify-content: space-between; 
+  padding: 4rem 3rem; 
+  background-color: azure;
 }

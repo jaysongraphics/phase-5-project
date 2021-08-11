@@ -29,7 +29,7 @@ function App() {
       {/* <Therapist 
         therapists={therapists}
         /> */}
-      <SiteReviews />
+      {/* <SiteReviews /> */}
       <Influencers />
       <Footer />
     </div>
