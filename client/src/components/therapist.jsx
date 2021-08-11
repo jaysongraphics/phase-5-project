@@ -13,6 +13,7 @@ function Therapist({therapists}) {
 
     return (
         <div>
+            <h1>Therapist</h1>
             {therapistsCards}
         </div>
     )

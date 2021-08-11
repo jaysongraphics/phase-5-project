@@ -67,6 +67,26 @@ Therapist.create(image: "https://images.unsplash.com/photo-1590086783191-a0694c7
 
 Therapist.create(image: "https://images.unsplash.com/photo-1619380061814-58f03707f082?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80", name: Faker::Name.name_with_middle , age: 40, speciality: 'Psychotherapist', phone_number: Faker::PhoneNumber.cell_phone)
 
+Therapist.create(image: "https://images.unsplash.com/photo-1581065178047-8ee15951ede6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=716&q=80", name: Faker::Name.name_with_middle , age: 28, speciality: 'Addiction counselor', phone_number: Faker::PhoneNumber.cell_phone)
+
+Therapist.create(image: "https://images.unsplash.com/photo-1568316674077-d72ee56de61c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80", name: Faker::Name.name_with_middle , age: 45, speciality: 'Psychoanalyst', phone_number: Faker::PhoneNumber.cell_phone)
+
+Therapist.create(image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80", name: Faker::Name.name_with_middle , age: 32, speciality: 'Psychotherapist', phone_number: Faker::PhoneNumber.cell_phone)
+
+Therapist.create(image: "https://images.unsplash.com/photo-1543132220-3ec99c6094dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=668&q=80", name: Faker::Name.name_with_middle , age: 44, speciality: 'Psychologist', phone_number: Faker::PhoneNumber.cell_phone)
+
+Therapist.create(image: "https://images.unsplash.com/photo-1610631066894-62452ccb927c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=666&q=80", name: Faker::Name.name_with_middle , age: 33, speciality: 'Psychologist', phone_number: Faker::PhoneNumber.cell_phone)
+
+Therapist.create(image: "https://images.unsplash.com/photo-1609436132311-e4b0c9370469?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80", name: Faker::Name.name_with_middle , age: 37, speciality: 'Family and marriage counselor', phone_number: Faker::PhoneNumber.cell_phone)
+
+Therapist.create(image: "https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80", name: Faker::Name.name_with_middle , age: 39, speciality: 'Addiction counselor', phone_number: Faker::PhoneNumber.cell_phone)
+
+Therapist.create(image: "https://images.unsplash.com/photo-1561677843-39dee7a319ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80", name: Faker::Name.name_with_middle , age: 40, speciality: 'Psychotherapist', phone_number: Faker::PhoneNumber.cell_phone)
+
+Therapist.create(image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80", name: Faker::Name.name_with_middle , age: 43, speciality: 'Psychologist', phone_number: Faker::PhoneNumber.cell_phone)
+
+Therapist.create(image: "https://images.unsplash.com/photo-1521510895919-46920266ddb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=668&q=80", name: Faker::Name.name_with_middle , age: 40, speciality: 'Family and marriage counselor', phone_number: Faker::PhoneNumber.cell_phone)
+
 puts "📅 Seeding Appointments..."
 
 10.times do

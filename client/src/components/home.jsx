@@ -1,14 +1,19 @@
 // import logo from '../images/LOGOGFINALBLACK.png'
-
+import Banner from './banner'
+import MidBanner from  './midbanner'
+import Influencers from  './influencers'
+import SiteReviews from  './sitereviews'
 
 function SignIn() {
 
 
     return (
-        <div>
-            {/* <img className ="logo-image" src={logo}/> */}
-         </div>
-
+        <>
+            <Banner />
+             <SiteReviews /> 
+             <MidBanner />
+             <Influencers />
+        </>
   )
 }
 

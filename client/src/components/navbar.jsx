@@ -27,8 +27,8 @@ function NavBar() {
                 <li><a>Profile</a></li>
             </Link>
 
-            <Link to='/therapist'>
-                <li><a>Find Therapist</a></li>
+            <Link to='/therapists'>
+                <li><a>Therapists</a></li>
             </Link>
 
             {/* </> */}
@@ -37,12 +37,13 @@ function NavBar() {
                 <Link to='/signin'>
                     <button id="nav-button"className='ui violet button'>Sign In</button>
                 </Link>
-{/* 
+
                 <Link to='/signup'>
                     <button id="nav-button"className='ui violet button'>Sign Up</button>
                 </Link> 
 
-            <button id="nav-button" className='ui violet button'>Sign Out</button> */}
+            <button id="nav-button" className='ui violet button'>Sign Out</button> 
+
                 <div> 
                     <div className="current-user">
                         {}

@@ -28,10 +28,11 @@ function App() {
   return (
     <div className="App">
           <NavBar />
-          <>
               <Switch>
-                
-                  <Route exact path='/home'>
+                {/* <Banner /> */}
+
+                  <Route exact path='/'>
+                    <Home />
                   </Route>
 
                   <Route path='/profile'>
@@ -46,17 +47,13 @@ function App() {
                    <SignIn />
                   </Route>
 
-                  <Route path ='/Therapist '>
-                    {/* <Therapist 
-                      therapists={therapists}
-                      /> */}
-                </Route>
+                    <Route path ='/Therapists'>
+                      <Therapist 
+                        therapists={therapists}
+                        />
+                      </Route>
               </Switch>
-          {/* <SiteReviews /> */}
-        </>
-                   <MidBanner />
-                    <Influencers />
-                    <Footer />
+          <Footer /> 
     </div>
   );
 }
