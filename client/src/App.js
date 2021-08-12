@@ -31,9 +31,9 @@ function App() {
               <Switch>
                 {/* <Banner /> */}
 
-                  <Route exact path='/'>
+                  {/* <Route exact path='/'>
                     <Home />
-                  </Route>
+                  </Route> */}
 
                   <Route path='/profile'>
                     <Profile />
@@ -47,11 +47,11 @@ function App() {
                    <SignIn />
                   </Route>
 
-                    <Route path ='/Therapists'>
+                    {/* <Route path ='/Therapists'>
                       <Therapist 
                         therapists={therapists}
                         />
-                      </Route>
+                      </Route> */}
               </Switch>
           <Footer /> 
     </div>

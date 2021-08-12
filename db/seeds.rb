@@ -17,7 +17,8 @@ puts "🙇 Seeding Users..."
 
 10.times do 
     User.create(image: Faker::Avatar.unique.image, 
-        name: Faker::Name.unique.name, 
+        first_name: Faker::Name.unique.first_name   , 
+        last_name: Faker::Name.unique.last_name      , 
         birthday: Faker::Date.birthday(min_age: 18, max_age: 45) , 
         username: Faker::App.unique.name, 
         email: Faker::Internet.unique.email, 

@@ -6,5 +6,4 @@ class TherapistsController < ApplicationController
         render json: therapists
     end 
 
-
 end

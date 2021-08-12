@@ -13,7 +13,8 @@ function Footer() {
             </div>
             <div>
                 <h1>Store</h1>
-                <Link href="#">Writing</Link>
+                <a target="_blank" href="https://www.selflax.com/collections/mental-health-awareness" title="example">Shop Selflax</a>
+                {/* <Link href="https://www.selflax.com/collections/mental-health-awareness">Shop Selflax</Link> */}
             </div>
             <div>
                 <h1>Contact Us</h1>
@@ -21,27 +22,17 @@ function Footer() {
             </div>
             <div>
                 <h1>Social Media</h1>
-                <Link href="#">
-                <i className="fab fa-facebook-f">
-                    <span style={{ marginLeft: "10px" }}>
-                    Facebook
-                    </span>
-                </i>
-                </Link>
-                <Link href="#">
-                <i className="fab fa-instagram">
-                    <span style={{ marginLeft: "10px" }}>
-                    Instagram
-                    </span>
-                </i>
-                </Link>
-                <Link href="#">
-                <i className="fab fa-twitter">
-                    <span style={{ marginLeft: "10px" }}>
-                    Twitter
-                    </span>
-                </i>
-                </Link>
+                <div>
+                <a target="_blank" href="https://www.instagram.com/selflax/" title="example">Instagram</a>
+                </div>
+
+                <div>
+                <a target="_blank" href="https://www.facebook.com/Selflax/" title="example">Facebook</a>
+                </div>
+
+                <div>
+                <a target="_blank" href="https://twitter.com/selflax" title="example">Twitter</a>
+                </div>   
             </div>
     </div>
   )
