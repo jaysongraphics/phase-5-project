@@ -3,14 +3,23 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index]
   resources :appointments, only: [:index]
   resources :therapists, only: [:index]
-  resources :users, only: [:index, :create, :show]
+  resources :users, only: [:index, :show]
 
 
-  get "/me", to: "sessions#show"
+  # get "/me", to: "sessions#show"
+  # post "/signin", to: "sessions#create"
+  # delete "/signout", to: "sessions#destroy"
 
-  post "/signin", to: "sessions#create"
-  delete "/signout", to: "sessions#destroy"
 
+  # get "/me", to: "users#show"
+
+  get "/me", to: "users#me"
+  patch "/me", to: "users#update"
+
+  post "/signin", to: "users#signin"
+  post "/signup", to: "users#signup"
+
+  delete "/signout", to: "users#destroy"
 
 
 

@@ -20,8 +20,10 @@ function App() {
   const therapistsUrl = 'http://localhost:4000/therapists'
   const [therapists, setTherapists] = useState ([])
 
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState("")
+  const [darkmode, setdarkMode] = useState(false)
 
+  console.log(currentUser);
 
   useEffect(() =>{
   fetch(therapistsUrl)
@@ -29,22 +31,25 @@ function App() {
       .then((data) => setTherapists(data))
 }, [])
 
-
-useEffect(() => {
-  const userId = localStorage.getItem("user_id")
-  fetch(`http://localhost:3000/me?user_id=${userId}`)
-  .then((res) => {
-    if (res.ok) {
-      res.json()
-      .then((newUser => setCurrentUser(newUser)))
-    }
-  })
-},[])
-
+// local storage
+// useEffect(() => {
+//   const userId = localStorage.getItem("user_id")
+//   fetch(`http://localhost:3000/me?user_id=${userId}`)
+//   .then((res) => {
+//     if (res.ok) {
+//       res.json()
+//       .then((newUser => setCurrentUser(newUser)))
+//     }
+//   })
+// },[])
 
   return (
     <div className="App">
-          <NavBar />
+          <NavBar 
+          setCurrentUser={setCurrentUser} 
+          setdarkMode={setdarkMode}
+          darkmode={darkmode}
+          />
               <Switch>
                 {/* <Banner /> */}
 
@@ -62,7 +67,9 @@ useEffect(() => {
                   </Route>
 
                   <Route path ='/Signin'>
-                   <SignIn setCurrentUser={setCurrentUser}/>
+                   <SignIn setCurrentUser={setCurrentUser}
+                   darkmode={darkmode}
+                   />
                   </Route>
 
                     {/* <Route path ='/Therapists'>

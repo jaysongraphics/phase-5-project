@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import {useHistory, Link} from 'react-router-dom'
 
 
-function SignUp() {
+function SignUp({setCurrentUser}) {
     const [newUserImage, setNewUserImage] = useState("")
     const [newUserFirstName, setNewUserFirstName] = useState("")
     const [newUserLastName, setNewUserLastName] = useState("")
@@ -11,10 +11,15 @@ function SignUp() {
     const [newUserUsername, setNewUserUsername] = useState("")
     const [newUserEmail, setNewUserEmail] = useState("")
     const [newUserPassword, setNewUserPassword] = useState('')
+    const [time, setTime] = useState('')
 
     const [signUpErrors, setSignUpErrors] = useState([])
 
+    // console.log(newUserBirthday);.
+    console.log(time);
+
     const history = useHistory();
+
 
     // const imageSubmit=(e) =>{
     //     setNewUserImage(e.target.value)
@@ -57,7 +62,7 @@ function SignUp() {
         "password": newUserPassword
 }
 
-fetch('http://localhost:3000/users', {
+fetch('http://localhost:3000/signup', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' 
     },
@@ -68,9 +73,9 @@ fetch('http://localhost:3000/users', {
         if(data.errors) {
         setSignUpErrors(data.errors);
     } else {
+        setCurrentUser(data)
         history.push('/')
     }
-   
   });
 }
 // console.log(newUser);
@@ -81,11 +86,11 @@ const errorMes = signUpErrors.map((err) =>
 
     return (
         <div className="signup-signin-div"> 
-            <form id="sign-form" className="box">
+            <form onSubmit={handleSignUp}id="sign-form" className="box">
                 <div className="field">
                   <label id="label-id"className="label">Image</label>
                   <div className="control">
-                      <input className="input" type="text" placeholder="Image"
+                      <input className="input" type="file" placeholder="Image"
                       onChange={(e) => setNewUserImage(e.target.value)}></input>
                     </div>
                   </div>
@@ -107,9 +112,16 @@ const errorMes = signUpErrors.map((err) =>
                 <div className="field">
                   <label id="label-id"className="label">Birthday</label>
                   <div className="control">
-                      <input className="input" type="text" placeholder="Birthday" onChange={(e) => setNewUserBirthday(e.target.value)}></input>
+                      <input className="input" type="date" placeholder="Birthday" onChange={(e) => setNewUserBirthday(e.target.value)}></input>
                     </div>
                 </div>
+{/* 
+                <div className="field">
+                  <label id="label-id"className="label">time</label>
+                  <div className="control">
+                      <input className="input" type="time" placeholder="Time" onChange={(e) => setTime(e.target.value)}></input>
+                    </div>
+                </div> */}
 
                 <div className="field">
                   <label id="label-id"className="label">Username</label>
@@ -132,14 +144,14 @@ const errorMes = signUpErrors.map((err) =>
                     <input className="input" type="password" placeholder="********" onChange={(e) => setNewUserPassword(e.target.value)}></input>
                   </div>
                 </div>
-                <button className="button is-danger is-rounded">Sign in</button>
+                <button className="button is-danger is-rounded">Sign up</button>
                 <br/>
                 <br/>
 
                 {/* <p>{errors}</p> */}
 
                 <Link to='/signin'> 
-                   <a id="member-already">Don't have an account? Sign up!</a>
+                   <a id="member-already">Already a member? Sign in!</a>
                 </Link> 
         </form>
     </div>

@@ -2,8 +2,19 @@ import logo from '../images/LOGOGFINALBLACK.png'
 import {useHistory, Link} from 'react-router-dom'
 
 
-function NavBar() {
+function NavBar({setCurrentUser, setdarkMode, darkmode}) {
 
+const history = useHistory();
+
+    function logOut(){
+        setCurrentUser("")
+        history.push('/signin')
+    }
+ 
+    function darkModeToggle(){
+        setdarkMode(!darkmode)
+    }
+    // console.log(darkmode);
 
     return (
         <div>
@@ -42,7 +53,7 @@ function NavBar() {
                     <button id="nav-button"className='button is-danger is-rounded'>Sign Up</button>
                 </Link> 
 
-            <button id="nav-button" className='button is-danger is-rounded'>Sign Out</button> 
+            <Link onClick={logOut} id="nav-button" className='button is-danger is-rounded'>Sign Out</Link> 
 
                 <div> 
                     <div className="current-user">
@@ -50,6 +61,11 @@ function NavBar() {
                     </div>
                 </div>
                 
+            <div onClick={darkModeToggle}class="ui toggle checkbox">
+              <input type="checkbox" name="public"></input>
+              <label>🌙</label>
+            </div>
+
             </div>
         </nav>
     </div>

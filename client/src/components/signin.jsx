@@ -2,7 +2,7 @@ import {useHistory, Link} from 'react-router-dom'
 import React, { useState } from 'react';
 
 
-function SignIn() {
+function SignIn({setCurrentUser, darkmode}) {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [signInErrors, setSignInErrors] = useState(null)
@@ -28,14 +28,19 @@ function SignIn() {
         if(data.signInErrors) {
           setSignInErrors(data.signInErrors);
     } else {
+      setCurrentUser(data)
         history.push('/')
     }
   });
 }
 
+console.log(darkmode);
     return (
-        <div className="signup-signin-div"> 
-            <form onSubmit={handleSignIn}id="sign-form"className="box">
+      <div className="signup-signin-div"> 
+            <form onSubmit={handleSignIn}id="sign-form"className=
+              {darkmode ? 'box' : 'black'}> 
+            {/* black as className, box */}
+              
                 <div className="field">
                   <label id="label-id"className="label">Username</label>
                   <div className="control">
@@ -59,6 +64,7 @@ function SignIn() {
                 <Link to='/signup'> 
                    <a id="member-already">Don't have an account? Sign up!</a>
                 </Link> 
+
         </form>
     </div>
   )

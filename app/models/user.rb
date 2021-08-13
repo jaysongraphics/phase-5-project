@@ -12,21 +12,21 @@ class User < ApplicationRecord
     #todousername
     validates :username, presence: true, uniqueness: { case_sensitive: false}
 
+      #todo password
+      validates :password, length: { minimum: 3}
+      validates :password, presence: true
+
     #todo name
 
     #todo img
 
     # validates_length_of :first_name, :last_name, maximum: 150
    #todo birthday
-   validates :birthday, presence: true
+#    validates :birthday, presence: true
 
 
     #todo email
     validates :email, presence: true
     validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
 
-
-    #todo password
-    validates :password, length: { minimum: 3}
-    validates :password, presence: true
 end

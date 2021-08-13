@@ -358,3 +358,7 @@ float: left;
 #label-id{
 float: left;
 }
+
+.black{
+  background-color: black;
+}
