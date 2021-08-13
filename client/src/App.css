@@ -77,7 +77,8 @@ nav {
   display: flex; 
   justify-content: space-between; 
   padding: 4rem 3rem; 
-  background: rgb(255,85,120);
+  /* background: rgb(255,85,120); */
+  background: rgb(134, 134, 134);
 }
 
 nav ul {
@@ -329,4 +330,31 @@ float: left;
   /* background-color: #fff; */
   background: linear-gradient(rgba(253, 253, 253, 0.5),
   rgb(255,85,120));
+}
+
+
+/* sign up and sign in */
+/* .signUp-form{
+  margin-top: 80px;
+  display:flex; 
+  margin-left: 300px;
+} */
+
+/* #last-name{
+  width: 300px; 
+} */
+
+.signup-signin-div{
+  margin-top: 80px;
+  display:flex; 
+  justify-content: space-between; 
+  margin-left: 300px;
+}
+
+#sign-form{
+  width: 800px; 
+}
+
+#label-id{
+float: left;
 }
