@@ -1,7 +1,6 @@
 import logo from '../images/LOGOGFINALBLACK.png'
 import {useHistory, Link} from 'react-router-dom'
 
-
 function NavBar({currentUser, setCurrentUser, setdarkMode, darkmode}) {
 
 console.log(currentUser);
@@ -18,15 +17,15 @@ const history = useHistory();
     }
     // console.log(darkmode);
 
-    // const onlineUser = currentUser.user.map(user => {
-    //     return(user.image)
-    // })
-
-    // currentUser.user.map(user => user.image)
-
     return (
         <div>
             <nav>
+            {currentUser ?     
+            <div className="current-user">
+                 <img className="ui avatar image" src={currentUser.image} />
+                 <p>Hi, {currentUser.username}!</p>
+             </div> :  null }
+
             <Link to='/'>
                 <div className="logo">
                   <img className ="logo-image" src={logo}/>
@@ -37,26 +36,22 @@ const history = useHistory();
             <ul className="navnav">
             {/* <i className="500px icon"></i> */}
             {/* <i class="circle icon"></i> */}
-            <div> 
-                    <div className="current-user">
-                        {currentUser.username}
-                    </div>
-                </div> 
-                
-            <Link to='/'> 
-                <li><a>Home</a></li>
-            </Link>
+          
+                <Link to='/'> 
+                    <li>Home</li>
+                </Link>
 
-            <Link to='/profile'>
-                <li><a>Profile</a></li>
-            </Link>
+                <Link to='/profile'>
+                    <li>Profile</li>
+                </Link>
 
-            <Link to='/therapists'>
-                <li><a>Therapists</a></li>
-            </Link>
+                <Link to='/therapists'>
+                    <li>Therapists</li>
+                </Link>
 
-            {/* </> */}
+                {/* </> */}
             </ul>
+
                 <div className="nav-buttons">
                 <Link to='/signin'>
                     <button id="nav-button"className='button is-danger is-rounded'>Sign In</button>
@@ -66,14 +61,17 @@ const history = useHistory();
                     <button id="nav-button"className='button is-danger is-rounded'>Sign Up</button>
                 </Link> 
 
-            <Link onClick={logOut} id="nav-button" className='button is-danger is-rounded'>Sign Out</Link> 
-                
-            <div onClick={darkModeToggle}class="ui toggle checkbox">
+                 <Link to="/">
+                 <button onClick={logOut} id="nav-button" className='button is-danger is-rounded'>Sign Out
+                 </button>
+                 </Link> 
+            </div>
+
+            <div onClick={darkModeToggle} className="ui toggle checkbox">
               <input type="checkbox" name="public"></input>
               <label>🌙</label>
             </div>
 
-            </div>
         </nav>
     </div>
 

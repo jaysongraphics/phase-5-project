@@ -2,7 +2,7 @@ import {useHistory, Link} from 'react-router-dom'
 import React, { useState } from 'react';
 
 
-function SignIn({onlineUser, setOnlineUser, currentUser, setCurrentUser, darkmode}) {
+function SignIn({currentUser, setCurrentUser, darkmode}) {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [signInErrors, setSignInErrors] = useState(null)
@@ -27,14 +27,13 @@ function SignIn({onlineUser, setOnlineUser, currentUser, setCurrentUser, darkmod
       if(data.error) {
         setSignInErrors(data.error);
     } else {
-        setCurrentUser(data)
+        setCurrentUser(data.user)
         history.push('/')
     }
   });
 }
 
 console.log(currentUser);
-
 
 // console.log(darkmode);
 

@@ -1,10 +1,10 @@
 import './App.css';
 import {useState, useEffect} from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import 'bulma/css/bulma.min.css';
 import 'cirrus-ui'; 
-import "animate.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/navbar'
 import Therapist from './components/therapist';

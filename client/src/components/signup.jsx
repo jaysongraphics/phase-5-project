@@ -44,7 +44,7 @@ fetch('http://localhost:3000/signup', {
         setSignUpErrors(data.errors.map((error) => 
            <p>{error}</p>));
     } else {
-        setCurrentUser(data)
+        setCurrentUser(data.user)
         history.push('/')
     }
   });
