@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # delete "/signout", to: "sessions#destroy"
 
 
-  # get "/me", to: "users#show"
+  get "/me", to: "users#show"
 
   get "/me", to: "users#me"
   patch "/me", to: "users#update"

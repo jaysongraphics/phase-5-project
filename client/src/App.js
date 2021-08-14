@@ -25,7 +25,7 @@ function App() {
   const therapistsUrl = 'http://localhost:4000/therapists'
   const [therapists, setTherapists] = useState ([])
 
-  const [currentUser, setCurrentUser] = useState('')
+  const [currentUser, setCurrentUser] = useState(null)
   // const [onlineUser, setOnlineUser]= useState('')
 
   const [darkmode, setdarkMode] = useState(false)
@@ -38,6 +38,14 @@ function App() {
       .then((data) => setTherapists(data))
 }, [])
 
+
+  useEffect(() => {
+    const onlineUser = localStorage.getItem("user")
+        if(onlineUser){
+        setCurrentUser(JSON.parse(onlineUser))}
+    },[])
+
+
   return (
     <div className="App">
           <NavBar 
@@ -47,11 +55,9 @@ function App() {
           darkmode={darkmode}
           />
               <Switch>
-                {/* <Banner /> */}
-
-                  {/* <Route exact path='/'>
+                  <Route exact path='/'>
                     <Home />
-                  </Route> */}
+                  </Route> 
 
                   <Route path='/profile'>
                     <Profile 
@@ -70,12 +76,11 @@ function App() {
                    darkmode={darkmode}
                    />
                   </Route>
-
-                    {/* <Route path ='/Therapists'>
+                    <Route path ='/Therapists'>
                       <Therapist 
                         therapists={therapists}
                         />
-                      </Route> */}
+                      </Route> 
               </Switch>
           <Footer /> 
     </div>

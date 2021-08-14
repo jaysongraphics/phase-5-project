@@ -369,8 +369,19 @@ float: left;
   color: white;
 } */
 
-
 /* currentuser */
 .current-user{
   font-size: 15px;
+}
+
+#profile-detail{
+  margin-left: 0px;
+  width: 20%;
+  height: 60rem;
+  background-color: #61dafb;
+  /* padding: 10px; */
+}
+
+#banner-diva{
+  
 }

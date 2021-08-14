@@ -27,12 +27,14 @@ function SignIn({currentUser, setCurrentUser, darkmode}) {
       if(data.error) {
         setSignInErrors(data.error);
     } else {
-        setCurrentUser(data.user)
-        history.push('/')
+      const {user, token} = data;
+      localStorage.setItem("token", token)
+      localStorage.setItem("user", JSON.stringify(user))
+      setCurrentUser(user)
+      history.push('/profile')
     }
   });
 }
-
 console.log(currentUser);
 
 // console.log(darkmode);

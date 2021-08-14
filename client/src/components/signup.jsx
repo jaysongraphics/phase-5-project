@@ -44,7 +44,9 @@ fetch('http://localhost:3000/signup', {
         setSignUpErrors(data.errors.map((error) => 
            <p>{error}</p>));
     } else {
-        setCurrentUser(data.user)
+        const {user, token} = data;
+        localStorage.setItem("token", token)
+        setCurrentUser(user)
         history.push('/')
     }
   });

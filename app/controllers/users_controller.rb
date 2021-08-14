@@ -51,7 +51,6 @@ class UsersController < ApplicationController
         end
     end 
 
-
     # POST /signup
     def signup
         newUser = User.create(user_params)
@@ -72,10 +71,20 @@ class UsersController < ApplicationController
     #     end
     # end 
 
+
+    # def show
+    #     user = User.find_by(id: params[:user_id])
+    #     if user
+    #       render json: user
+    #     else
+    #       render json: { error: "Not authorized" }, status: :unauthorized
+    #     end
+    # end
+
     # GET /me
-    def me
-     render json: @current_user
-    end
+    # def me
+    #  render json: @current_user
+    # end
 
     # PATCH /me
     def update
@@ -83,6 +92,10 @@ class UsersController < ApplicationController
         render json: @current_user
     end
 
+    # def destroy
+    #     session.delete :user_id
+    #     head :no_content
+    # end 
 
         private 
 

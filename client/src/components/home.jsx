@@ -4,15 +4,15 @@ import MidBanner from  './midbanner'
 import Influencers from  './influencers'
 import SiteReviews from  './sitereviews'
 
-function SignIn() {
+function Home() {
 
 
     return (
         <>
             <Banner />
-             <SiteReviews /> 
-             <MidBanner />
-             <Influencers />
+            <SiteReviews /> 
+            <MidBanner />
+            <Influencers />
         </>
   )
 }
@@ -20,4 +20,4 @@ function SignIn() {
 
 
 
-export default SignIn;
+export default Home;
