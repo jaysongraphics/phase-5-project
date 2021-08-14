@@ -2,7 +2,9 @@ import logo from '../images/LOGOGFINALBLACK.png'
 import {useHistory, Link} from 'react-router-dom'
 
 
-function NavBar({setCurrentUser, setdarkMode, darkmode}) {
+function NavBar({currentUser, setCurrentUser, setdarkMode, darkmode}) {
+
+console.log(currentUser);
 
 const history = useHistory();
 
@@ -15,6 +17,12 @@ const history = useHistory();
         setdarkMode(!darkmode)
     }
     // console.log(darkmode);
+
+    // const onlineUser = currentUser.user.map(user => {
+    //     return(user.image)
+    // })
+
+    // currentUser.user.map(user => user.image)
 
     return (
         <div>
@@ -29,7 +37,12 @@ const history = useHistory();
             <ul className="navnav">
             {/* <i className="500px icon"></i> */}
             {/* <i class="circle icon"></i> */}
-            {/* <> */}
+            <div> 
+                    <div className="current-user">
+                        {currentUser.username}
+                    </div>
+                </div> 
+                
             <Link to='/'> 
                 <li><a>Home</a></li>
             </Link>
@@ -54,12 +67,6 @@ const history = useHistory();
                 </Link> 
 
             <Link onClick={logOut} id="nav-button" className='button is-danger is-rounded'>Sign Out</Link> 
-
-                <div> 
-                    <div className="current-user">
-                        {}
-                    </div>
-                </div>
                 
             <div onClick={darkModeToggle}class="ui toggle checkbox">
               <input type="checkbox" name="public"></input>

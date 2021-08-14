@@ -2,13 +2,12 @@ import {useHistory, Link} from 'react-router-dom'
 import React, { useState } from 'react';
 
 
-function SignIn({setCurrentUser, darkmode}) {
+function SignIn({onlineUser, setOnlineUser, currentUser, setCurrentUser, darkmode}) {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [signInErrors, setSignInErrors] = useState(null)
 
   const history = useHistory();
-
 
   function handleSignIn(e){
     e.preventDefault()
@@ -25,22 +24,25 @@ function SignIn({setCurrentUser, darkmode}) {
 })
     .then((res) => res.json())
     .then((data) => {
-        if(data.signInErrors) {
-          setSignInErrors(data.signInErrors);
+      if(data.error) {
+        setSignInErrors(data.error);
     } else {
-      setCurrentUser(data)
+        setCurrentUser(data)
         history.push('/')
     }
   });
 }
 
-console.log(darkmode);
+console.log(currentUser);
+
+
+// console.log(darkmode);
+
     return (
       <div className="signup-signin-div"> 
-            <form onSubmit={handleSignIn}id="sign-form"className=
-              {darkmode ? 'box' : 'black'}> 
-            {/* black as className, box */}
-              
+            <form onSubmit={handleSignIn}id="sign-form"
+            className={darkmode ? 'black' : 'box'}
+            >               
                 <div className="field">
                   <label id="label-id"className="label">Username</label>
                   <div className="control">
@@ -61,16 +63,19 @@ console.log(darkmode);
                 <button className="button is-danger is-rounded">Sign in</button>
                 <br/>
                 <br/>
+
+              {signInErrors ?
+              <div className="notification is-danger is-light">
+                  <button onClick={()=> setSignInErrors('')}className="delete"></button>
+                  {signInErrors}
+              </div>  : null }
+
                 <Link to='/signup'> 
                    <a id="member-already">Don't have an account? Sign up!</a>
                 </Link> 
-
         </form>
     </div>
   )
 }
-
-
-
 
 export default SignIn;

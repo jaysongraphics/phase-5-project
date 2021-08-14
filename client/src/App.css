@@ -359,6 +359,18 @@ float: left;
 float: left;
 }
 
+/* darkmode */
 .black{
   background-color: black;
+}
+
+/* nav animation colors */
+/* #link-nav-colors{
+  color: white;
+} */
+
+
+/* currentuser */
+.current-user{
+  font-size: 15px;
 }

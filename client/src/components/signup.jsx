@@ -13,42 +13,12 @@ function SignUp({setCurrentUser}) {
     const [newUserPassword, setNewUserPassword] = useState('')
     const [time, setTime] = useState('')
 
-    const [signUpErrors, setSignUpErrors] = useState([])
+    const [signUpErrors, setSignUpErrors] = useState(null)
 
     // console.log(newUserBirthday);.
-    console.log(time);
+    // console.log(time);
 
     const history = useHistory();
-
-
-    // const imageSubmit=(e) =>{
-    //     setNewUserImage(e.target.value)
-    // }
-
-    // const firstNameSubmit=(e) =>{
-    //     setNewUserFirstName(e.target.value)
-    // }
-
-    // const LastNameSubmit=(e) =>{
-    //     setNewUserLastName(e.target.value)
-    // }
-
-    // const birthdaySubmit=(e) =>{
-    //     setNewUserBirthday(e.target.value)
-    // }
-
-    // const usernameSubmit=(e) =>{
-    //     setNewUserUsername(e.target.value)
-    // }
-
-    // const emailSubmit=(e) =>{
-    //     setNewUserEmail(e.target.value)
-    // }
-
-    // const passwordSubmit=(e) =>{
-    //     setNewUserPassword(e.target.value)
-    // }
-
 
     function handleSignUp(e){
     e.preventDefault()
@@ -71,7 +41,8 @@ fetch('http://localhost:3000/signup', {
     .then((res) => res.json())
     .then((data) => {
         if(data.errors) {
-        setSignUpErrors(data.errors);
+        setSignUpErrors(data.errors.map((error) => 
+           <p>{error}</p>));
     } else {
         setCurrentUser(data)
         history.push('/')
@@ -80,9 +51,10 @@ fetch('http://localhost:3000/signup', {
 }
 // console.log(newUser);
 // console.log(newPassword);
-const errorMes = signUpErrors.map((err) => 
-    <p>{err}</p>
-)
+// const errorMesgs = signUpErrors.map((error) => 
+//     <p>{error}</p>
+// )
+// console.log(signUpErrors);
 
     return (
         <div className="signup-signin-div"> 
@@ -148,9 +120,14 @@ const errorMes = signUpErrors.map((err) =>
                 <br/>
                 <br/>
 
-                {/* <p>{errors}</p> */}
 
-                <Link to='/signin'> 
+                {signUpErrors ?
+                  <div className="notification is-danger is-light">
+                      <button onClick={()=> setSignUpErrors("")}className="delete"></button>
+                      {signUpErrors}
+                  </div>  : null }
+
+                    <Link to='/signin'> 
                    <a id="member-already">Already a member? Sign in!</a>
                 </Link> 
         </form>

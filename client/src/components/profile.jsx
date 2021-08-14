@@ -1,10 +1,11 @@
 
-function Profile() {
+function Profile({currentUser}) {
 
+console.log(currentUser);
 
     return (
         <div>
-          <h1>Profile</h1>
+          <h1>{currentUser}</h1>
         </div>
   )
 }

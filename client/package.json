@@ -9,6 +9,8 @@
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "bootstrap": "^5.1.0",
+    "bootstrap-toggle": "^2.2.2",
     "bulma": "^0.9.3",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
