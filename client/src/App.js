@@ -61,6 +61,8 @@ function App() {
 
                   <Route path='/profile'>
                     <Profile 
+                     setdarkMode={setdarkMode}
+                     darkmode={darkmode}
                     currentUser={currentUser}
                     setCurrentUser={setCurrentUser}/>
                   </Route>

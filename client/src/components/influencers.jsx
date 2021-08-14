@@ -19,7 +19,7 @@ function Influencers() {
                 <img id="influencers-img" src={female}className="ui small image" style={{width: 250, height: 200}}/>
             </div>
             <div class="hidden content">
-            <img id="influencers-img" src={beyonce} className="ui small image" style={{width: 250, height: 200}}/>
+            <img id="influencers-img" src={beyonce} className="ui small image" style={{width: 200, height: 200}}/>
             <br />
     
             <p className="influencer-paragraph">Beyoncé <br/>
@@ -33,7 +33,7 @@ function Influencers() {
                 <img id="influencers-img" src={male2}class="ui small image" style={{width: 250, height: 200}}/>
             </div>
             <div className="hidden content">
-            <img id="influencers-img" src={rock} className="ui small image" style={{width: 250, height: 200}}/>
+            <img id="influencers-img" src={rock} className="ui small image" style={{width: 200, height: 200}}/>
             <br />
 
             <p className="influencer-paragraph">Dwayne Johnson<br/>
@@ -47,7 +47,7 @@ function Influencers() {
                 <img id="influencers-img" src={female}className="ui small image" style={{width: 250, height: 200}}/>
             </div>
             <div className="hidden content">
-            <img id="influencers-img"src={selena} className="ui small image" style={{width: 250, height: 200}}/>
+            <img id="influencers-img"src={selena} className="ui small image" style={{width: 200, height: 200}}/>
             <br />
 
                 <p className="influencer-paragraph">Selena Gomez<br/>
@@ -61,7 +61,7 @@ function Influencers() {
                 <img id="influencers-img" src={male2}className="ui small image" style={{width: 250, height: 200}} />
             </div>
             <div className="hidden content">
-            <img id="influencers-img" src={prince} className="ui small image" style={{width: 250, height: 200}}/>
+            <img id="influencers-img" src={prince} className="ui small image" style={{width: 200, height: 200}}/>
             <br />
 
                 <p className="influencer-paragraph">Prince Harry<br/>

@@ -31,7 +31,7 @@ function SignIn({currentUser, setCurrentUser, darkmode}) {
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
       setCurrentUser(user)
-      history.push('/profile')
+      history.push('/')
     }
   });
 }
@@ -42,8 +42,7 @@ console.log(currentUser);
     return (
       <div className="signup-signin-div"> 
             <form onSubmit={handleSignIn}id="sign-form"
-            className={darkmode ? 'black' : 'box'}
-            >               
+            className='box'>               
                 <div className="field">
                   <label id="label-id"className="label">Username</label>
                   <div className="control">
