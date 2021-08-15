@@ -35,7 +35,7 @@ function SignIn({currentUser, setCurrentUser, darkmode}) {
     }
   });
 }
-console.log(currentUser);
+// console.log(currentUser);
 
 // console.log(darkmode);
 
@@ -70,8 +70,8 @@ console.log(currentUser);
                   {signInErrors}
               </div>  : null }
 
-                <Link to='/signup'> 
-                   <a id="member-already">Don't have an account? Sign up!</a>
+                <Link id="member-already" to='/signup'> 
+                   <a>Don't have an account? Sign up!</a>
                 </Link> 
         </form>
     </div>

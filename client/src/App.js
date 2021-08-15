@@ -16,26 +16,26 @@ import SignIn from './components/signin'
 import Signup from './components/signup'
 import Profile from './components/profile'
 import Home from './components/home'
+import Modal from './components/modal';
 
 // loading
 {/* <progress class="progress is-danger" max="100">30%</progress> */}
 
 function App() {
-  const therapistsUrl = 'http://localhost:4000/therapists'
+  const therapistsUrl = 'http://localhost:3000/therapists'
+  const appointmentssUrl = 'http://localhost:3000/appointments'
+
   const [therapists, setTherapists] = useState ([])
-
   const [currentUser, setCurrentUser] = useState(null)
-  // const [onlineUser, setOnlineUser]= useState('')
-
   const [darkmode, setdarkMode] = useState(false)
 
   // console.log(currentUser);
 
   useEffect(() =>{
-  fetch(therapistsUrl)
-      .then((res) => res.json())
-      .then((data) => setTherapists(data))
-}, [])
+    fetch(therapistsUrl)
+        .then((res) => res.json())
+        .then((data) => setTherapists(data))
+  }, [])
 
 
   useEffect(() => {
@@ -44,6 +44,22 @@ function App() {
         setCurrentUser(JSON.parse(onlineUser))}
     },[])
 
+    function handleAppoinment(therapist_id){
+      let addAppoinment = {
+          "user_id": currentUser.id,
+          "therapist_id": therapist_id,
+      }
+      fetch(appointmentssUrl, {
+          method: 'POST',
+          headers:{
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: JSON.stringify(addAppoinment)
+      }) 
+          .then(res => res.json())
+          .then(console.log(addAppoinment))
+}
 
   return (
     <div className="App">
@@ -79,6 +95,8 @@ function App() {
                   </Route>
                     <Route path ='/Therapists'>
                       <Therapist 
+                      currentUser={currentUser}
+                        handleAppoinment={handleAppoinment}
                         therapists={therapists}
                         />
                       </Route> 

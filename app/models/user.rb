@@ -2,6 +2,11 @@ class User < ApplicationRecord
     has_many :appointments
     has_many :therapist, through: :appointments
 
+    has_many :reviews
+    has_many :therapist, through: :reviews
+
+    has_many :tweets
+    # has_many :reviews
 
     #todo the below will allow us to the the following two things
     #password "123" => password_digest "erret44rrffvd24rrfet3"

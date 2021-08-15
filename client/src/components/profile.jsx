@@ -3,10 +3,22 @@ import { TextField } from '@material-ui/core';
 function Profile({currentUser, setdarkMode, darkmode }) {
 
 console.log(currentUser);
-// console.log(currentUser.first_name);
-// console.log(currentUser.last_name);
-// const [image, first_name, last_name, email, birthday] = currentUser
+// console.log(currentUser.appointments.map(app => {
+//    return (app.appointment_time.slice(7))}))
 
+const appTime = currentUser.appointments.map(app => {
+  return (app.appointment_time.slice(7))})
+  
+const appDate = currentUser.appointments.map(app => {
+  return (app.appointment_date)})
+
+const appLocation = currentUser.appointments.map(app => {
+    return (app.location)})
+
+
+function handleltweet(e) {
+  e.preventDefault();
+} 
 
 function darkModeToggle(){
   setdarkMode(!darkmode)
@@ -29,17 +41,14 @@ function darkModeToggle(){
               </div>
             : 
 
-            <div id="input-div"className="tweets-div">
+            <form onsubmit={handleltweet}id="input-div"className="tweets-div">
               <h6>What's on your mind?</h6>
                 <div id="textbox-profile" className="ui input">
                      <input type="text" placeholder="What's on your mind?"/>
                   </div>
-              </div>
+              </form>
             }
-                  <div className="tweet-box">
-                    <h1>Hello</h1>
-                  </div>
-
+    
         {currentUser ? 
           <div id={darkmode ? "profile-detail-blk-white" : "profile-detail"}>
               <div className="userOnline" >
@@ -47,26 +56,24 @@ function darkModeToggle(){
               <img id="userOnline-img"className="ui avatar image" style={{width: 200, height: 200}}src={currentUser.image} />
               <br/>
               <br/>
-                 <p className={darkmode ? "blk-whitefont" : ''}>{currentUser.first_name}</p>
-                 <p className={darkmode ? "blk-whitefont" : ''}>{currentUser.last_name}</p>
-                 <p className={darkmode ? "blk-whitefont" : ''}>{currentUser.email}</p>
-                 <p className={darkmode ? "blk-whitefont" : ''}>{currentUser.birthday}</p>
+                 <p className={darkmode ? "blk-whitefont" : ''}>First Name: {currentUser.first_name}</p>
+                 <p className={darkmode ? "blk-whitefont" : ''}>Last Name: {currentUser.last_name}</p>
+                 <p className={darkmode ? "blk-whitefont" : ''}>Email: {currentUser.email}</p>
+                 <p className={darkmode ? "blk-whitefont" : ''}>DOB: {currentUser.birthday}</p>
               </div>
               <hr/>
                 <div>
                   <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments</h6>
                     <div>
-                      
+                       <div>Time: {appTime}</div>
+                       <div>Date: {appDate}</div>
+                       <div>Location: {appLocation}</div>
                     </div>
-
-                </div>
+                  </div>
             </div> : null }
-         
       </div>
   )
 }
-
-
 
 
 export default Profile;

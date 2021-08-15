@@ -2,14 +2,19 @@ import {useState, useEffect} from 'react'
 import TherapistCards from './therapistcards';
 
 
-function Therapist({therapists}) {
-    console.log(therapists)
-
+function Therapist({therapists, handleAppoinment, currentUser}) {
+    // console.log(therapists)
+ 
+    
     const therapistsCards = therapists.map(therapist => 
         <TherapistCards 
-            key={therapist.id}
-            therapist={therapist}
-        />)
+        currentUser={currentUser}
+        handleAppoinment={handleAppoinment}
+        key={therapist.id}
+        therapist={therapist}
+        reviews={therapist.reviews.map(review =><div>{review.review}</div>
+        )}
+     />)
 
     return (
         <div>

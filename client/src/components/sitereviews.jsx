@@ -6,9 +6,7 @@ function SiteReviews() {
 
     return (
         <div>
-
-
-         </div>
+        </div>
 
   )
 }

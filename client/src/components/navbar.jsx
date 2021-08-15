@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 
 function NavBar({currentUser, setCurrentUser,}) {
 
-console.log(currentUser);
+// console.log(currentUser);
 
 const history = useHistory();
 
@@ -28,12 +28,11 @@ const history = useHistory();
             {currentUser ?     
             <div className="current-user">
                  <img className="ui avatar image" style={{width: 36, height: 36}}src={currentUser.image} />
-                 <p>Hi, {currentUser.username}!</p>
+                 <p className="useronluine">Hi, {currentUser.username}!</p>
              </div> : null }
                 {currentUser ? (
             <>
                 {/* <ul className="navnav"> */}
-
                     <Link to='/'> 
                         <a className="a-buttons">Home</a>
                     </Link>

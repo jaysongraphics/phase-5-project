@@ -67,7 +67,7 @@ fetch('http://localhost:3000/signup', {
                       <input className="input" 
                       // type="file" 
                       type="text"
-                      placeholder="Image"
+                      placeholder="Image Url"
                       onChange={(e) => setNewUserImage(e.target.value)}></input>
                     </div>
                   </div>
@@ -132,8 +132,8 @@ fetch('http://localhost:3000/signup', {
                       {signUpErrors}
                   </div>  : null }
 
-                    <Link to='/signin'> 
-                   <a id="member-already">Already a member? Sign in!</a>
+                    <Link id="member-already"to='/signin'> 
+                   <a>Already a member? Sign in!</a>
                 </Link> 
         </form>
     </div>

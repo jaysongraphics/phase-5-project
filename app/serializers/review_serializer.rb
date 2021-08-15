@@ -3,5 +3,6 @@ class ReviewSerializer < ActiveModel::Serializer
 
   has_one :user
   has_one :therapist
+
 end
 

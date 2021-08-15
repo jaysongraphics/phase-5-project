@@ -52,12 +52,12 @@
 }
 
 #therapits-detail-info{
-  margin-left: 30px;
+  margin-left: 10px;
 }
 
 #id-card{
   width: 280px;
-  height: 450px;
+  height: 1000px;
   margin-bottom: 30px;
 }
 
@@ -152,6 +152,10 @@ nav a:hover {
 height: 220px;
 }
 
+#member-already{
+  text-decoration: none;
+  
+}
 /* a:hover{
   color: gold;
   background-color: rgb(83, 219, 49);
@@ -361,6 +365,14 @@ float: left;
   rgb(255,85,120));
 }
 
+.footer-color{
+color: white;
+}
+
+
+.footer-color:hover{
+  color:  rgb(255,85,120);
+}
 
 /* sign up and sign in */
 /* .signUp-form{
@@ -413,14 +425,14 @@ float: left;
 .current-user{
   font-size: 12px;
   float: left;
-  margin-left: 50px;
+  margin-left: 60px;
   margin-right: 900px;
   margin-top: -5px;
 }
 
 #profile-detail{
   margin-left: 0px;
-  margin-top: -141px;
+  margin-top: -95px;
   width: 25%;
   height: 60rem;
   padding: 10px;
@@ -429,7 +441,7 @@ float: left;
 }
 #profile-detail-blk-white{
   margin-left: 0px;
-  margin-top: -141px;
+  margin-top: -95px;
   width: 25%;
   height: 60rem;
   padding: 10px;
@@ -457,8 +469,10 @@ background: linear-gradient(rgb(66, 17, 27), rgb(255, 255, 255));
 
 #userOnline-img{
   margin-top: 85px;
-
 } 
+.useronluine{
+  color:white;
+}
 
 .tweets-div{
   margin-left: 300px;
@@ -475,9 +489,9 @@ background: linear-gradient(rgb(66, 17, 27), rgb(255, 255, 255));
 }
 
 .tweet-box{
-  background-color: blue;
   margin-left: 475px;
   margin-right: 176px;
+  /* z-index: 100000px; */
 }
 /* #input-div{
 } */
