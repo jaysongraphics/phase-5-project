@@ -59,12 +59,15 @@ fetch('http://localhost:3000/signup', {
 // console.log(signUpErrors);
 
     return (
-        <div className="signup-signin-div"> 
+        <div className="signup-div"> 
             <form onSubmit={handleSignUp}id="sign-form" className="box">
                 <div className="field">
                   <label id="label-id"className="label">Image</label>
                   <div className="control">
-                      <input className="input" type="file" placeholder="Image"
+                      <input className="input" 
+                      // type="file" 
+                      type="text"
+                      placeholder="Image"
                       onChange={(e) => setNewUserImage(e.target.value)}></input>
                     </div>
                   </div>

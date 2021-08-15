@@ -6,7 +6,8 @@ function SiteReviews() {
 
     return (
         <div>
-            {/* <img className ="logo-image" src={logo}/> */}
+
+
          </div>
 
   )

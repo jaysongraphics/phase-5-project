@@ -27,7 +27,7 @@ const history = useHistory();
             </Link>
             {currentUser ?     
             <div className="current-user">
-                 <img className="ui avatar image" src={currentUser.image} />
+                 <img className="ui avatar image" style={{width: 36, height: 36}}src={currentUser.image} />
                  <p>Hi, {currentUser.username}!</p>
              </div> : null }
                 {currentUser ? (

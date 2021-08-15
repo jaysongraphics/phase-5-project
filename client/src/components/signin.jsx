@@ -40,7 +40,7 @@ console.log(currentUser);
 // console.log(darkmode);
 
     return (
-      <div className="signup-signin-div"> 
+      <div className="signin-div"> 
             <form onSubmit={handleSignIn}id="sign-form"
             className='box'>               
                 <div className="field">

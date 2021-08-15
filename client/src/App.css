@@ -46,16 +46,24 @@
 
 /* therapits doctors cards */
 #id-card{
-  padding:0;
-  margin: 15px;
+  margin-left: 5px;
   /* display: inline-block; */
   float: left;
 }
 
+#therapits-detail-info{
+  margin-left: 30px;
+}
+
 #id-card{
   width: 280px;
-  height: 380px;
+  height: 450px;
   margin-bottom: 30px;
+}
+
+.titl{
+  font-size: 16px;
+  font-weight: bold;
 }
 
 #img-div{
@@ -326,25 +334,21 @@ float: left;
   float: left;
   display: flex; 
   justify-content: space-between; 
+  margin-right: 40px;
+  padding-bottom: 380px;
+}
+
+#influencers-divv{
   margin-left: 20px;
-  margin-right: 20px;
-  padding-bottom: 350px;
 }
 
 /* #influencers-img{
-  margin-left: 70px;
-  margin-bottom: 30px;
-
-} */
-
-/* #influencers-img-revealed{
-  margin-left: 70px;
-  width: 100px;
-  height: 100px;
+  margin-left: 20px;
 } */
 
 .influencer-paragraph{
   font-size: 12px;
+  margin-right: 30px;
 }
 
 .footer-div{
@@ -369,13 +373,21 @@ float: left;
   width: 300px; 
 } */
 
-.signup-signin-div{
-  margin-top: 80px;
+.signup-div{
+  margin-top: 100px;
   display:flex; 
   justify-content: space-between; 
-  margin-left: 300px;
+  margin-left: 500px;
+  padding-bottom: 100px;
 }
 
+.signin-div{
+  margin-top: 130px;
+  display:flex; 
+  justify-content: space-between; 
+  margin-left: 500px;
+  padding-bottom: 400px; 
+}
 #sign-form{
   width: 800px; 
 }
@@ -389,6 +401,9 @@ float: left;
   background-color: black;
 }
 
+.blk-whitefont{
+  color: white;
+}
 /* nav animation colors */
 /* #link-nav-colors{
   color: white;
@@ -396,27 +411,73 @@ float: left;
 
 /* currentuser */
 .current-user{
-  font-size: 15px;
+  font-size: 12px;
   float: left;
-  margin-left: 600px;
-  margin-right: 250px;
-  margin-top: -30px;
+  margin-left: 50px;
+  margin-right: 900px;
+  margin-top: -5px;
 }
 
 #profile-detail{
   margin-left: 0px;
-  margin-top: -32px;
-  width: 20%;
+  margin-top: -141px;
+  width: 25%;
   height: 60rem;
   padding: 10px;
-  background-color: #61dafb;
+  /* background-color: rgb(241,70,103); */
+  background: linear-gradient(rgb(241,70,103), rgb(255, 255, 255));
+}
+#profile-detail-blk-white{
+  margin-left: 0px;
+  margin-top: -141px;
+  width: 25%;
+  height: 60rem;
+  padding: 10px;
+  /* background-color: rgb(110, 29, 45) */
+
+background: linear-gradient(rgb(66, 17, 27), rgb(255, 255, 255));
 }
 
 #dark-button{
   float: center;
-  margin-left: 360px;
+  margin-left: -900px;
 }
 
-
-#banner-diva{
+.userOnline{
+  margin-top: 10px;
 }
+
+/* #userOnline-img{
+  width: 200px;
+  height: 200px;
+  margin-left: 85px;
+  padding: 10px;
+} */
+
+
+#userOnline-img{
+  margin-top: 85px;
+
+} 
+
+.tweets-div{
+  margin-left: 300px;
+}
+
+/* #text-area-proile{
+  margin-left:1000px;
+  padding: 10px;
+} */
+
+#textbox-profile{
+  width: 900px;
+  padding: 0.1px;
+}
+
+.tweet-box{
+  background-color: blue;
+  margin-left: 475px;
+  margin-right: 176px;
+}
+/* #input-div{
+} */

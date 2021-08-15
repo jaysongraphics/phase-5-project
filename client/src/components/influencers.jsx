@@ -10,12 +10,11 @@ import princee from '../images/princee.jpg'
 
 function Influencers() {
 
-
     return (
     <div className="influencers-section">
          <p className="influencers-title">Influencers</p>
         <div id="influencers-div" className="ui move reveal">
-            <div className="visible content">
+            <div id="visible-img" className="visible content">
                 <img id="influencers-img" src={female}className="ui small image" style={{width: 250, height: 200}}/>
             </div>
             <div class="hidden content">
@@ -29,7 +28,7 @@ function Influencers() {
         </div>
 
         <div id="influencers-div" className="ui move reveal">
-            <div className="visible content">
+            <div id="visible-img" className="visible content">
                 <img id="influencers-img" src={male2}class="ui small image" style={{width: 250, height: 200}}/>
             </div>
             <div className="hidden content">
@@ -43,7 +42,7 @@ function Influencers() {
         </div>
 
         <div id="influencers-div" className="ui move reveal">
-            <div className="visible content">
+            <div id="visible-img" className="visible content">
                 <img id="influencers-img" src={female}className="ui small image" style={{width: 250, height: 200}}/>
             </div>
             <div className="hidden content">
@@ -57,7 +56,7 @@ function Influencers() {
         </div>
 
         <div id="influencers-div" className="ui move reveal">
-            <div className="visible content">
+            <div id="visible-img" className="visible content">
                 <img id="influencers-img" src={male2}className="ui small image" style={{width: 250, height: 200}} />
             </div>
             <div className="hidden content">
