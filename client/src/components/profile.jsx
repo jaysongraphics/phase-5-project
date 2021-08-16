@@ -1,13 +1,12 @@
 import {useState} from 'react'
 
 
-function Profile({currentUser, setCurrentUser, setdarkMode, darkmode }) {
-const [tweet, setTweet] = useState ("")
-const [addTweet, setAddTweet] = useState (tweet)
-let app;
+function Profile({currentUser, setdarkMode, darkmode }) {
+  const [tweet, setTweet] = useState (null)
+  // const [addTweet, setAddTweet] = useState (tweet)
+  let app;
 
-// console.log(addTweet.map(tweet => tweet.tweet))
-
+// console.log(addTweet)
 console.log(tweet);
 
 if(currentUser){
@@ -35,7 +34,7 @@ function handleTweet(e) {
         }),
       })
         .then((res) => res.json())
-        .then((newtweet) => setAddTweet([...addTweet, newtweet]))
+        .then((newtweet) => setTweet(newtweet))
  }
  
  function deletedTweet(id){
@@ -48,14 +47,14 @@ function handleTweet(e) {
   }
 
   const filteredTweets = (id) => {
-    const deletedTweets = addTweet.filter(item => item.id !== id)
-    setAddTweet(deletedTweets)
+    const deletedTweets = tweet.filter(item => item.id !== id)
+    setTweet(deletedTweets)
 }
-
 
 function darkModeToggle(){
   setdarkMode(!darkmode)
 }
+
 
     return (
         <div className={darkmode ? 'black' : ''}>
@@ -82,16 +81,18 @@ function darkModeToggle(){
                 <div id="textbox-profile" className="ui input">
                      <input onChange={(e) => setTweet(e.target.value)} type="text" placeholder="What's on your mind?"
                      value={tweet}
-                     />
+                     /> 
                   </div>
-                  {/* <div> 
-                    {addTweet.map(tweet => 
-                    <div>{tweet.tweet}
-                    <i style={{cursor: 'pointer'}} onClick={()=>deletedTweet(tweet.id)}>✖️</i>
-                    </div>
-                    )}
-                  </div> */}
-                  
+    
+                {/* <div> 
+                    {tweet?.map(tweet => 
+                        <div>{tweet.tweet}
+                        <i style={{cursor: 'pointer'}} onClick={()=>deletedTweet(tweet.id)}>✖️</i>
+                        </div>
+                        )}
+
+
+                  </div>  */}
             </form>
 
             }
