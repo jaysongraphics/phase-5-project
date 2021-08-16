@@ -1,16 +1,57 @@
+import {useState} from 'react'
 
-function Profile({currentUser, setdarkMode, darkmode }) {
 
-console.log(currentUser);
-// console.log(currentUser.appointments.map(app => {
-//    return (app.appointment_time.slice(7))}))
+function Profile({currentUser, setCurrentUser, setdarkMode, darkmode }) {
+const [tweet, setTweet] = useState ("")
+const [addTweet, setAddTweet] = useState (tweet)
+let app;
 
-const app = currentUser.appointments.map(app => {
-  return ({time: app.appointment_time.slice(7), date: app.appointment_date, location: app.location})})
+// console.log(addTweet.map(tweet => tweet.tweet))
 
-function handleltweet(e) {
+console.log(tweet);
+
+if(currentUser){
+  app = currentUser.appointments.map(app => {
+    return ({
+      // key: app.name,
+      time: app.appointment_time.slice(7), 
+      date: app.appointment_date, 
+      location: app.location})
+    })
+}
+
+if(!currentUser) {
+  return <div>loading...</div>
+}
+
+function handleTweet(e) { 
   e.preventDefault();
-} 
+    fetch("http://localhost:3000/tweets", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          "tweet":  tweet,
+          "user_id": currentUser.id,
+        }),
+      })
+        .then((res) => res.json())
+        .then((newtweet) => setAddTweet([...addTweet, newtweet]))
+ }
+ 
+ function deletedTweet(id){
+  fetch(`http://localhost:3000/tweets/${id}`, {
+    method: 'DELETE'
+  })
+    .then(res => res.json())
+    .then(data => {console.log(data)})
+      filteredTweets(id);
+  }
+
+  const filteredTweets = (id) => {
+    const deletedTweets = addTweet.filter(item => item.id !== id)
+    setAddTweet(deletedTweets)
+}
+
 
 function darkModeToggle(){
   setdarkMode(!darkmode)
@@ -33,19 +74,32 @@ function darkModeToggle(){
               </div>
             : 
 
-            <form onsubmit={handleltweet}id="input-div"className="tweets-div">
+          <form 
+          onSubmit={handleTweet}
+          id="input-div"
+          className="tweets-div">
               <h6>What's on your mind?</h6>
                 <div id="textbox-profile" className="ui input">
-                     <input type="text" placeholder="What's on your mind?"/>
+                     <input onChange={(e) => setTweet(e.target.value)} type="text" placeholder="What's on your mind?"
+                     value={tweet}
+                     />
                   </div>
-              </form>
+                  {/* <div> 
+                    {addTweet.map(tweet => 
+                    <div>{tweet.tweet}
+                    <i style={{cursor: 'pointer'}} onClick={()=>deletedTweet(tweet.id)}>✖️</i>
+                    </div>
+                    )}
+                  </div> */}
+                  
+            </form>
+
             }
-    
         {currentUser ? 
           <div id={darkmode ? "profile-detail-blk-white" : "profile-detail"}>
               <div className="userOnline" >
               {/* <img id="userOnline-img" class="ui medium circular image" src={currentUser.image} /> */}
-              <img id="userOnline-img"className="ui avatar image" style={{width: 200, height: 200}}src={currentUser.image} />
+              <img id="userOnline-img" alt="profpic"className="ui avatar image" style={{width: 200, height: 200}}src={currentUser.image} />
               <br/>
               <br/>
                  <p className={darkmode ? "blk-whitefont" : ''}>First Name: {currentUser.first_name}</p>
@@ -60,6 +114,7 @@ function darkModeToggle(){
                       {app.length >  0  ? 
                       app.map(item => 
                      <div>
+                       <br />
                         <div>Location: {item.location}</div>
                          <div>Date: {item.date}</div>
                           <div>Time: {item.time}</div>

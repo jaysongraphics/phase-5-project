@@ -1,25 +1,25 @@
+// import {useHistory} from 'react-router-dom';
+// import Banner from './components/banner'
+// import MidBanner from  './components/midbanner'
+// import Influencers from  './components/influencers'
+// import Modal from './components/modal';
+// import SiteReviews from  './components/sitereviews'
 import './App.css';
 import {useState, useEffect} from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import {useHistory} from 'react-router-dom';
+import {Route, Switch } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import 'bulma/css/bulma.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/navbar'
 import Therapist from './components/therapist';
-import Banner from './components/banner'
-import MidBanner from  './components/midbanner'
-import Influencers from  './components/influencers'
-import SiteReviews from  './components/sitereviews'
 import Footer from './components/footer'
 import SignIn from './components/signin'
 import Signup from './components/signup'
 import Profile from './components/profile'
 import Home from './components/home'
-import Modal from './components/modal';
 
 // loading
-{/* <progress class="progress is-danger" max="100">30%</progress> */}
+//<progress class="progress is-danger" max="100">30%</progress>
 
 function App() {
  
@@ -39,7 +39,7 @@ function App() {
     const onlineUser = localStorage.getItem("user")
         if(onlineUser){
         setCurrentUser(JSON.parse(onlineUser))}
-    },[])
+  },[])
 
   return (
     <div className="App">
@@ -49,7 +49,7 @@ function App() {
           setdarkMode={setdarkMode}
           darkmode={darkmode}
           />
-              <Switch>
+                <Switch>
                   <Route exact path='/'>
                     <Home />
                   </Route> 
@@ -58,12 +58,13 @@ function App() {
                     <Profile 
                      setdarkMode={setdarkMode}
                      darkmode={darkmode}
-                    currentUser={currentUser}
-                    setCurrentUser={setCurrentUser}/>
+                     currentUser={currentUser}
+                     setCurrentUser={setCurrentUser}/>
                   </Route>
 
                   <Route path='/Signup'>
-                    <Signup setCurrentUser={setCurrentUser}/>
+                    <Signup 
+                    setCurrentUser={setCurrentUser}/>
                   </Route>
 
                   <Route path='/Signin'>

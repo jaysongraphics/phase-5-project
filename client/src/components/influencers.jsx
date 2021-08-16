@@ -1,11 +1,11 @@
-import logo from '../images/LOGOGFINALBLACK.png'
+// import logo from '../images/LOGOGFINALBLACK.png'
+// import princee from '../images/princee.jpg'
 import female from '../images/female.jpg'
 import male2 from '../images/male2.jpg'
 import beyonce from '../images/beyonce.jpg'
 import rock from '../images/rock.jpg'
 import selena from '../images/selena.jpg'
 import prince from '../images/prince.jpg'
-import princee from '../images/princee.jpg'
 
 
 function Influencers() {
@@ -15,10 +15,10 @@ function Influencers() {
          <p className="influencers-title">Influencers</p>
         <div id="influencers-div" className="ui move reveal">
             <div id="visible-img" className="visible content">
-                <img id="influencers-img" src={female}className="ui small image" style={{width: 250, height: 200}}/>
+                <img id="influencers-img" alt="inf1" src={female}className="ui small image" style={{width: 250, height: 200}}/>
             </div>
-            <div class="hidden content">
-            <img id="influencers-img" src={beyonce} className="ui small image" style={{width: 200, height: 200}}/>
+            <div className="hidden content">
+            <img id="influencers-img" alt="inf2"src={beyonce} className="ui small image" style={{width: 200, height: 200}}/>
             <br />
     
             <p className="influencer-paragraph">Beyoncé <br/>
@@ -29,10 +29,10 @@ function Influencers() {
 
         <div id="influencers-div" className="ui move reveal">
             <div id="visible-img" className="visible content">
-                <img id="influencers-img" src={male2}class="ui small image" style={{width: 250, height: 200}}/>
+                <img id="influencers-img" alt="inf3"src={male2}className="ui small image" style={{width: 250, height: 200}}/>
             </div>
             <div className="hidden content">
-            <img id="influencers-img" src={rock} className="ui small image" style={{width: 200, height: 200}}/>
+            <img id="influencers-img" alt="inf4"src={rock} className="ui small image" style={{width: 200, height: 200}}/>
             <br />
 
             <p className="influencer-paragraph">Dwayne Johnson<br/>
@@ -43,10 +43,10 @@ function Influencers() {
 
         <div id="influencers-div" className="ui move reveal">
             <div id="visible-img" className="visible content">
-                <img id="influencers-img" src={female}className="ui small image" style={{width: 250, height: 200}}/>
+                <img id="influencers-img" alt="inf5"src={female}className="ui small image" style={{width: 250, height: 200}}/>
             </div>
             <div className="hidden content">
-            <img id="influencers-img"src={selena} className="ui small image" style={{width: 200, height: 200}}/>
+            <img id="influencers-img" alt="inf6"src={selena} className="ui small image" style={{width: 200, height: 200}}/>
             <br />
 
                 <p className="influencer-paragraph">Selena Gomez<br/>
@@ -57,10 +57,10 @@ function Influencers() {
 
         <div id="influencers-div" className="ui move reveal">
             <div id="visible-img" className="visible content">
-                <img id="influencers-img" src={male2}className="ui small image" style={{width: 250, height: 200}} />
+                <img id="influencers-img" alt="inf7"src={male2}className="ui small image" style={{width: 250, height: 200}} />
             </div>
             <div className="hidden content">
-            <img id="influencers-img" src={prince} className="ui small image" style={{width: 200, height: 200}}/>
+            <img id="influencers-img" alt="inf8"src={prince} className="ui small image" style={{width: 200, height: 200}}/>
             <br />
 
                 <p className="influencer-paragraph">Prince Harry<br/>

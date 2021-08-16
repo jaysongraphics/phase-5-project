@@ -7,7 +7,7 @@ function Banner() {
         <div className="whole-banner-div"> 
         <div className="banner-section">
             <div>
-            <img className ="bannerimg" src={imageone}/>
+            <img className ="bannerimg" src={imageone} alt="meditateimg"/>
             </div>
             <div className="banner-div">
                 <p className="banner-title">Breaking Taboo</p>

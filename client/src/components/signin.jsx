@@ -2,7 +2,7 @@ import {useHistory, Link} from 'react-router-dom'
 import React, { useState } from 'react';
 
 
-function SignIn({currentUser, setCurrentUser, darkmode}) {
+function SignIn({setCurrentUser}) {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [signInErrors, setSignInErrors] = useState(null)
@@ -36,8 +36,6 @@ function SignIn({currentUser, setCurrentUser, darkmode}) {
   });
 }
 // console.log(currentUser);
-
-// console.log(darkmode);
 
     return (
       <div className="signin-div"> 

@@ -1,6 +1,5 @@
 import logo from '../images/LOGOGFINALBLACK.png'
 import {useHistory, Link} from 'react-router-dom'
-import {useState, useEffect} from 'react'
 
 function NavBar({currentUser, setCurrentUser,}) {
 
@@ -21,13 +20,13 @@ const history = useHistory();
             <nav className="navbar-bar">
             <Link to='/'>
                 <div className="logo">
-                  <img className ="logo-image" src={logo}/>
+                  <img className ="logo-image" alt="logo"src={logo}/>
                     {/* <h2 className="logo-text">Selflax</h2> */}
                 </div>
             </Link>
             {currentUser ?     
             <div className="current-user">
-                 <img className="ui avatar image" style={{width: 36, height: 36}}src={currentUser.image} />
+                 <img className="ui avatar image" alt="useerr"style={{width: 36, height: 36}}src={currentUser.image} />
                  <p className="useronluine">Hi, {currentUser.username}!</p>
              </div> : null }
                 {currentUser ? (

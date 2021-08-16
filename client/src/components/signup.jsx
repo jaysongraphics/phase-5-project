@@ -11,7 +11,7 @@ function SignUp({setCurrentUser}) {
     const [newUserUsername, setNewUserUsername] = useState("")
     const [newUserEmail, setNewUserEmail] = useState("")
     const [newUserPassword, setNewUserPassword] = useState('')
-    const [time, setTime] = useState('')
+    // const [time, setTime] = useState('')
 
     const [signUpErrors, setSignUpErrors] = useState(null)
 
@@ -51,12 +51,6 @@ fetch('http://localhost:3000/signup', {
     }
   });
 }
-// console.log(newUser);
-// console.log(newPassword);
-// const errorMesgs = signUpErrors.map((error) => 
-//     <p>{error}</p>
-// )
-// console.log(signUpErrors);
 
     return (
         <div className="signup-div"> 
@@ -141,149 +135,4 @@ fetch('http://localhost:3000/signup', {
   )
 }
 
-{/* fileInput = React.createRef();
-                             <label>
-                             Upload file:
-                             <input type="file" ref={this.fileInput} />
-                             </label> */}
 export default SignUp;
-
-
-// <div classNameName="signUp-form">
-// <form id="last-name">  
-
-// <div className="field">
-//         <label className="label">Image</label>
-//         <div className="control has-icons-left has-icons-right">
-//             <input className="input" type="text" placeholder="Text input" value="Image"></input>
-//         <span className="icon is-small is-left">
-//             <i className="fas fa-user"></i>
-//             </span> 
-//         <span className="icon is-small is-right">
-//             <i className="fas fa-check"></i>
-//             </span> 
-//         </div>
-//         <p className="help is-success">This username is available</p>
-//     </div>
-
-//     <div className="field">
-//         <label className="label">First Name</label>
-//         <div className="control has-icons-left has-icons-right">
-//             <input className="input" type="text" placeholder="Text input" value="First Name"></input>
-//         <span className="icon is-small is-left">
-//             <i className="fas fa-user"></i>
-//             </span> 
-//         <span className="icon is-small is-right">
-//             <i className="fas fa-check"></i>
-//             </span> 
-//         </div>
-//         <p className="help is-success">This username is available</p>
-//     </div>
-
-// <div className="field">
-// <label className="label">Last Name</label>
-// <div className="control has-icons-left has-icons-right">
-//     <input className="input is-success" type="text" placeholder="Text input" value="Last Name"></input>
-//     <span className="icon is-small is-left">
-//     <i className="fas fa-user"></i>
-//     </span>
-//     <span className="icon is-small is-right">
-//     <i className="fas fa-check"></i>
-//     </span>
-// </div>
-// <p className="help is-success">This username is available</p>
-// </div>
-
-// <div className="field">
-// <label className="label">Birthday</label>
-// <div className="control has-icons-left has-icons-right">
-//     <input className="input is-success" type="text" placeholder="Birthday" value="Birthday"></input>
-//     <span className="icon is-small is-left">
-//     <i className="fas fa-user"></i>
-//     </span>
-//     <span className="icon is-small is-right">
-//     <i className="fas fa-check"></i>
-//     </span>
-// </div>
-// <p className="help is-success">This username is available</p>
-// </div>
-
-
-// <div className="field">
-// <label className="label">Username</label>
-// <div className="control has-icons-left has-icons-right">
-//     <input className="input is-success" type="text" placeholder="Text input" value="Username"></input>
-//     <span className="icon is-small is-left">
-//     <i className="fas fa-user"></i>
-//     </span>
-//     <span className="icon is-small is-right">
-//     <i className="fas fa-check"></i>
-//     </span>
-// </div>
-// <p className="help is-success">This username is available</p>
-// </div>
-
-
-// <div className="field">
-// <label className="label">Email</label>
-// <div className="control has-icons-left has-icons-right">
-//     <input className="input is-danger" type="email" placeholder="Email input" value="email@"></input>
-//     <span className="icon is-small is-left">
-//     <i className="fas fa-envelope"></i>
-//     </span>
-//     <span className="icon is-small is-right">
-//     <i className="fas fa-exclamation-triangle"></i>
-//     </span>
-// </div>
-// <p className="help is-danger">This email is invalid</p>
-// </div>
-
-// <div className="field">
-// <label className="label">Password</label>
-// <div className="control has-icons-left has-icons-right">
-//     <input className="input is-danger" type="email" placeholder="Password" value="em"></input>
-//     <span className="icon is-small is-left">
-//     <i className="fas fa-envelope"></i>
-//     </span>
-//     <span className="icon is-small is-right">
-//     <i className="fas fa-exclamation-triangle"></i>
-//     </span>
-// </div>
-// <p className="help is-danger">This email is invalid</p>
-// </div>
-
-// {/* #bio */}
-// {/* 
-// <div className="field">
-// <label className="label">Message</label>
-// <div className="control">
-// <textarea className="textarea" placeholder="Textarea"></textarea>
-// </div>
-// </div> */}
-
-// {/* terms and conditions */}
-// {/* <div className="field">
-// <div className="control">
-// <label className="checkbox">
-// <input type="checkbox">
-// I agree to the <a href="#">terms and conditions</a>
-// </label>
-// </div>
-// </div> */}
-
-//         <div >
-//             <div className="control">
-//                 <button className="button is-danger is-rounded">Submit</button>
-//             </div>
-            
-//                 <Link to='/'> 
-//                     <a id="member-already">Already a member? Sign in!</a>
-//                 </Link> 
-//         </div> 
-// </form>
-// </div>
-
-
-
-// )
-// }

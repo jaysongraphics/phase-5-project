@@ -4,10 +4,10 @@ User.destroy_all
 User.reset_pk_sequence
 Appointment.destroy_all
 Appointment.reset_pk_sequence
-# Review.destroy_all
-# Review.reset_pk_sequence
-# Tweet.destroy_all
-# Tweet.reset_pk_sequence
+Review.destroy_all
+Review.reset_pk_sequence
+Tweet.destroy_all
+Tweet.reset_pk_sequence
 Therapist.destroy_all
 Therapist.reset_pk_sequence
 

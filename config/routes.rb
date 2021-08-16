@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tweets, only: [:index]
+  resources :tweets, only: [:index, :create]
   resources :reviews, only: [:index, :create, :destroy]
   resources :appointments, only: [:index, :create]
   resources :therapists, only: [:index]

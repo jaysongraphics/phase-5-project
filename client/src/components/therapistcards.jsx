@@ -1,14 +1,28 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 
-function TherapistCards({therapist,currentUser, therapistReview}) {
+function TherapistCards({therapist, currentUser, therapistReview}) {
   const [review, setReview] = useState ("")
   const [addReview, setAddReview] = useState (therapistReview)
- 
-  console.log(therapist);
-  console.log(therapist.appointments);
 
-  function addReviewProfile (location, date, time) {
+  // console.log(therapist);
+  console.log(therapist.appointments);
+  // console.log(currentUser);
+  console.log(therapist);
+
+  console.log(therapist.appointments.map(item =>item.appointment_date
+  // {item.appointment_time} 
+  // {item.location}}
+))
+
+// console.log(therapist.appointments.map(item =>{
+//   <div>{`${item.appointment_date} 
+//   ${item.appointment_time} 
+//   ${item.location}`}
+//   </div>})
+// )
+
+  function addAppointmentProfile (location, date, time) {
     fetch("http://localhost:3000/appointments", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -22,6 +36,10 @@ function TherapistCards({therapist,currentUser, therapistReview}) {
     })
  }
 
+if(!currentUser) {
+  return <div>loading...</div>
+}
+
  const therapistApps = therapist.appointments.map(item =>
   <>
     <br/>
@@ -29,7 +47,7 @@ function TherapistCards({therapist,currentUser, therapistReview}) {
       {`${item.location} 
         ${item.appointment_date} 
         ${item.appointment_time}`}
-        <i style={{cursor: 'pointer'}} onClick={()=>addReviewProfile(item.location, item.appointment_date, item.appointment_time)}>📩</i>
+        <i style={{cursor: 'pointer'}} onClick={()=>addAppointmentProfile(item.location, item.appointment_date, item.appointment_time)}>📩</i>
         </div>
   </>)
 
@@ -39,7 +57,7 @@ function TherapistCards({therapist,currentUser, therapistReview}) {
     })
       .then(res => res.json())
       .then(data => {console.log(data)})
-      filteredReview(id);
+        filteredReview(id);
     }
 
 const filteredReview = (id) => {
