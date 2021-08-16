@@ -1,28 +1,36 @@
 import {useState, useEffect} from 'react'
 
 
-function TherapistCards({therapist, handleAppoinment,currentUser, therapistReview}) {
+function TherapistCards({therapist,currentUser, therapistReview}) {
   const [review, setReview] = useState ("")
   const [addReview, setAddReview] = useState (therapistReview)
-
+ 
   console.log(therapist);
-  // console.log(therapistReview);
+  console.log(therapist.appointments);
 
+  function addReviewProfile (location, date, time) {
+    fetch("http://localhost:3000/appointments", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          "user_id" : currentUser.id,
+          "therapist_id" : therapist.id,
+          "appointment_date": date,
+          "appointment_time": time,
+          "location": location
+        }),
+    })
+ }
 
-  funtion addReviewProfile(){
-
-  }
-  
  const therapistApps = therapist.appointments.map(item =>
   <>
-  <br/>
-    <div>
-
-  {`${item.location} 
-    ${item.appointment_date} 
-    ${item.appointment_time}`}
-    <i style={{cursor: 'pointer'}} onClick={()=>addReviewProfile(review.id)}>📩</i>
-    </div>
+    <br/>
+      <div>
+      {`${item.location} 
+        ${item.appointment_date} 
+        ${item.appointment_time}`}
+        <i style={{cursor: 'pointer'}} onClick={()=>addReviewProfile(item.location, item.appointment_date, item.appointment_time)}>📩</i>
+        </div>
   </>)
 
   function deleteReview(id){

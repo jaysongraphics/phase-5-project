@@ -12,27 +12,27 @@ const [therapists, setTherapists] = useState ([])
             .then((data) => setTherapists(data))
       }, [])
 
-      function handleAppoinment(therapist_id){
-        let addAppoinment = {
-            "user_id": currentUser.id,
-            "therapist_id": therapist_id,
-        }
-        fetch(`http://localhost:3000/appointments`, {
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(addAppoinment)
-        }) 
-            .then(res => res.json())
-            .then(console.log(addAppoinment))
-  }
+//       function handleAppoinment(therapist_id){
+//         let addAppoinment = {
+//             "user_id": currentUser.id,
+//             "therapist_id": therapist_id,
+//         }
+//         fetch(`http://localhost:3000/appointments`, {
+//             method: 'POST',
+//             headers:{
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/json'
+//             },
+//             body: JSON.stringify(addAppoinment)
+//         }) 
+//             .then(res => res.json())
+//             .then(console.log(addAppoinment))
+//   }
    
     const therapistsCards = therapists.map(therapist => 
         <TherapistCards 
         currentUser={currentUser}
-        handleAppoinment={handleAppoinment}
+        // handleAppoinment={handleAppoinment}
         key={therapist.id}
         therapist={therapist}
         therapistReview={therapist.reviews}

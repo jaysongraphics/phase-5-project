@@ -8,15 +8,6 @@ console.log(currentUser);
 const app = currentUser.appointments.map(app => {
   return ({time: app.appointment_time.slice(7), date: app.appointment_date, location: app.location})})
 
-  // console.log(app);
-
-// const appDate = currentUser.appointments.map(app => {
-//   return (app.appointment_date)})
-
-// const appLocation = currentUser.appointments.map(app => {
-//     return (app.location)})
-
-
 function handleltweet(e) {
   e.preventDefault();
 } 
