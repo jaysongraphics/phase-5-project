@@ -66,7 +66,7 @@ const history = useHistory();
                         <button id="nav-button-in-out"className='button is-danger is-rounded'>Sign Up</button>
                     </Link> 
                 </div>
-        </>)}
+             </>)}
         </nav>
     </div>
 

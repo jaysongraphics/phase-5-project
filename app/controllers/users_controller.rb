@@ -7,39 +7,6 @@ class UsersController < ApplicationController
         render json: users
     end 
 
-#     # Post signup
-#   def create
-#     newUser = User.create(userparams)
-#     # byebug
-#     if newUser.valid?
-#         token = JWT.encode({user_id: newUser.id}, 'my_secret', 'HS256')
-#         render json: {user: UserSerializer.new(newUser), token: token}, status: :created
-#         else
-#             render json: {errors: newUser.errors.full_messages}, status: :unprocessable_entity
-#         end 
-#     end 
-
-#     def show
-#         user = User.find_by(id: params[:id])
-#         if user
-#             render json:user, Serializer: :UsersubsSerializer
-#         else record_not_found
-#         end
-#     end 
-
-
-#     private 
-
-#     def record_not_found
-#         render json: {error: "User not found"}, status: :not_found
-#     end 
-
-#     def userparams
-#         params.permit(:image, :first_name, :last_name, :username, :email, :password)
-#     end 
-
-# test
-
     # POST /signin
     def signin
         user = User.find_by(username: params[:username])

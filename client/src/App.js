@@ -22,20 +22,17 @@ import Modal from './components/modal';
 {/* <progress class="progress is-danger" max="100">30%</progress> */}
 
 function App() {
-  const therapistsUrl = 'http://localhost:3000/therapists'
-  const appointmentssUrl = 'http://localhost:3000/appointments'
-
-  const [therapists, setTherapists] = useState ([])
+ 
   const [currentUser, setCurrentUser] = useState(null)
   const [darkmode, setdarkMode] = useState(false)
 
   // console.log(currentUser);
 
-  useEffect(() =>{
-    fetch(therapistsUrl)
-        .then((res) => res.json())
-        .then((data) => setTherapists(data))
-  }, [])
+  // useEffect(() =>{
+  //   fetch(therapistsUrl)
+  //       .then((res) => res.json())
+  //       .then((data) => setTherapists(data))
+  // }, [])
 
 
   useEffect(() => {
@@ -43,23 +40,6 @@ function App() {
         if(onlineUser){
         setCurrentUser(JSON.parse(onlineUser))}
     },[])
-
-    function handleAppoinment(therapist_id){
-      let addAppoinment = {
-          "user_id": currentUser.id,
-          "therapist_id": therapist_id,
-      }
-      fetch(appointmentssUrl, {
-          method: 'POST',
-          headers:{
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-          },
-          body: JSON.stringify(addAppoinment)
-      }) 
-          .then(res => res.json())
-          .then(console.log(addAppoinment))
-}
 
   return (
     <div className="App">
@@ -96,8 +76,6 @@ function App() {
                     <Route path ='/Therapists'>
                       <Therapist 
                       currentUser={currentUser}
-                        handleAppoinment={handleAppoinment}
-                        therapists={therapists}
                         />
                       </Route> 
               </Switch>

@@ -15,10 +15,12 @@ class ReviewsController < ApplicationController
         end
     end
 
-    # def destroy
-    #     subs = Subscription.find_by(id: params[:id])
-    #     subs.destroy
-    # end
+    def destroy
+        # byebug
+        subs = Review.find_by(id: params[:id])
+        subs.destroy
+        render json: subs, status: :ok
+    end
 
     private
 

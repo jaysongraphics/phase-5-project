@@ -27,7 +27,7 @@ class AppointmentsController < ApplicationController
 
 private
         def sub_params
-        params.permit(:user_id, :appoinment_id)
+        params.permit(:user_id, :therapist_id)
         end
 
 end

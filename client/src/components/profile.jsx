@@ -1,4 +1,3 @@
-import { TextField } from '@material-ui/core';
 
 function Profile({currentUser, setdarkMode, darkmode }) {
 
@@ -6,14 +5,16 @@ console.log(currentUser);
 // console.log(currentUser.appointments.map(app => {
 //    return (app.appointment_time.slice(7))}))
 
-const appTime = currentUser.appointments.map(app => {
-  return (app.appointment_time.slice(7))})
-  
-const appDate = currentUser.appointments.map(app => {
-  return (app.appointment_date)})
+const app = currentUser.appointments.map(app => {
+  return ({time: app.appointment_time.slice(7), date: app.appointment_date, location: app.location})})
 
-const appLocation = currentUser.appointments.map(app => {
-    return (app.location)})
+  // console.log(app);
+
+// const appDate = currentUser.appointments.map(app => {
+//   return (app.appointment_date)})
+
+// const appLocation = currentUser.appointments.map(app => {
+//     return (app.location)})
 
 
 function handleltweet(e) {
@@ -65,9 +66,18 @@ function darkModeToggle(){
                 <div>
                   <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments</h6>
                     <div>
-                       <div>Time: {appTime}</div>
-                       <div>Date: {appDate}</div>
-                       <div>Location: {appLocation}</div>
+                      {app.length >  0  ? 
+                      app.map(item => 
+                     <div>
+                        <div>Location: {item.location}</div>
+                         <div>Date: {item.date}</div>
+                          <div>Time: {item.time}</div>
+                     </div>)
+                      :
+                      null}
+                
+                       {/* <div>Date: {appDate}</div>
+                       <div>Location: {appLocation}</div> */}
                     </div>
                   </div>
             </div> : null }

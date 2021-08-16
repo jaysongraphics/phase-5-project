@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :tweets, only: [:index]
-  resources :reviews, only: [:index, :create]
-  resources :appointments, only: [:index]
+  resources :reviews, only: [:index, :create, :destroy]
+  resources :appointments, only: [:index, :create]
   resources :therapists, only: [:index]
   resources :users, only: [:index, :show]
 
