@@ -10,5 +10,6 @@ class ApplicationController < ActionController::API
     rescue
       render json: {errors: ["Not Authorized"]}, status: :unauthorized
     end
+    
 end
 

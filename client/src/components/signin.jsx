@@ -36,7 +36,6 @@ function SignIn({setCurrentUser}) {
 //   });
 // }
 
-//testing
 function handleSignIn(e){
   e.preventDefault()
   const signInUser = {
@@ -55,7 +54,6 @@ fetch('http://localhost:3000/signin', {
 })
   .then((res) => res.json())
   .then((data) => {
-    //  console.log(data);
     if(data.error) {
       setSignInErrors(data.error);
   } else {
@@ -64,8 +62,8 @@ fetch('http://localhost:3000/signin', {
     // localStorage.setItem("user", JSON.stringify(user))
     setCurrentUser(user)
     history.push('/')
-  }
-});
+   }
+  });
 }
 
 // console.log(currentUser);

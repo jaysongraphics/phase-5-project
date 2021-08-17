@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
 
     # GET /me
-    def me
+     def me
         render json: @online_user
       end
     

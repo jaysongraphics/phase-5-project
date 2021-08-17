@@ -65,7 +65,6 @@ function handleSignUp(e){
       "password": newUserPassword
 }
 const token =localStorage.getItem('token'); 
-
 fetch('http://localhost:3000/signup', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json',

@@ -28,13 +28,6 @@ function App() {
 
   // console.log(currentUser);
 
-  // useEffect(() =>{
-  //   fetch(therapistsUrl)
-  //       .then((res) => res.json())
-  //       .then((data) => setTherapists(data))
-  // }, [])
-
-
   useEffect(() => {
     const token = localStorage.getItem('token'); 
     fetch("http://localhost:3000/me",{
@@ -48,14 +41,7 @@ function App() {
     })
   },[])
 
-  // useEffect(() => {
-  //   const onlineUser = localStorage.getItem("user")
-  //       if(onlineUser){
-  //       setCurrentUser(JSON.parse(onlineUser))}
-  // },[])
-
   console.log(currentUser);
-  // console.log(currentUser.email);
 
   return (
     <div className="App">

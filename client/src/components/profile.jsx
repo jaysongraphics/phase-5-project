@@ -4,39 +4,29 @@ import Profilemodal from './profilemodal'
 function Profile({currentUser, setCurrentUser, setdarkMode, darkmode}) {
   const [tweet, setTweet] = useState ('')
   const [addTweet, setAddTweet] = useState ([])
-  // const [appProfile, setAppProfile] = useState (currentUser.appointments)
-  let app;
+  let apps;
 
-  
   console.log(currentUser);
+  console.log(apps);
 
   if(!currentUser) {
     return <div>loading...</div>
   }
 
   if(currentUser){
-    app = currentUser.appointments.map(app => {
-      return (app)
-    })
+    apps = currentUser.appointments
   }
-  
-  console.log(app);
-  
 
 
-// if(currentUser){
+//   if(currentUser){
 //   app = currentUser.appointments.map(app => {
 //     return ({
+//       id: app.id,
 //       time: app.appointment_time, 
 //       date: app.appointment_date, 
 //       location: app.location})
 //   })
 // }
-
-// let userInfo;
-// console.log(addTweet)
-// console.log(tweet);
-
 
 function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
   const profile ={
@@ -63,10 +53,6 @@ function submitProfileUpdate(image, firstName, lastName, birthday, username, ema
  });
 }
 
-
-
-// console.log(currentUser);
-
 // useEffect(() =>{
 //   fetch('http://localhost:3000/tweets')
 //       .then((res) => res.json())
@@ -77,17 +63,6 @@ function submitProfileUpdate(image, firstName, lastName, birthday, username, ema
 //         setCurrentUser(JSON.parse(onlineUser))
 //       }})
 // }, [])
-
-// if(currentUser){
-//   app = currentUser.appointments.map(app => {
-//     return ({
-//       time: app.appointment_time, 
-//       date: app.appointment_date, 
-//       location: app.location})
-//   })
-// }
-
-
 
 function handleTweet(e) { 
   e.preventDefault();
@@ -126,12 +101,12 @@ function handleTweet(e) {
       .then(data => {console.log(data)})
       //  filteredApp(id);
     }
-
     // const filteredApp = (id) => {
-    //   const deletedApps = addTweet.filter(item => item.id !== id)
+    //   const deletedApps = appProfile.filter(item => item.id !== id)
     //   setAppProfile(deletedApps)
     // }
 
+    
 function darkModeToggle(){
   setdarkMode(!darkmode)
 }
@@ -160,10 +135,6 @@ function darkModeToggle(){
                      value={tweet}
                      /> 
                   </div>
-                      <div> 
-                        {/* {tweet} */}
-                        {/* {addTweet} */}
-                    </div>
               <div> 
                     {addTweet?.map(tweet => 
                         <div>{tweet.tweet}
@@ -177,7 +148,6 @@ function darkModeToggle(){
         {currentUser ? 
           <div id={darkmode ? "profile-detail-blk-white" : "profile-detail"}>
               <div className="userOnline" > 
-              {/* <img id="userOnline-img" class="ui medium circular image" src={currentUser.image} />  */}
 
                <img id="userOnline-img" alt="profpic"className="ui avatar image" style={{width: 200, height: 200}}src={currentUser.image} />
               <br/>
@@ -198,26 +168,13 @@ function darkModeToggle(){
              <div> 
                   <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments</h6>
                   <div>
-          
-                      {/* {app.length >  0  ? 
-                     <div >
-                        <br />
-                     <div>
-                          {app}
-                      </div> 
-                      <i style={{cursor: 'pointer'}} 
-                      onClick={()=>deleteApp(app.id)}>✖️</i>
-                  </div> */}
-
-
-
-                    {app.length >  0  ? 
-                        app.map(item => 
+                      {apps.length >  0  ? 
+                        apps.map(item => 
                       <div >
                           <br />
                           <div>Location: {item.location}</div>
-                          <div>Date: {item.date}</div>
-                        <div>Time: {item.time}</div>
+                          <div>Date: {item.appointment_date}</div>
+                        <div>Time: {item.appointment_time}</div>
                         <i style={{cursor: 'pointer'}} 
                         onClick={()=>deleteApp(item.id)}>✖️</i>
                       </div>)

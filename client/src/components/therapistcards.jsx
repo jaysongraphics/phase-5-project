@@ -124,6 +124,8 @@ function bookAppointment (date, time, location) {
                   <br />
                 </div>                 
             </div>
+
+            
         </div>
     </div>
   )
