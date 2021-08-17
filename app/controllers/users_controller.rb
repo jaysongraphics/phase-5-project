@@ -30,28 +30,14 @@ class UsersController < ApplicationController
     end
 
     # show one user / users/1
-    # def show
-    #     user = User.find_by(id: params[:id])
-    #     if user
-    #         render json:user, Serializer: :UsersubsSerializer
-    #     else record_not_found
-    #     end
-    # end 
+    def show
+        user = User.find_by(id: params[:id])
+        if user
+            render json:user, Serializer: :UsersubsSerializer
+        else record_not_found
+        end
+    end 
 
-
-    # def show
-    #     user = User.find_by(id: params[:user_id])
-    #     if user
-    #       render json: user
-    #     else
-    #       render json: { error: "Not authorized" }, status: :unauthorized
-    #     end
-    # end
-
-    # GET /me
-    # def me
-    #  render json: @current_user
-    # end
 
     # PATCH /me
     def update

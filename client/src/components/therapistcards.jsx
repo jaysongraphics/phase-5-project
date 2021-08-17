@@ -1,5 +1,5 @@
 import {useState} from 'react'
-
+import Modal from './modal'
 
 function TherapistCards({therapist, currentUser, therapistReview}) {
   const [review, setReview] = useState ("")
@@ -7,7 +7,7 @@ function TherapistCards({therapist, currentUser, therapistReview}) {
 
   // console.log(therapist);
   console.log(therapist.appointments);
-  // console.log(currentUser);
+  console.log(currentUser);
   console.log(therapist);
 
   console.log(therapist.appointments.map(item =>item.appointment_date
@@ -22,23 +22,28 @@ function TherapistCards({therapist, currentUser, therapistReview}) {
 //   </div>})
 // )
 
-  function addAppointmentProfile (location, date, time) {
-    fetch("http://localhost:3000/appointments", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          "user_id" : currentUser.id,
-          "therapist_id" : therapist.id,
-          "appointment_date": date,
-          "appointment_time": time,
-          "location": location
-        }),
-    })
- }
 
 if(!currentUser) {
   return <div>loading...</div>
 }
+
+function bookAppointment (location, date, time) {
+  fetch("http://localhost:3000/appointments", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        "user_id" : currentUser.id,
+        "therapist_id" : therapist.id,
+        "appointment_date": date,
+        "appointment_time": time,
+        "location": location
+      }),
+  })  .then(res => res.json())
+      .then(res => {
+      localStorage.setItem("user", JSON.stringify({...currentUser, appointments:[...currentUser.appointments, res]}))
+  })
+}
+
 
  const therapistApps = therapist.appointments.map(item =>
   <>
@@ -47,9 +52,9 @@ if(!currentUser) {
       {`${item.location} 
         ${item.appointment_date} 
         ${item.appointment_time}`}
-        <i style={{cursor: 'pointer'}} onClick={()=>addAppointmentProfile(item.location, item.appointment_date, item.appointment_time)}>📩</i>
-        </div>
+      </div>
   </>)
+
 
   function deleteReview(id){
     fetch(`http://localhost:3000/reviews/${id}`, {
@@ -57,7 +62,7 @@ if(!currentUser) {
     })
       .then(res => res.json())
       .then(data => {console.log(data)})
-        filteredReview(id);
+      filteredReview(id);
     }
 
 const filteredReview = (id) => {
@@ -82,6 +87,7 @@ const filteredReview = (id) => {
    }
 
   return (
+    
   <div className="therapist-cards">
           <div id="id-card" className="ui card">
               <div className="image"><img id="img-div"src={therapist.image} alt="image1"/></div>
@@ -91,13 +97,19 @@ const filteredReview = (id) => {
                   <div className="description">Specificity: {therapist.speciality}</div>
                   <div className="description">Age: {therapist.age}
                   </div>  
-                  <hr />
-                  <div className="header">Available Appointments
-                  <br />
                   
-                  </div>
-                    {therapistApps} 
+                 <hr />
                   <br />
+
+                  {/* <div className="header">Make an Appointment
+                  <br />
+                  </div>  */}
+
+                   {therapistApps}
+
+                  {/* <br />
+                  <hr /> */}
+
             <div className="header">Reviews
             </div>
             <div className="meta">
@@ -110,7 +122,14 @@ const filteredReview = (id) => {
                     value={review} 
                     placeholder="How did I do?" onChange={(e) => setReview(e.target.value)}/>
                       <button className='button is-danger is-rounded'>Submit</button>
+                      <br/>
+                      <br/>
                   </form>
+
+                  <Modal 
+                  bookAppointment={bookAppointment}
+                  />
+
                   <br />
                 </div>                 
             </div>

@@ -1,22 +1,43 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 
-function Profile({currentUser, setdarkMode, darkmode }) {
-  const [tweet, setTweet] = useState (null)
-  // const [addTweet, setAddTweet] = useState (tweet)
+function Profile({setdarkMode, darkmode }) {
+  const [tweet, setTweet] = useState ('')
+  const [addTweet, setAddTweet] = useState ([])
+  const [currentUser, setCurrentUser]= useState (null)
   let app;
 
+// let userInfo;
 // console.log(addTweet)
-console.log(tweet);
+// console.log(tweet);
+
+
+// fetch currentuser
+//send token 
+//backend send user 
+
+
+
+// console.log(currentUser);
+
+useEffect(() =>{
+  fetch('http://localhost:3000/tweets')
+      .then((res) => res.json())
+      .then(data => {
+        setAddTweet(data)
+        const onlineUser = localStorage.getItem("user")
+        if(onlineUser){
+        setCurrentUser(JSON.parse(onlineUser))
+      }})
+}, [])
 
 if(currentUser){
   app = currentUser.appointments.map(app => {
     return ({
-      // key: app.name,
-      time: app.appointment_time.slice(7), 
+      time: app.appointment_time, 
       date: app.appointment_date, 
       location: app.location})
-    })
+  })
 }
 
 if(!currentUser) {
@@ -34,7 +55,7 @@ function handleTweet(e) {
         }),
       })
         .then((res) => res.json())
-        .then((newtweet) => setTweet(newtweet))
+        .then((newtweet) => setAddTweet([...addTweet, newtweet]))
  }
  
  function deletedTweet(id){
@@ -47,14 +68,13 @@ function handleTweet(e) {
   }
 
   const filteredTweets = (id) => {
-    const deletedTweets = tweet.filter(item => item.id !== id)
-    setTweet(deletedTweets)
+  const deletedTweets = addTweet.filter(item => item.id !== id)
+  setAddTweet(deletedTweets)
 }
 
 function darkModeToggle(){
   setdarkMode(!darkmode)
 }
-
 
     return (
         <div className={darkmode ? 'black' : ''}>
@@ -83,16 +103,17 @@ function darkModeToggle(){
                      value={tweet}
                      /> 
                   </div>
-    
-                {/* <div> 
-                    {tweet?.map(tweet => 
+                      <div>
+                        {/* {tweet} */}
+                        {/* {addTweet} */}
+                      </div>
+              <div> 
+                    {addTweet?.map(tweet => 
                         <div>{tweet.tweet}
                         <i style={{cursor: 'pointer'}} onClick={()=>deletedTweet(tweet.id)}>✖️</i>
                         </div>
                         )}
-
-
-                  </div>  */}
+                  </div> 
             </form>
 
             }

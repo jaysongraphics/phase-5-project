@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import TherapistCards from './therapistcards';
-
+import Modal from './modal'
 
 function Therapist({currentUser}) {
 const therapistsUrl = 'http://localhost:3000/therapists'
@@ -23,6 +23,7 @@ const [therapists, setTherapists] = useState ([])
     return (
         <div>
             <h1>Therapist</h1>
+        
             {therapistsCards}
         </div>
     )

@@ -18,6 +18,14 @@ class TweetsController < ApplicationController
     end
 
 
+    def destroy
+        # byebug
+        tweet = Tweet.find_by(id: params[:id])
+        tweet.destroy
+        render json: tweet, status: :ok
+    end
+
+
     private
 
     def sub_params
