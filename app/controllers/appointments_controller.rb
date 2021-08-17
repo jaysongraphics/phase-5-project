@@ -24,6 +24,12 @@ class AppointmentsController < ApplicationController
         end
     end
 
+    def destroy
+        byebug
+        app = Appointment.find_by(id: params[:id])
+        app.destroy
+        render json: app, status: :ok
+    end
 
 private
         def sub_params

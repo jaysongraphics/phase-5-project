@@ -4,12 +4,10 @@
 // import Influencers from  './components/influencers'
 // import SiteReviews from  './components/sitereviews'
 import React from 'react';
-
 import './App.css';
 import {useState, useEffect} from 'react'
 import {Route, Switch } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
-import { Button, Icon, Image, Modal } from 'semantic-ui-react'
 import 'bulma/css/bulma.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/navbar'
@@ -19,7 +17,6 @@ import SignIn from './components/signin'
 import Signup from './components/signup'
 import Profile from './components/profile'
 import Home from './components/home'
-// import Modal from './components/modal'
 
 // loading
 //<progress class="progress is-danger" max="100">30%</progress>
@@ -39,10 +36,26 @@ function App() {
 
 
   useEffect(() => {
-    const onlineUser = localStorage.getItem("user")
-        if(onlineUser){
-        setCurrentUser(JSON.parse(onlineUser))}
+    const token = localStorage.getItem('token'); 
+    fetch("http://localhost:3000/me",{
+      headers: {
+       Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(res => res.json())
+    .then(user => {
+      setCurrentUser(user)
+    })
   },[])
+
+  // useEffect(() => {
+  //   const onlineUser = localStorage.getItem("user")
+  //       if(onlineUser){
+  //       setCurrentUser(JSON.parse(onlineUser))}
+  // },[])
+
+  console.log(currentUser);
+  // console.log(currentUser.email);
 
   return (
     <div className="App">
@@ -62,7 +75,8 @@ function App() {
                      setdarkMode={setdarkMode}
                      darkmode={darkmode}
                      currentUser={currentUser}
-                     setCurrentUser={setCurrentUser}/>
+                     setCurrentUser={setCurrentUser}
+                     />
                   </Route>
 
                   <Route path='/Signup'>
@@ -82,7 +96,6 @@ function App() {
                       currentUser={currentUser}
                         />
                       </Route> 
-
               </Switch>
           <Footer /> 
     </div>

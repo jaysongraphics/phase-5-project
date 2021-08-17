@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     def signin
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
-            token = JWT.encode({user_id: user.id}, 'my_secret', 'HS256')
+            token = JWT.encode({user_id: user.id}, 'secret', 'HS256')
             render json: {user: UserSerializer.new(user), token: token}
         else
             render json: {"error": "invalid username or password"}, status: :not_found
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     def signup
         newUser = User.create(user_params)
         if newUser.valid?
-            token = JWT.encode({ user_id: newUser.id }, 'my_secret', 'HS256')
+            token = JWT.encode({ user_id: newUser.id }, 'secret', 'HS256')
             render json: { user: UserSerializer.new(newUser), token: token }, status: :created
         else
             render json: { errors: newUser.errors.full_messages }, status: :unprocessable_entity
@@ -30,20 +30,32 @@ class UsersController < ApplicationController
     end
 
     # show one user / users/1
-    def show
-        user = User.find_by(id: params[:id])
-        if user
-            render json:user, Serializer: :UsersubsSerializer
-        else record_not_found
-        end
-    end 
+    # def show
+    #     user = User.find_by(id: params[:id])
+    #     if user
+    #         render json:user, Serializer: :UsersubsSerializer
+    #     else record_not_found
+    #     end
+    # end 
 
 
-    # PATCH /me
-    def update
-        @current_user.update(bio: params[:bio], image: params[:image])
-        render json: @current_user
-    end
+    # GET /me
+    def me
+        render json: @online_user
+      end
+    
+      # PATCH /me
+      def update
+        @online_user.update(image: params[:image], 
+            first_name: params[:first_name], 
+            last_name: params[:last_name], 
+            birthday: params[:birthday], 
+            username: params[:username], 
+            email: params[:username] 
+        )
+        render json: @online_user
+      end
+    
 
     # def destroy
     #     session.delete :user_id

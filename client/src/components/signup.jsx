@@ -20,38 +20,72 @@ function SignUp({setCurrentUser}) {
 
     const history = useHistory();
 
-    function handleSignUp(e){
-    e.preventDefault()
-    const signUpNewUser = {
-        "image": newUserImage,
-        "first_name": newUserFirstName,
-        "last_name": newUserLastName,
-        "birthday": newUserBirthday,
-        "username": newUserUsername,
-        "email": newUserEmail,
-        "password": newUserPassword
+//     function handleSignUp(e){
+//     e.preventDefault()
+//     const signUpNewUser = {
+//         "image": newUserImage,
+//         "first_name": newUserFirstName,
+//         "last_name": newUserLastName,
+//         "birthday": newUserBirthday,
+//         "username": newUserUsername,
+//         "email": newUserEmail,
+//         "password": newUserPassword
+// }
+
+// fetch('http://localhost:3000/signup', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' 
+//     },
+//     body: JSON.stringify(signUpNewUser),
+// })
+//     .then((res) => res.json())
+//     .then((data) => {
+//         if(data.errors) {
+//         setSignUpErrors(data.errors.map((error) => 
+//            <p>{error}</p>));
+//     } else {
+//         const {user, token} = data;
+//         localStorage.setItem("token", token)
+//         setCurrentUser(user)
+//         history.push('/')
+//     }
+//   });
+// }
+
+//testing
+function handleSignUp(e){
+  e.preventDefault()
+  const signUpNewUser = {
+      "image": newUserImage,
+      "first_name": newUserFirstName,
+      "last_name": newUserLastName,
+      "birthday": newUserBirthday,
+      "username": newUserUsername,
+      "email": newUserEmail,
+      "password": newUserPassword
 }
+const token =localStorage.getItem('token'); 
 
 fetch('http://localhost:3000/signup', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' 
-    },
-    body: JSON.stringify(signUpNewUser),
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+  },
+  body: JSON.stringify(signUpNewUser),
 })
-    .then((res) => res.json())
-    .then((data) => {
-        if(data.errors) {
-        setSignUpErrors(data.errors.map((error) => 
-           <p>{error}</p>));
-    } else {
-        const {user, token} = data;
-        localStorage.setItem("token", token)
-        setCurrentUser(user)
-        history.push('/')
-    }
-  });
+  .then((res) => res.json())
+  .then((data) => {
+      if(data.errors) {
+      setSignUpErrors(data.errors.map((error) => 
+         <p>{error}</p>));
+  } else {
+      const {user, token} = data;
+      localStorage.setItem("token", token)
+      setCurrentUser(user)
+      history.push('/')
+  }
+});
 }
-
     return (
         <div className="signup-div"> 
             <form onSubmit={handleSignUp}id="sign-form" className="box">

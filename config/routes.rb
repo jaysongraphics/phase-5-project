@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :tweets, only: [:index, :create, :destroy]
   resources :reviews, only: [:index, :create, :destroy]
-  resources :appointments, only: [:index, :create]
+  resources :appointments, only: [:index, :create, :destroy]
   resources :therapists, only: [:index]
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :destroy]
 
 
   # get "/me", to: "sessions#show"
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # delete "/signout", to: "sessions#destroy"
 
 
-  get "/me", to: "users#show"
+  # get "/me", to: "users#show"
 
   get "/me", to: "users#me"
   patch "/me", to: "users#update"

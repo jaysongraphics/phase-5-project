@@ -2,11 +2,11 @@ import { Button, Icon, Image, Modal } from 'semantic-ui-react'
 import React from 'react';
 import {useState, useEffect} from 'react'
 
-function ModalComponent({bookAppointment}) {
+function ModalComponent({bookAppointment, currentUser}) {
     const [open, setOpen] = React.useState(false)
-    const [appoDate, setAppoDate] = useState ("")
-    const [appoTime, setAppoTime] = useState ("")
-    const [appoLocation, setAppoLocation] = useState ("")
+    const [appoDate, setAppoDate] = useState (currentUser.appointments.appointment_date)
+    const [appoTime, setAppoTime] = useState (currentUser.appointments.appointment_time)
+    const [appoLocation, setAppoLocation] = useState (currentUser.appointments.location)
 
     return (
     <Modal
@@ -27,24 +27,39 @@ function ModalComponent({bookAppointment}) {
           <div className="field">
                   <label id="label-id"className="label">date</label>
                   <div className="control">
-                      <input className="input" type="date" placeholder="Birthday" onChange={(e) => setAppoDate(e.target.value)}></input>
+                      <input 
+                      value={appoDate}
+                      className="input" type="date" placeholder="Birthday" onChange={(e) => setAppoDate(e.target.value)}></input>
                     </div>
                  </div>    
 
                 <div className="field">
                   <label id="label-id"className="label">time</label>
                   <div className="control">
-                      <input className="input" type="time" placeholder="Birthday" onChange={(e) => setAppoTime(e.target.value)}></input>
+                      <input 
+                      value={appoTime}
+                      className="input" type="time" placeholder="Birthday" onChange={(e) => setAppoTime(e.target.value)}></input>
                     </div>
                 </div>
 
                     <label id="label-id"className="label">Location</label>
                     <select onChange={(e) => setAppoLocation(e.target.value)}
-                        name="cars" id="cars">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
+                        name="hospitals" id="hospital">
+                        <option 
+                          value="Holy Name Medical Center">Holy Name Medical Center
+                        </option>
+                        <option 
+                         value="Columbia University Medical Center">Columbia University Medical Center
+                         </option>
+                        <option 
+                         value="Mount Sinai West">Mount Sinai West
+                         </option>
+                          <option 
+                           value="Montefiore Medical Center">Montefiore Medical Center
+                          </option>
+                          <option 
+                           value="New York Presbyterian Hospital">New York Presbyterian Hospital
+                          </option>
                     </select>
 {/* 
           <Image
@@ -55,7 +70,7 @@ function ModalComponent({bookAppointment}) {
       </Modal.Content>
       <Modal.Actions>
         <Button 
-        onClick={()=> bookAppointment(appoLocation, appoDate, appoTime)} 
+        onClick={()=> bookAppointment(appoDate, appoTime, appoLocation)} 
         primary
         >
           Book it <Icon name='chevron right' />

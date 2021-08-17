@@ -2,18 +2,19 @@ import {useState} from 'react'
 import Modal from './modal'
 
 function TherapistCards({therapist, currentUser, therapistReview}) {
-  const [review, setReview] = useState ("")
-  const [addReview, setAddReview] = useState (therapistReview)
+  const [review, setReview] = useState("")
+  const [addReview, setAddReview] = useState(therapistReview)
+  // const [ate, setAte] = useState (currentUser.appointments)
 
   // console.log(therapist);
-  console.log(therapist.appointments);
-  console.log(currentUser);
-  console.log(therapist);
+  // console.log(therapist.appointments);
+  // console.log(currentUser);
+  // console.log(therapist);
 
-  console.log(therapist.appointments.map(item =>item.appointment_date
-  // {item.appointment_time} 
-  // {item.location}}
-))
+//   console.log(therapist.appointments.map(item =>item.appointment_date
+//   // {item.appointment_time} 
+//   // {item.location}}
+// ))
 
 // console.log(therapist.appointments.map(item =>{
 //   <div>{`${item.appointment_date} 
@@ -22,12 +23,11 @@ function TherapistCards({therapist, currentUser, therapistReview}) {
 //   </div>})
 // )
 
-
 if(!currentUser) {
   return <div>loading...</div>
 }
 
-function bookAppointment (location, date, time) {
+function bookAppointment (date, time, location) {
   fetch("http://localhost:3000/appointments", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,22 +39,21 @@ function bookAppointment (location, date, time) {
         "location": location
       }),
   })  .then(res => res.json())
-      .then(res => {
-      localStorage.setItem("user", JSON.stringify({...currentUser, appointments:[...currentUser.appointments, res]}))
-  })
-}
+      .then(data => console.log(data))
+      // .then(res => {
+        // .then((data) => setAte([...ate, data]))
+      // localStorage.setItem("user", JSON.stringify({...currentUser, appointments:[...currentUser.appointments, res]}))
+  }
 
-
- const therapistApps = therapist.appointments.map(item =>
-  <>
-    <br/>
-      <div>
-      {`${item.location} 
-        ${item.appointment_date} 
-        ${item.appointment_time}`}
-      </div>
-  </>)
-
+//  const therapistApps = therapist.appointments.map(item =>
+//   <>
+//     <br/>
+//       <div>
+//       {`${item.location} 
+//         ${item.appointment_date} 
+//         ${item.appointment_time}`}
+//       </div>
+//   </>)
 
   function deleteReview(id){
     fetch(`http://localhost:3000/reviews/${id}`, {
@@ -65,9 +64,9 @@ function bookAppointment (location, date, time) {
       filteredReview(id);
     }
 
-const filteredReview = (id) => {
-          const deletedReviews = addReview.filter(item => item.id !== id)
-   setAddReview(deletedReviews)
+  const filteredReview = (id) => {
+    const deletedReviews = addReview.filter(item => item.id !== id)
+    setAddReview(deletedReviews)
 }
 
   function handleSubmit (e) {
@@ -101,15 +100,6 @@ const filteredReview = (id) => {
                  <hr />
                   <br />
 
-                  {/* <div className="header">Make an Appointment
-                  <br />
-                  </div>  */}
-
-                   {therapistApps}
-
-                  {/* <br />
-                  <hr /> */}
-
             <div className="header">Reviews
             </div>
             <div className="meta">
@@ -127,6 +117,7 @@ const filteredReview = (id) => {
                   </form>
 
                   <Modal 
+                  currentUser={currentUser}
                   bookAppointment={bookAppointment}
                   />
 

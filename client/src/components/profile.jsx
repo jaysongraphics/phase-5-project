@@ -1,48 +1,93 @@
 import {useState, useEffect} from 'react'
+import Profilemodal from './profilemodal'
 
-
-function Profile({setdarkMode, darkmode }) {
+function Profile({currentUser, setCurrentUser, setdarkMode, darkmode}) {
   const [tweet, setTweet] = useState ('')
   const [addTweet, setAddTweet] = useState ([])
-  const [currentUser, setCurrentUser]= useState (null)
+  // const [appProfile, setAppProfile] = useState (currentUser.appointments)
   let app;
+
+  
+  console.log(currentUser);
+
+  if(!currentUser) {
+    return <div>loading...</div>
+  }
+
+  if(currentUser){
+    app = currentUser.appointments.map(app => {
+      return (app)
+    })
+  }
+  
+  console.log(app);
+  
+
+
+// if(currentUser){
+//   app = currentUser.appointments.map(app => {
+//     return ({
+//       time: app.appointment_time, 
+//       date: app.appointment_date, 
+//       location: app.location})
+//   })
+// }
 
 // let userInfo;
 // console.log(addTweet)
 // console.log(tweet);
 
 
-// fetch currentuser
-//send token 
-//backend send user 
+function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
+  const profile ={
+    'image': image,
+    'first_name':  firstName,
+    'last_name':  lastName,
+    'birthday':   birthday,
+    'username': username,
+    'email':  email
+  }
+  const token = localStorage.getItem('token'); 
+    fetch("http://localhost:3000/me", {
+        method: 'PATCH',
+        headers: { 
+          'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+      },
+        body: JSON.stringify(profile),
+    })
+        .then(res => res.json())
+        .then(user => {
+          console.log(user);
+          setCurrentUser(user)
+ });
+}
 
 
 
 // console.log(currentUser);
 
-useEffect(() =>{
-  fetch('http://localhost:3000/tweets')
-      .then((res) => res.json())
-      .then(data => {
-        setAddTweet(data)
-        const onlineUser = localStorage.getItem("user")
-        if(onlineUser){
-        setCurrentUser(JSON.parse(onlineUser))
-      }})
-}, [])
+// useEffect(() =>{
+//   fetch('http://localhost:3000/tweets')
+//       .then((res) => res.json())
+//       .then(data => {
+//         setAddTweet(data)
+//         const onlineUser = localStorage.getItem("user")
+//         if(onlineUser){
+//         setCurrentUser(JSON.parse(onlineUser))
+//       }})
+// }, [])
 
-if(currentUser){
-  app = currentUser.appointments.map(app => {
-    return ({
-      time: app.appointment_time, 
-      date: app.appointment_date, 
-      location: app.location})
-  })
-}
+// if(currentUser){
+//   app = currentUser.appointments.map(app => {
+//     return ({
+//       time: app.appointment_time, 
+//       date: app.appointment_date, 
+//       location: app.location})
+//   })
+// }
 
-if(!currentUser) {
-  return <div>loading...</div>
-}
+
 
 function handleTweet(e) { 
   e.preventDefault();
@@ -66,11 +111,26 @@ function handleTweet(e) {
     .then(data => {console.log(data)})
       filteredTweets(id);
   }
-
+ 
   const filteredTweets = (id) => {
-  const deletedTweets = addTweet.filter(item => item.id !== id)
-  setAddTweet(deletedTweets)
-}
+    const deletedTweets = addTweet.filter(item => item.id !== id)
+    setAddTweet(deletedTweets)
+  }
+
+
+  function deleteApp(id){
+    fetch(`http://localhost:3000/appointments/${id}`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(data => {console.log(data)})
+      //  filteredApp(id);
+    }
+
+    // const filteredApp = (id) => {
+    //   const deletedApps = addTweet.filter(item => item.id !== id)
+    //   setAppProfile(deletedApps)
+    // }
 
 function darkModeToggle(){
   setdarkMode(!darkmode)
@@ -78,12 +138,10 @@ function darkModeToggle(){
 
     return (
         <div className={darkmode ? 'black' : ''}>
-          <div onClick={darkModeToggle} id="dark-button" className="ui toggle checkbox">
-
+       <div onClick={darkModeToggle} id="dark-button" className="ui toggle checkbox">
             <input type="checkbox" name="public"></input>
                <label>🌙</label>
             </div>
-
             {darkmode ? 
               <div id="input-div"className="tweets-div">
               <h6 className="blk-whitefont">What's on your mind?</h6>
@@ -91,8 +149,7 @@ function darkModeToggle(){
                      <input type="text" placeholder="What's on your mind?"/>
                   </div>
               </div>
-            : 
-
+            :
           <form 
           onSubmit={handleTweet}
           id="input-div"
@@ -103,10 +160,10 @@ function darkModeToggle(){
                      value={tweet}
                      /> 
                   </div>
-                      <div>
+                      <div> 
                         {/* {tweet} */}
                         {/* {addTweet} */}
-                      </div>
+                    </div>
               <div> 
                     {addTweet?.map(tweet => 
                         <div>{tweet.tweet}
@@ -116,40 +173,61 @@ function darkModeToggle(){
                   </div> 
             </form>
 
-            }
+             }
         {currentUser ? 
           <div id={darkmode ? "profile-detail-blk-white" : "profile-detail"}>
-              <div className="userOnline" >
-              {/* <img id="userOnline-img" class="ui medium circular image" src={currentUser.image} /> */}
-              <img id="userOnline-img" alt="profpic"className="ui avatar image" style={{width: 200, height: 200}}src={currentUser.image} />
+              <div className="userOnline" > 
+              {/* <img id="userOnline-img" class="ui medium circular image" src={currentUser.image} />  */}
+
+               <img id="userOnline-img" alt="profpic"className="ui avatar image" style={{width: 200, height: 200}}src={currentUser.image} />
               <br/>
               <br/>
                  <p className={darkmode ? "blk-whitefont" : ''}>First Name: {currentUser.first_name}</p>
                  <p className={darkmode ? "blk-whitefont" : ''}>Last Name: {currentUser.last_name}</p>
                  <p className={darkmode ? "blk-whitefont" : ''}>Email: {currentUser.email}</p>
                  <p className={darkmode ? "blk-whitefont" : ''}>DOB: {currentUser.birthday}</p>
+                 <Profilemodal
+                 currentUser={currentUser} 
+                 submitProfileUpdate={submitProfileUpdate}/>
               </div>
               <hr/>
-                <div>
+               
+             </div> : null }
+            
+            
+             <div> 
                   <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments</h6>
-                    <div>
-                      {app.length >  0  ? 
-                      app.map(item => 
+                  <div>
+          
+                      {/* {app.length >  0  ? 
+                     <div >
+                        <br />
                      <div>
-                       <br />
-                        <div>Location: {item.location}</div>
-                         <div>Date: {item.date}</div>
-                          <div>Time: {item.time}</div>
-                     </div>)
+                          {app}
+                      </div> 
+                      <i style={{cursor: 'pointer'}} 
+                      onClick={()=>deleteApp(app.id)}>✖️</i>
+                  </div> */}
+
+
+
+                    {app.length >  0  ? 
+                        app.map(item => 
+                      <div >
+                          <br />
+                          <div>Location: {item.location}</div>
+                          <div>Date: {item.date}</div>
+                        <div>Time: {item.time}</div>
+                        <i style={{cursor: 'pointer'}} 
+                        onClick={()=>deleteApp(item.id)}>✖️</i>
+                      </div>)
                       :
                       null}
-                
-                       {/* <div>Date: {appDate}</div>
-                       <div>Location: {appLocation}</div> */}
-                    </div>
-                  </div>
-            </div> : null }
-      </div>
+                    </div>  
+               </div>
+
+
+       </div>
   )
 }
 

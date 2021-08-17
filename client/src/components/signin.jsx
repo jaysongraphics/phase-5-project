@@ -9,32 +9,65 @@ function SignIn({setCurrentUser}) {
 
   const history = useHistory();
 
-  function handleSignIn(e){
-    e.preventDefault()
-    const signInUser = {
-    "username": username,
-    "password": password
+//   function handleSignIn(e){
+//     e.preventDefault()
+//     const signInUser = {
+//     "username": username,
+//     "password": password
+// }
+
+//   fetch('http://localhost:3000/signin', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' 
+//     },
+//     body: JSON.stringify(signInUser),
+// })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       if(data.error) {
+//         setSignInErrors(data.error);
+//     } else {
+//       const {user, token} = data;
+//       localStorage.setItem("token", token)
+//       localStorage.setItem("user", JSON.stringify(user))
+//       setCurrentUser(user)
+//       history.push('/')
+//     }
+//   });
+// }
+
+//testing
+function handleSignIn(e){
+  e.preventDefault()
+  const signInUser = {
+  "username": username,
+  "password": password
+}
+const token =localStorage.getItem('token') 
+fetch('http://localhost:3000/signin', {
+  method: 'POST',
+  headers: { 
+    'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    
+  },
+  body: JSON.stringify(signInUser),
+})
+  .then((res) => res.json())
+  .then((data) => {
+    //  console.log(data);
+    if(data.error) {
+      setSignInErrors(data.error);
+  } else {
+    const {user, token} = data;
+    localStorage.setItem("token", token)
+    // localStorage.setItem("user", JSON.stringify(user))
+    setCurrentUser(user)
+    history.push('/')
+  }
+});
 }
 
-  fetch('http://localhost:3000/signin', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' 
-    },
-    body: JSON.stringify(signInUser),
-})
-    .then((res) => res.json())
-    .then((data) => {
-      if(data.error) {
-        setSignInErrors(data.error);
-    } else {
-      const {user, token} = data;
-      localStorage.setItem("token", token)
-      localStorage.setItem("user", JSON.stringify(user))
-      setCurrentUser(user)
-      history.push('/')
-    }
-  });
-}
 // console.log(currentUser);
 
     return (
