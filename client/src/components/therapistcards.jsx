@@ -1,39 +1,23 @@
 import {useState} from 'react'
 import Modal from './modal'
 import swal from 'sweetalert';
-import { Grid, Image } from 'semantic-ui-react'
 
 
 function TherapistCards({therapist, currentUser, therapistReview}) {
   const [review, setReview] = useState("")
   const [addReview, setAddReview] = useState(therapistReview)
-  // const [ate, setAte] = useState (currentUser.appointments)
-
-  // console.log(therapist);
-  // console.log(therapist.appointments);
-  // console.log(currentUser);
-  // console.log(therapist);
-
-//   console.log(therapist.appointments.map(item =>item.appointment_date
-//   // {item.appointment_time} 
-//   // {item.location}}
-// ))
-
-// console.log(therapist.appointments.map(item =>{
-//   <div>{`${item.appointment_date} 
-//   ${item.appointment_time} 
-//   ${item.location}`}
-//   </div>})
-// )
 
 if(!currentUser) {
   return <div>loading...</div>
 }
 
 function bookAppointment (date, time, location) {
+  const token = localStorage.getItem('token'); 
   fetch("http://localhost:3000/appointments", {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+  },
       body: JSON.stringify({
         "user_id" : currentUser.id,
         "therapist_id" : therapist.id,
@@ -43,31 +27,19 @@ function bookAppointment (date, time, location) {
       }),
   })  .then(res => res.json())
       .then(data => console.log(data))
-      
         // swal("Booked!", {
         //   icon: "success",
         // });  
+}
 
-
-        // alert("Appointment created!")
-      // .then(res => {
-        // .then((data) => setAte([...ate, data]))
-      // localStorage.setItem("user", JSON.stringify({...currentUser, appointments:[...currentUser.appointments, res]}))
-  }
-
-//  const therapistApps = therapist.appointments.map(item =>
-//   <>
-//     <br/>
-//       <div>
-//       {`${item.location} 
-//         ${item.appointment_date} 
-//         ${item.appointment_time}`}
-//       </div>
-//   </>)
 
   function deleteReview(id){
+    const token = localStorage.getItem('token'); 
     fetch(`http://localhost:3000/reviews/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
     })
       .then(res => res.json())
       .then(data => {console.log(data)})
@@ -80,11 +52,13 @@ function bookAppointment (date, time, location) {
 }
 
   function handleSubmit (e) {
+    const token = localStorage.getItem('token'); 
       e.preventDefault();
-
       fetch("http://localhost:3000/reviews", {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        headers: {'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
           body: JSON.stringify({
             "review": review,
             "therapist_id": therapist.id,

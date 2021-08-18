@@ -5,20 +5,11 @@ Rails.application.routes.draw do
   resources :therapists, only: [:index]
   resources :users, only: [:index, :show, :destroy]
 
-
-  # get "/me", to: "sessions#show"
-  # post "/signin", to: "sessions#create"
-  # delete "/signout", to: "sessions#destroy"
-
-
-  # get "/me", to: "users#show"
-
+  
   get "/me", to: "users#me"
   patch "/me", to: "users#update"
-
   post "/signin", to: "users#signin"
   post "/signup", to: "users#signup"
-
   delete "/signout", to: "users#destroy"
 
 

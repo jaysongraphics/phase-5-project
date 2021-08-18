@@ -1,6 +1,8 @@
 import { Button, Icon, Image, Modal } from 'semantic-ui-react'
 import React from 'react';
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
+import logo from '../images/LOGOGFINALBLACK.png'
+import clumsy from '../images/clumsy.png'
 
 function ModalComponent({bookAppointment, currentUser}) {
     const [open, setOpen] = React.useState(false)
@@ -13,23 +15,23 @@ function ModalComponent({bookAppointment, currentUser}) {
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      trigger={<Button className='button is-danger is-light'>Make an Appointment</Button>}
+      trigger={<Button className='button is-danger is-light' id="modalApp">Make an Appointment</Button>}
     >
-      <Modal.Header>Profile Picture</Modal.Header>
+<br/>
+<br/>
+      <Modal.Header>Book your next appointment</Modal.Header>
+<br/>
+<br/>
       <Modal.Content image scrolling>
-        {/* <Image size='medium' src='https://react.semantic-ui.com/images/wireframe/image.png' wrapped /> */}
-
+        <Image size='small' src={logo} wrapped />
         <Modal.Description>
-          <p>
-            Please choose from the following locations:
-          </p>
 
           <div className="field">
                   <label id="label-id"className="label">date</label>
                   <div className="control">
                       <input 
                       value={appoDate}
-                      className="input" type="date" placeholder="Birthday" onChange={(e) => setAppoDate(e.target.value)}></input>
+                      className="ui input" type="date" placeholder="Birthday" onChange={(e) => setAppoDate(e.target.value)}></input>
                     </div>
                  </div>    
 
@@ -38,12 +40,18 @@ function ModalComponent({bookAppointment, currentUser}) {
                   <div className="control">
                       <input 
                       value={appoTime}
-                      className="input" type="time" placeholder="Birthday" onChange={(e) => setAppoTime(e.target.value)}></input>
+                      className="ui input" type="time" placeholder="Birthday" onChange={(e) => setAppoTime(e.target.value)}></input>
                     </div>
                 </div>
+                <br/>
 
+                  <p>
+                    Please choose from the following locations:
+                  </p>
                     <label id="label-id"className="label">Location</label>
-                    <select onChange={(e) => setAppoLocation(e.target.value)}
+                  <br/>
+                  <br/>
+                    <select className="ui selection dropdown" onChange={(e) => setAppoLocation(e.target.value)}
                         name="hospitals" id="hospital">
                         <option 
                           value="Holy Name Medical Center">Holy Name Medical Center
@@ -61,20 +69,24 @@ function ModalComponent({bookAppointment, currentUser}) {
                            value="New York Presbyterian Hospital">New York Presbyterian Hospital
                           </option>
                     </select>
-{/* 
-          <Image
-            src='https://react.semantic-ui.com/images/wireframe/paragraph.png'
-            style={{ marginBottom: 10 }}
-          /> */}
+
+                    
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+          <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/>
+          
     </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
         <Button 
         className='button is-danger is-light'
         onClick={()=> bookAppointment(appoDate, appoTime, appoLocation)} 
-        primary
-        
-        >
+        primary>
           Book it <Icon name='chevron right'/>
         </Button>
       </Modal.Actions>
@@ -84,4 +96,3 @@ function ModalComponent({bookAppointment, currentUser}) {
   }
   
   export default ModalComponent;
-  

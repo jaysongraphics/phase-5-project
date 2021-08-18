@@ -12,12 +12,7 @@ function SignUp({currentUser, setCurrentUser}) {
     const [newUserUsername, setNewUserUsername] = useState("")
     const [newUserEmail, setNewUserEmail] = useState("")
     const [newUserPassword, setNewUserPassword] = useState('')
-    // const [time, setTime] = useState('')
-
     const [signUpErrors, setSignUpErrors] = useState(null)
-
-    // console.log(newUserBirthday);.
-    // console.log(time);
 
     const history = useHistory();
 

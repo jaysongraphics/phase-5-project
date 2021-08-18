@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-    before_action :authenticate, only: [:me, :update]
+    before_action :authenticate, only: [:me, :update, :index]
 
     def index
         users = User.all
@@ -56,13 +56,8 @@ class UsersController < ApplicationController
         render json: @online_user
       end
     
-
-    # def destroy
-    #     session.delete :user_id
-    #     head :no_content
-    # end 
-
-        private 
+      
+private 
 
         def record_not_found
             render json: {error: "User not found"}, status: :not_found

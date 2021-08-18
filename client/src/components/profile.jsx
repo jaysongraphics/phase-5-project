@@ -2,13 +2,27 @@ import {useState, useEffect} from 'react'
 import Profilemodal from './profilemodal'
 import swal from 'sweetalert';
 
-function Profile({currentUser, setCurrentUser, setdarkMode, darkmode, bookAppointment}) {
-  const [tweet, setTweet] = useState ('')
-  const [addTweet, setAddTweet] = useState ([])
+function Profile({setdarkMode, darkmode, bookAppointment}) {
+  const [tweet, setTweet] = useState('')
+  const [addTweet, setAddTweet] = useState([])
+  const [currentUser, setCurrentUser] = useState(null)
+  const [deleteAppointmets, setdeleteAppointmets] = useState(false)
   let apps;
 
   console.log(currentUser);
-  console.log(apps);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token'); 
+    fetch("http://localhost:3000/me",{
+      headers: {
+       Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(res => res.json())
+    .then(user => {
+     setCurrentUser(user)
+    })
+},[deleteAppointmets])
 
   if(!currentUser) {
     return <div>loading...</div>
@@ -17,17 +31,6 @@ function Profile({currentUser, setCurrentUser, setdarkMode, darkmode, bookAppoin
   if(currentUser){
     apps = currentUser.appointments
   }
-
-
-//   if(currentUser){
-//   app = currentUser.appointments.map(app => {
-//     return ({
-//       id: app.id,
-//       time: app.appointment_time, 
-//       date: app.appointment_date, 
-//       location: app.location})
-//   })
-// }
 
 function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
   const profile ={
@@ -53,27 +56,18 @@ function submitProfileUpdate(image, firstName, lastName, birthday, username, ema
 
           swal('Profile updated!',{
             icon: "info",
-          });
-
+      });
  });
 }
 
-// useEffect(() =>{
-//   fetch('http://localhost:3000/tweets')
-//       .then((res) => res.json())
-//       .then(data => {
-//         setAddTweet(data)
-//         const onlineUser = localStorage.getItem("user")
-//         if(onlineUser){
-//         setCurrentUser(JSON.parse(onlineUser))
-//       }})
-// }, [])
-
 function handleTweet(e) { 
   e.preventDefault();
+  const token = localStorage.getItem('token'); 
     fetch("http://localhost:3000/tweets", {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
         body: JSON.stringify({
           "tweet":  tweet,
           "user_id": currentUser.id,
@@ -84,46 +78,51 @@ function handleTweet(e) {
  }
  
  function deletedTweet(id){
+  const token = localStorage.getItem('token'); 
   fetch(`http://localhost:3000/tweets/${id}`, {
-    method: 'DELETE'
-  })
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', 
+             Authorization: `Bearer ${token}`,
+  },
+})
     .then(res => res.json())
     .then(data => {console.log(data)})
       filteredTweets(id);
   }
- 
-  const filteredTweets = (id) => {
+
+    const filteredTweets = (id) => {
     const deletedTweets = addTweet.filter(item => item.id !== id)
     setAddTweet(deletedTweets)
   }
 
-
   function deleteApp(id){
+    const token = localStorage.getItem('token'); 
     fetch(`http://localhost:3000/appointments/${id}`, {
-      method: 'DELETE'
-    })
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json',
+                 Authorization: `Bearer ${token}`,
+    },             
+  })
       .then(res => res.json())
-      .then(data => {console.log(data)})
-      //  filteredApp(id);
-    }
-    // const filteredApp = (id) => {
-    //   const deletedApps = appProfile.filter(item => item.id !== id)
-    //   setAppProfile(deletedApps)
-    // }
+      .then(data => setdeleteAppointmets(!deleteAppointmets))
+  }
 
-function darkModeToggle(){
-  setdarkMode(!darkmode)
-}
+  const filteredApps = (id) => {
+    const deletedTweets = addTweet.filter(item => item.id !== id)
+    setAddTweet(deletedTweets)
+  }
+
+    function darkModeToggle(){
+    setdarkMode(!darkmode)
+  }
 
   return (
-
     <div className="parent">
         <div className="div1"> 
         <div onClick={darkModeToggle} id="dark-button" className="ui toggle checkbox">
               <input type="checkbox" name="public"></input>
                 <label>🌙</label>
           </div>
-
       {currentUser ? 
           <div id={darkmode ? "profile-detail-blk-white" : "profile-detail"}>
                 <div className="userOnline" > 

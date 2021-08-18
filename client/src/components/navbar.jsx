@@ -2,7 +2,7 @@ import logo from '../images/LOGOGFINALBLACK.png'
 import {useHistory, Link} from 'react-router-dom'
 import swal from 'sweetalert';
 
-function NavBar({currentUser, setCurrentUser,}) {
+function NavBar({currentUser, setCurrentUser}) {
 
 // console.log(currentUser);
 

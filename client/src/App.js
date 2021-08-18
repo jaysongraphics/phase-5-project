@@ -5,7 +5,6 @@
 // import SiteReviews from  './components/sitereviews'
 import React from 'react';
 import './App.css';
-import swal from 'sweetalert';
 import {useState, useEffect} from 'react'
 import {Route, Switch } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
@@ -26,8 +25,7 @@ function App() {
  
   const [currentUser, setCurrentUser] = useState(null)
   const [darkmode, setdarkMode] = useState(false)
-
-  // console.log(currentUser);
+  const [authorizeError, setAuthorizeError] = useState(null)
 
   useEffect(() => {
     const token = localStorage.getItem('token'); 
@@ -38,19 +36,26 @@ function App() {
     })
     .then(res => res.json())
     .then(user => {
-      setCurrentUser(user)
+  //   if(user.errors) {
+  //     setAuthorizeError(user.errors);
+  //   } else {
+  //     setCurrentUser(user)
+  //   }
+  // })
+  setCurrentUser(user)
     })
-  },[])
+},[])
+
+
 
   console.log(currentUser);
 
   return (
     <div className="App">
-          <NavBar 
-          currentUser={currentUser}
-          setCurrentUser={setCurrentUser} 
-          setdarkMode={setdarkMode}
-          darkmode={darkmode}
+          <NavBar  
+            currentUser={currentUser}
+            authorizeError={authorizeError}
+            setCurrentUser={setCurrentUser} 
           />
                 <Switch>
                   <Route exact path='/'>
@@ -77,7 +82,6 @@ function App() {
                    <SignIn 
                    currentUser={currentUser}
                    setCurrentUser={setCurrentUser}
-                   darkmode={darkmode}
                    />
                   </Route>
                     <Route path ='/Therapists'>

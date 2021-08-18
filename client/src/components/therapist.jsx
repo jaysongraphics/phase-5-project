@@ -1,16 +1,19 @@
 import {useState, useEffect} from 'react'
 import TherapistCards from './therapistcards';
-import Modal from './modal'
 
 function Therapist({currentUser}) {
-const therapistsUrl = 'http://localhost:3000/therapists'
 const [therapists, setTherapists] = useState ([])
 
     useEffect(() =>{
-        fetch(therapistsUrl)
-            .then((res) => res.json())
-            .then((data) => setTherapists(data))
-      }, [])
+        const token = localStorage.getItem('token'); 
+        fetch('http://localhost:3000/therapists', {
+         headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+        .then(res => res.json())
+        .then(data => setTherapists(data))
+}, [])
 
     const therapistsCards = therapists.map(therapist => 
         <TherapistCards 
@@ -20,8 +23,13 @@ const [therapists, setTherapists] = useState ([])
         therapistReview={therapist.reviews}
     />)
 
+    if(!therapistsCards) {
+        return<div>loading...</div>
+      }
+      
     return (
-        <div>
+        <div className="alltherapist-div">
+            
             <h1>Our therapists</h1>
             {therapistsCards}
         </div>

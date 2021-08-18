@@ -1,6 +1,6 @@
 import { Button, Icon, Image, Modal } from 'semantic-ui-react'
 import React from 'react';
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 function Profilemodal({submitProfileUpdate, currentUser}) {
     const [open, setOpen] = React.useState(false)

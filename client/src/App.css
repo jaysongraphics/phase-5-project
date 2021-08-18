@@ -45,6 +45,11 @@
 }
 
 /* therapits doctors cards */
+
+.alltherapist-div{
+  margin-top: 30px;
+}
+
 #id-card{
   margin-bottom: 20px;
   box-shadow: 0 4px 8px 0 rgba(53, 53, 53, 0.2);
@@ -68,8 +73,8 @@
    flex-wrap: wrap;
    justify-content: space-between;
    height: 1000px;
-   margin-left: 90px;
-   margin-right: -100px;
+   margin-left: 70px;
+   margin-right: -90px;
 
 }
 .therapist-cardshover{
@@ -163,7 +168,6 @@ height: 220px;
 
 #member-already{
   text-decoration: none;
-  
 }
 /* a:hover{
   color: gold;
@@ -243,6 +247,11 @@ height: 220px;
 
 #banner-button{
   padding: 1rem 2rem;
+  text-decoration: none;
+}
+
+#banner-button:hover{
+  text-decoration: none;
 }
 
 /* midbanner */
@@ -535,3 +544,23 @@ margin-bottom: 100%;
 
 /* margin-bottom: 933px; */
 }
+
+
+/* new profile */
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+  
+  .div1 { grid-area: 1 / 1 / 6 / 2; }
+  .div2 { grid-area: 1 / 2 / 4 / 5; }
+  .div3 { grid-area: 4 / 2 / 6 / 5; }
+  .div4 { grid-area: 1 / 5 / 6 / 6; }
+
+
+  /* #modalApp{
+  } */
