@@ -22,7 +22,7 @@ const [therapists, setTherapists] = useState ([])
 
     return (
         <div>
-            <h1>Therapist</h1>
+            <h1>Our therapists</h1>
             {therapistsCards}
         </div>
     )

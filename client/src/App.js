@@ -18,7 +18,6 @@ import SignIn from './components/signin'
 import Signup from './components/signup'
 import Profile from './components/profile'
 import Home from './components/home'
-import Chat from './components/chat'
 
 // loading
 //<progress class="progress is-danger" max="100">30%</progress>
@@ -62,13 +61,6 @@ function App() {
                     <Profile 
                      setdarkMode={setdarkMode}
                      darkmode={darkmode}
-                     currentUser={currentUser}
-                     setCurrentUser={setCurrentUser}
-                     />
-                  </Route>
-
-                  <Route path='/profile'>
-                    <Chat 
                      currentUser={currentUser}
                      setCurrentUser={setCurrentUser}
                      />

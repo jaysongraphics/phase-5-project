@@ -81,6 +81,7 @@ function bookAppointment (date, time, location) {
 
   function handleSubmit (e) {
       e.preventDefault();
+
       fetch("http://localhost:3000/reviews", {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

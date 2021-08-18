@@ -33,6 +33,7 @@ const history = useHistory();
             <div className="current-user">
                 <img className="ui avatar image" alt="useerr"style={{width: 36, height: 36}}src={currentUser.image}/><p className="useronluine">Hi, {currentUser.username}!</p>
              </div> : null }
+
                 {currentUser ? (
             <>
                 {/* <ul className="navnav"> */}
@@ -47,12 +48,7 @@ const history = useHistory();
                     <Link to='/therapists'>
                         <a className="a-buttons">Therapists</a>
                     </Link>
-
-
-                    <Link to='/chat'>
-                        <a className="a-buttons">Chat</a>
-                    </Link>
-
+                    
                     <Link to="/">
                     <button onClick={logOut} id="nav-button" className='button is-danger is-rounded'>Sign Out
                     </button>
