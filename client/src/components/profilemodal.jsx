@@ -16,7 +16,7 @@ function Profilemodal({submitProfileUpdate, currentUser}) {
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      trigger={<Button>Update Profile</Button>}
+      trigger={<Button className='button is-danger is-rounded'>Update Profile</Button>}
     >
       <Modal.Header>Profile Picture</Modal.Header>
       <Modal.Content image scrolling>
@@ -93,11 +93,11 @@ function Profilemodal({submitProfileUpdate, currentUser}) {
     </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button 
+        <Button
+        className='button is-danger is-light' 
         onClick={()=> submitProfileUpdate(image, firstName, lastName, birthday, username, email)} 
         primary
-        >
-          Update <Icon name='chevron right' />
+        >Update <Icon name='chevron right' />
         </Button>
       </Modal.Actions>
     </Modal>

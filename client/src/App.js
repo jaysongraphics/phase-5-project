@@ -5,6 +5,7 @@
 // import SiteReviews from  './components/sitereviews'
 import React from 'react';
 import './App.css';
+import swal from 'sweetalert';
 import {useState, useEffect} from 'react'
 import {Route, Switch } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
@@ -17,6 +18,7 @@ import SignIn from './components/signin'
 import Signup from './components/signup'
 import Profile from './components/profile'
 import Home from './components/home'
+import Chat from './components/chat'
 
 // loading
 //<progress class="progress is-danger" max="100">30%</progress>
@@ -65,9 +67,18 @@ function App() {
                      />
                   </Route>
 
+                  <Route path='/profile'>
+                    <Chat 
+                     currentUser={currentUser}
+                     setCurrentUser={setCurrentUser}
+                     />
+                  </Route>
+
                   <Route path='/Signup'>
                     <Signup 
-                    setCurrentUser={setCurrentUser}/>
+                    setCurrentUser={setCurrentUser}
+                    currentUser={currentUser}
+                    />
                   </Route>
 
                   <Route path='/Signin'>

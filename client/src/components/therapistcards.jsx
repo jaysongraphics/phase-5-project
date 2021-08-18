@@ -1,5 +1,8 @@
 import {useState} from 'react'
 import Modal from './modal'
+import swal from 'sweetalert';
+import { Grid, Image } from 'semantic-ui-react'
+
 
 function TherapistCards({therapist, currentUser, therapistReview}) {
   const [review, setReview] = useState("")
@@ -40,6 +43,13 @@ function bookAppointment (date, time, location) {
       }),
   })  .then(res => res.json())
       .then(data => console.log(data))
+      
+        // swal("Booked!", {
+        //   icon: "success",
+        // });  
+
+
+        // alert("Appointment created!")
       // .then(res => {
         // .then((data) => setAte([...ate, data]))
       // localStorage.setItem("user", JSON.stringify({...currentUser, appointments:[...currentUser.appointments, res]}))
@@ -71,7 +81,6 @@ function bookAppointment (date, time, location) {
 
   function handleSubmit (e) {
       e.preventDefault();
-
       fetch("http://localhost:3000/reviews", {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -85,9 +94,8 @@ function bookAppointment (date, time, location) {
           .then((newreview) => setAddReview([...addReview, newreview]))
    }
 
-  return (
-    
-  <div className="therapist-cards">
+  return ( 
+      <div className="therapist-cards">
           <div id="id-card" className="ui card">
               <div className="image"><img id="img-div"src={therapist.image} alt="image1"/></div>
               <div id="therapits-detail-info" className="content">
@@ -96,36 +104,33 @@ function bookAppointment (date, time, location) {
                   <div className="description">Specificity: {therapist.speciality}</div>
                   <div className="description">Age: {therapist.age}
                   </div>  
-                  
                  <hr />
-                  <br />
-
-            <div className="header">Reviews
+            <div className="header">Feedback
+            <hr />
             </div>
             <div className="meta">
-              <br />
               {addReview.map(review => <div>{review.review}
                 <i style={{cursor: 'pointer'}} onClick={()=>deleteReview(review.id)}>✖️</i></div>)}
+              <br />
               <br />
                 <form onSubmit={handleSubmit} className="ui form">
                     <input type="text" 
                     value={review} 
                     placeholder="How did I do?" onChange={(e) => setReview(e.target.value)}/>
+                     <br />
+                     <br />
                       <button className='button is-danger is-rounded'>Submit</button>
                       <br/>
+                      <hr />
                       <br/>
                   </form>
-
                   <Modal 
                   currentUser={currentUser}
                   bookAppointment={bookAppointment}
                   />
-
                   <br />
                 </div>                 
             </div>
-
-            
         </div>
     </div>
   )

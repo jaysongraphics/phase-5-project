@@ -1,8 +1,9 @@
 import {useHistory, Link} from 'react-router-dom'
 import React, { useState } from 'react';
+import swal from 'sweetalert';
 
 
-function SignIn({setCurrentUser}) {
+function SignIn({currentUser, setCurrentUser}) {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [signInErrors, setSignInErrors] = useState(null)
@@ -62,6 +63,10 @@ fetch('http://localhost:3000/signin', {
     // localStorage.setItem("user", JSON.stringify(user))
     setCurrentUser(user)
     history.push('/')
+    // swal(`Welcome back ${user.first_name} ${user.last_name}!`, {
+    //   buttons: false,
+    //   timer: 2000,
+    // });
    }
   });
 }

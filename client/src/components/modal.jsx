@@ -13,7 +13,7 @@ function ModalComponent({bookAppointment, currentUser}) {
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      trigger={<Button>Make an Appointment</Button>}
+      trigger={<Button className='button is-danger is-light'>Make an Appointment</Button>}
     >
       <Modal.Header>Profile Picture</Modal.Header>
       <Modal.Content image scrolling>
@@ -70,10 +70,12 @@ function ModalComponent({bookAppointment, currentUser}) {
       </Modal.Content>
       <Modal.Actions>
         <Button 
+        className='button is-danger is-light'
         onClick={()=> bookAppointment(appoDate, appoTime, appoLocation)} 
         primary
+        
         >
-          Book it <Icon name='chevron right' />
+          Book it <Icon name='chevron right'/>
         </Button>
       </Modal.Actions>
     </Modal>

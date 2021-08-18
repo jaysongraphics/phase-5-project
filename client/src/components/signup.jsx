@@ -1,9 +1,10 @@
 // import logo from '../images/LOGOGFINALBLACK.png'
 import React, { useState } from 'react';
 import {useHistory, Link} from 'react-router-dom'
+import swal from 'sweetalert';
 
 
-function SignUp({setCurrentUser}) {
+function SignUp({currentUser, setCurrentUser}) {
     const [newUserImage, setNewUserImage] = useState("")
     const [newUserFirstName, setNewUserFirstName] = useState("")
     const [newUserLastName, setNewUserLastName] = useState("")
@@ -82,6 +83,10 @@ fetch('http://localhost:3000/signup', {
       localStorage.setItem("token", token)
       setCurrentUser(user)
       history.push('/')
+      swal(`Welcome ${user.first_name} ${user.last_name}!`, {
+        buttons: false,
+        timer: 2000,
+      });
   }
 });
 }

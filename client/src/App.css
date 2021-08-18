@@ -46,19 +46,34 @@
 
 /* therapits doctors cards */
 #id-card{
-  margin-left: 5px;
-  /* display: inline-block; */
-  float: left;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(53, 53, 53, 0.2);
+  padding: 12px;
+  text-align: center;
+  background-color: #ffffff;
+  /* padding: 1px; */
 }
 
-#therapits-detail-info{
-  margin-left: 10px;
+#id-card:hover{
+  margin-up: 5px;
+  /* box-shadow: 0 4px 8px 0 rgba(223, 200, 200, 0.2); */
+  box-shadow: 0 6px 12px 0 rgba(202, 14, 14, 0.2);
+  /* padding: 1px; */
 }
 
-#id-card{
-  width: 280px;
-  height: 1000px;
-  margin-bottom: 30px;
+.therapist-cards{
+   float: left;
+   padding: 15px; 
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   height: 1000px;
+   margin-left: 90px;
+   margin-right: -100px;
+
+}
+.therapist-cardshover{
+  color: rgb(255,85,120);
 }
 
 .titl{
@@ -66,27 +81,21 @@
   font-weight: bold;
 }
 
-#img-div{
+ #img-div{
   width: 280px;
   height: 280px;
-}
+} 
 
-.therapist-cards{
-  margin-top: 50px;
-  margin-left: 50px;
-}
 /* navbar */
-* {
-  padding: 0;
-  margin: 0;
-}
-
 nav {
   /* display: flex;  */
   /* justify-content: space-between;  */
   /* padding: 4rem 3rem;  */
   /* background: rgb(255,85,120); */
-  background: rgb(134, 134, 134);
+  /* background: rgb(134, 134, 134); */
+  /* background: rgb(0, 0, 0); */
+  /* background-color: rgb(214, 214, 214)   */
+  background: rgb(155, 155, 155);
 }
 
 /* nav ul {
@@ -292,8 +301,8 @@ height: 220px;
   width: 90px;
   height: 80px;
   display:inline-block;
-  background-color:rgb(221, 221, 221)
-
+  /* background-color:rgb(221, 221, 221) */
+  background-color: rgb(214, 214, 214)  
 }
 
 .mid-book{
@@ -360,9 +369,12 @@ float: left;
   justify-content: space-between; 
   padding: 4rem 8rem;
   width:100%;
-  height:200px;   
-  background: linear-gradient(rgba(253, 253, 253, 0.5),
-  rgb(255,85,120));
+  /* height:100%;   */
+  /* margin-top: 100%; */
+  /* height:200px;    */
+  /* background: linear-gradient(rgba(253, 253, 253, 0.5),
+  rgb(255,85,120)); */
+  background-color:rgb(241,70,103);
 }
 
 .footer-color{
@@ -423,36 +435,47 @@ float: left;
 
 /* currentuser */
 .current-user{
-  font-size: 12px;
+  /* font-size: 12px; */
   float: left;
-  margin-left: 60px;
+  margin-left: 35px;
   margin-right: 900px;
   margin-top: -5px;
 }
+.useronluine{
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
+
 
 #profile-detail{
-  margin-left: 0px;
-  margin-top: -95px;
-  width: 25%;
-  height: 60rem;
-  padding: 10px;
+  margin-top: -36px;
+  /* width: 400px; */
+  height: 100%;
+  /* margin-top: -103px; */
+  /* width: 25%; */
+  /* padding: 10px; */
+  background-color: rgb(214, 214, 214)  
   /* background-color: rgb(241,70,103); */
-  background: linear-gradient(rgb(241,70,103), rgb(255, 255, 255));
+  /* background: linear-gradient(rgb(241,70,103), rgb(255, 255, 255)); */
+  
 }
 #profile-detail-blk-white{
-  margin-left: 0px;
-  margin-top: -95px;
-  width: 25%;
-  height: 60rem;
-  padding: 10px;
-  /* background-color: rgb(110, 29, 45) */
+  /* margin-top: -103px; */
+  margin-top: -36px;
+  /* width: 400px; */
+  height: 100%;
+  /* height: 60rem; */
+  /* padding: 10px; */
+  background-color: rgb(59, 59, 59)
 
-background: linear-gradient(rgb(66, 17, 27), rgb(255, 255, 255));
+  /* background-color: rgb(110, 29, 45) */
+/* background: linear-gradient(rgb(66, 17, 27), rgb(255, 255, 255)); */
 }
 
 #dark-button{
   float: center;
-  margin-left: -900px;
+  margin-left: -870px;
+  /* margin-left: -1000px; */
 }
 
 .userOnline{
@@ -470,10 +493,6 @@ background: linear-gradient(rgb(66, 17, 27), rgb(255, 255, 255));
 #userOnline-img{
   margin-top: 85px;
 } 
-.useronluine{
-  color:white;
-}
-
 .tweets-div{
   margin-left: 300px;
 }
@@ -484,14 +503,16 @@ background: linear-gradient(rgb(66, 17, 27), rgb(255, 255, 255));
 } */
 
 #textbox-profile{
-  width: 900px;
+  width: 700px;
   padding: 0.1px;
 }
 
-.tweet-box{
+/* .tweet-box{
   margin-left: 475px;
   margin-right: 176px;
-  /* z-index: 100000px; */
-}
-/* #input-div{
 } */
+
+#input-div{
+margin-top: -1000px;
+margin-bottom: 933px;
+}

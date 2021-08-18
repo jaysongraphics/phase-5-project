@@ -1,5 +1,6 @@
 import logo from '../images/LOGOGFINALBLACK.png'
 import {useHistory, Link} from 'react-router-dom'
+import swal from 'sweetalert';
 
 function NavBar({currentUser, setCurrentUser,}) {
 
@@ -11,8 +12,12 @@ const history = useHistory();
         localStorage.removeItem("token")
         localStorage.removeItem("user")
         setCurrentUser(null)
-        history.push('/signin')
-    }
+         history.push('/')
+    //         swal(`See you soon${currentUser.first_name} ${currentUser.last_name}!`, {
+    //         buttons: false,
+    //         timer: 2000,
+    // });
+}
     // console.log(darkmode);
 
     return (
@@ -26,8 +31,7 @@ const history = useHistory();
             </Link>
             {currentUser ?     
             <div className="current-user">
-                 <img className="ui avatar image" alt="useerr"style={{width: 36, height: 36}}src={currentUser.image} />
-                 <p className="useronluine">Hi, {currentUser.username}!</p>
+                <img className="ui avatar image" alt="useerr"style={{width: 36, height: 36}}src={currentUser.image}/><p className="useronluine">Hi, {currentUser.username}!</p>
              </div> : null }
                 {currentUser ? (
             <>
@@ -42,6 +46,11 @@ const history = useHistory();
 
                     <Link to='/therapists'>
                         <a className="a-buttons">Therapists</a>
+                    </Link>
+
+
+                    <Link to='/chat'>
+                        <a className="a-buttons">Chat</a>
                     </Link>
 
                     <Link to="/">
@@ -68,7 +77,6 @@ const history = useHistory();
              </>)}
         </nav>
     </div>
-
   )
 }
 

@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import Profilemodal from './profilemodal'
+import swal from 'sweetalert';
 
 function Profile({currentUser, setCurrentUser, setdarkMode, darkmode}) {
   const [tweet, setTweet] = useState ('')
@@ -47,9 +48,13 @@ function submitProfileUpdate(image, firstName, lastName, birthday, username, ema
         body: JSON.stringify(profile),
     })
         .then(res => res.json())
-        .then(user => {
-          console.log(user);
+        .then(user => {console.log(user);
           setCurrentUser(user)
+
+          swal('Profile updated!',{
+            icon: "info",
+          });
+
  });
 }
 
@@ -106,18 +111,53 @@ function handleTweet(e) {
     //   setAppProfile(deletedApps)
     // }
 
-    
 function darkModeToggle(){
   setdarkMode(!darkmode)
 }
 
     return (
-        <div className={darkmode ? 'black' : ''}>
-       <div onClick={darkModeToggle} id="dark-button" className="ui toggle checkbox">
+      <div>
+       {/* <div className={darkmode ? 'black' : ''}> */}
+        <div onClick={darkModeToggle} id="dark-button" className="ui toggle checkbox">
             <input type="checkbox" name="public"></input>
-               <label>🌙</label>
-            </div>
-            {darkmode ? 
+              <label>🌙</label>
+        </div>
+
+     {currentUser ? 
+        <div id={darkmode ? "profile-detail-blk-white" : "profile-detail"}>
+              <div className="userOnline" > 
+               <img id="userOnline-img" alt="profpic"className="ui avatar image" style={{width: 200, height: 200}}src={currentUser.image} />
+              <br/>
+              <br/>
+                 <p className={darkmode ? "blk-whitefont" : ''}>First Name: {currentUser.first_name}</p>
+                 <p className={darkmode ? "blk-whitefont" : ''}>Last Name: {currentUser.last_name}</p>
+                 <p className={darkmode ? "blk-whitefont" : ''}>Email: {currentUser.email}</p>
+                 <p className={darkmode ? "blk-whitefont" : ''}>DOB: {currentUser.birthday}</p>
+                 <Profilemodal
+                 currentUser={currentUser} 
+                 submitProfileUpdate={submitProfileUpdate}/>
+              </div>
+          <hr/>
+              <div> 
+                  <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments</h6>
+                  <div>
+                      {apps.length >  0  ? 
+                        apps.map(item => 
+                      <div >
+                          <br />
+                          <div>Location: {item.location}</div>
+                          <div>Date: {item.appointment_date}</div>
+                        <div>Time: {item.appointment_time}</div>
+                        <i style={{cursor: 'pointer'}} 
+                        onClick={()=>deleteApp(item.id)}>✖️</i>
+                      </div>)
+                      :
+                      null}
+                    </div>  
+               </div> 
+          </div> : null }
+{/*           
+             {darkmode ? 
               <div id="input-div"className="tweets-div">
               <h6 className="blk-whitefont">What's on your mind?</h6>
                 <div id="textbox-profile" className="ui inverted input">
@@ -135,54 +175,32 @@ function darkModeToggle(){
                      value={tweet}
                      /> 
                   </div>
-              <div> 
-                    {addTweet?.map(tweet => 
-                        <div>{tweet.tweet}
-                        <i style={{cursor: 'pointer'}} onClick={()=>deletedTweet(tweet.id)}>✖️</i>
-                        </div>
+                 <div> 
+                    {addTweet.map(tweet => 
+                        <div>
+                          <p> 
+                          {tweet.tweet} <i style={{cursor: 'pointer'}} onClick={()=>deletedTweet(tweet.id)}>✖️</i>
+                          </p>
+                    </div>
                         )}
                   </div> 
             </form>
+             } */}
 
-             }
-        {currentUser ? 
-          <div id={darkmode ? "profile-detail-blk-white" : "profile-detail"}>
-              <div className="userOnline" > 
+        {/* <form onSubmit={handleTweet} id="input-div" className="tweets-div">
+         <h6>What's on your mind?</h6>
+            <div id="textbox-profile" className="ui input">
+               <input onChange={(e) => setTweet(e.target.value)} type="text" placeholder="What's on your mind?"
+                value={tweet}/> </div>
+            </form>
 
-               <img id="userOnline-img" alt="profpic"className="ui avatar image" style={{width: 200, height: 200}}src={currentUser.image} />
-              <br/>
-              <br/>
-                 <p className={darkmode ? "blk-whitefont" : ''}>First Name: {currentUser.first_name}</p>
-                 <p className={darkmode ? "blk-whitefont" : ''}>Last Name: {currentUser.last_name}</p>
-                 <p className={darkmode ? "blk-whitefont" : ''}>Email: {currentUser.email}</p>
-                 <p className={darkmode ? "blk-whitefont" : ''}>DOB: {currentUser.birthday}</p>
-                 <Profilemodal
-                 currentUser={currentUser} 
-                 submitProfileUpdate={submitProfileUpdate}/>
-              </div>
-              <hr/>
-               
-             </div> : null }
-            
-            
-             <div> 
-                  <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments</h6>
-                  <div>
-                      {apps.length >  0  ? 
-                        apps.map(item => 
-                      <div >
-                          <br />
-                          <div>Location: {item.location}</div>
-                          <div>Date: {item.appointment_date}</div>
-                        <div>Time: {item.appointment_time}</div>
-                        <i style={{cursor: 'pointer'}} 
-                        onClick={()=>deleteApp(item.id)}>✖️</i>
-                      </div>)
-                      :
-                      null}
-                    </div>  
-               </div>
-
+            <div> 
+                {addTweet.map(tweet =><div>
+                  <p> {tweet.tweet} <i style={{cursor: 'pointer'}} 
+                  onClick={()=>deletedTweet(tweet.id)}>✖️
+                  </i></p>
+                    </div>)}
+          </div>  */}
 
        </div>
   )
