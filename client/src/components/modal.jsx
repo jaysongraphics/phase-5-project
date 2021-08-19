@@ -3,6 +3,7 @@ import React from 'react';
 import {useState} from 'react'
 import logo from '../images/LOGOGFINALBLACK.png'
 import clumsy from '../images/clumsy.png'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 function ModalComponent({bookAppointment, currentUser}) {
     const [open, setOpen] = React.useState(false)
@@ -15,8 +16,7 @@ function ModalComponent({bookAppointment, currentUser}) {
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      trigger={<Button className='button is-danger is-light' id="modalApp">Make an Appointment</Button>}
-    >
+      trigger={<Button className='button is-danger is-light' id="modalApp">Make an Appointment</Button>}>
 <br/>
 <br/>
       <Modal.Header>Book your next appointment</Modal.Header>
@@ -29,9 +29,11 @@ function ModalComponent({bookAppointment, currentUser}) {
           <div className="field">
                   <label id="label-id"className="label">date</label>
                   <div className="control">
-                      <input 
+                    <input 
                       value={appoDate}
-                      className="ui input" type="date" placeholder="Birthday" onChange={(e) => setAppoDate(e.target.value)}></input>
+                      className="ui input" type="date" placeholder="Birthday" 
+                      onChange={(e) => setAppoDate(e.target.value)}>
+                    </input>
                     </div>
                  </div>    
 
@@ -53,6 +55,10 @@ function ModalComponent({bookAppointment, currentUser}) {
                   <br/>
                     <select className="ui selection dropdown" onChange={(e) => setAppoLocation(e.target.value)}
                         name="hospitals" id="hospital">
+                      <option 
+                          value="All">All
+                        </option>
+
                         <option 
                           value="Holy Name Medical Center">Holy Name Medical Center
                         </option>
@@ -68,18 +74,35 @@ function ModalComponent({bookAppointment, currentUser}) {
                           <option 
                            value="New York Presbyterian Hospital">New York Presbyterian Hospital
                           </option>
-                    </select>
+                    </select>   
 
-                    
+{/* <Dropdown >
+  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+    All Locations
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-          <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/>
-          
+  <Dropdown.Menu>
+    <Dropdown.Item onChange={(e) => setAppoLocation(e.target.value)}
+    value="New York Presbyterian Hospital">New York Presbyterian Hospital</Dropdown.Item>
+
+    <Dropdown.Item value="Montefiore Medical Center">Montefiore Medical Center</Dropdown.Item>
+    
+    <Dropdown.Item value="Mount Sinai West">Mount Sinai West</Dropdown.Item>
+    <Dropdown.Item  alue="Columbia University Medical Center">Columbia University Medical Center</Dropdown.Item>
+    <Dropdown.Item value="Holy Name Medical Center">Holy Name Medical Center</Dropdown.Item>
+  </Dropdown.Menu>
+  </Dropdown.Toggle>
+</Dropdown> */}
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+      <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/>
+
     </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

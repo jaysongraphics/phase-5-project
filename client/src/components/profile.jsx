@@ -2,14 +2,14 @@ import {useState, useEffect} from 'react'
 import Profilemodal from './profilemodal'
 import swal from 'sweetalert';
 
-function Profile({setdarkMode, darkmode, bookAppointment}) {
-  const [tweet, setTweet] = useState('')
+function Profile({setdarkMode, darkmode}) {
+  const [tweet, setTweet] = useState([])
   const [addTweet, setAddTweet] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
   const [deleteAppointmets, setdeleteAppointmets] = useState(false)
+  const [deletetweets, setDeletetweets] = useState(false)
   let apps;
-
-  console.log(currentUser);
+  let twets;
 
   useEffect(() => {
     const token = localStorage.getItem('token'); 
@@ -30,7 +30,14 @@ function Profile({setdarkMode, darkmode, bookAppointment}) {
 
   if(currentUser){
     apps = currentUser.appointments
+    twets = currentUser.tweets
   }
+
+  console.log(currentUser);
+  console.log(currentUser.tweets);
+  console.log(tweet);
+  console.log(addTweet);
+
 
 function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
   const profile ={
@@ -53,47 +60,39 @@ function submitProfileUpdate(image, firstName, lastName, birthday, username, ema
         .then(res => res.json())
         .then(user => {console.log(user);
           setCurrentUser(user)
-
           swal('Profile updated!',{
             icon: "info",
       });
  });
 }
 
-function handleTweet(e) { 
+ function handleTweet (e) {
   e.preventDefault();
   const token = localStorage.getItem('token'); 
-    fetch("http://localhost:3000/tweets", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-        body: JSON.stringify({
-          "tweet":  tweet,
-          "user_id": currentUser.id,
-        }),
-      })
-        .then((res) => res.json())
-        .then((newtweet) => setAddTweet([...addTweet, newtweet]))
- }
- 
- function deletedTweet(id){
+  fetch("http://localhost:3000/tweets", {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+  },
+      body: JSON.stringify({
+        "tweet":  tweet,
+        "user_id": currentUser.id,
+      }),
+  })  .then(res => res.json())
+      .then(newtweet => setAddTweet([...addTweet, newtweet])
+)}
+
+function deleteTweet(id){
   const token = localStorage.getItem('token'); 
   fetch(`http://localhost:3000/tweets/${id}`, {
     method: 'DELETE',
-    headers: { 'Content-Type': 'application/json', 
-             Authorization: `Bearer ${token}`,
-  },
+    headers: { 'Content-Type': 'application/json',
+               Authorization: `Bearer ${token}`,
+  },             
 })
     .then(res => res.json())
-    .then(data => {console.log(data)})
-      filteredTweets(id);
-  }
-
-    const filteredTweets = (id) => {
-    const deletedTweets = addTweet.filter(item => item.id !== id)
-    setAddTweet(deletedTweets)
-  }
+    .then(data => setDeletetweets(!deletetweets))
+}
 
   function deleteApp(id){
     const token = localStorage.getItem('token'); 
@@ -105,11 +104,6 @@ function handleTweet(e) {
   })
       .then(res => res.json())
       .then(data => setdeleteAppointmets(!deleteAppointmets))
-  }
-
-  const filteredApps = (id) => {
-    const deletedTweets = addTweet.filter(item => item.id !== id)
-    setAddTweet(deletedTweets)
   }
 
     function darkModeToggle(){
@@ -137,27 +131,38 @@ function handleTweet(e) {
                   currentUser={currentUser} 
                   submitProfileUpdate={submitProfileUpdate}/>
                 </div>
-            <hr className={darkmode ? "blk-whitefont" : ''}/>
-                <div> 
-                    <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments</h6>
-                    <div>
-                        {apps.length >  0  ? 
-                          apps.map(item => 
-                        <div className={darkmode ? "blk-whitefont" : ''}>
-                            <br />
-                            <div>Location: {item.location}</div>
-                            <div>Date: {item.appointment_date}</div>
+
+        <hr className={darkmode ? "blk-whitefont" : ''}/>
+          <div> 
+            <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments
+            </h6>
+                <div >
+                    {apps.length >  0  ? 
+                       apps.map(ap => 
+                    <div className={darkmode ? "blk-whitefont" : ''}>
+                      <br />
+                      <div className="app-divv">
+                      Location: {ap.location}<br />
+                      Date: {ap.appointment_date}<br />
+                      Time: {ap.appointment_time}<br />
+                      <button className='button is-danger is-rounded' style={{cursor: 'pointer'}} 
+                          onClick={()=>deleteApp(ap.id)}>x</button>
+                      </div>
+
+                        {/* <div>Location: {item.location}</div>
+                         <div>Date: {item.appointment_date}</div>
                           <div>Time: {item.appointment_time}</div>
-                          <i style={{cursor: 'pointer'}} 
-                          onClick={()=>deleteApp(item.id)}>✖️</i>
-                        </div>)
+                          <button className='button is-danger is-rounded' style={{cursor: 'pointer'}} 
+                          onClick={()=>deleteApp(item.id)}>x</button>
+                        </div> */}
+                     </div> 
+                        )
                         :
                         null}
-                      </div>  
+                      </div> 
                 </div> 
             </div> : null }   
         </div>
-
 
         <div className="div2" id={darkmode ? "div2-dark" : "div2-regular"}> 
           <form 
@@ -170,31 +175,45 @@ function handleTweet(e) {
                      value={tweet}
                      /> 
                   </div>
-
-                 <div> 
-                    {addTweet.map(tweet => 
-                        <div>
-                            <p className={darkmode ? "blk-whitefont" : ''}> 
-                          {tweet.tweet} <i style={{cursor: 'pointer'}} onClick={()=>deletedTweet(tweet.id)}>✖️</i>
-                          </p>
-                    </div>
-                        )}
-                  </div> 
-            </form>     
+                  {/* <div >
+                    {tweet.length >  0  ? 
+                       tweets.map(tweet => 
+                    <div className={darkmode ? "blk-whitefont" : ''}>
+                      <br />
+                      <div className="app-diva">
+                        {tweet.tweet}<br />
+                        {tweet.id}<br />
+                      <button className='button is-danger is-rounded' style={{cursor: 'pointer'}} 
+                          onClick={()=>deleteTweet(tweet.id)}>Delete</button>
+                      </div>
+                     </div> 
+                        )
+                        :
+                        null}
+                    </div>  */}
+      <div> 
+          {addTweet.map(tweet => 
+             <div>
+                <div className={darkmode ? "blk-whitefont" : ''}> 
+                  {tweet.tweet} 
+                  <i style={{cursor: 'pointer'}} 
+                      onClick={()=>deleteTweet(tweet.id)}>✖️
+                    </i>
+                     </div>
+                   </div>)}
+                </div> 
+ 
+            </form>  
       </div>  
 
-
             <div className="div3" id={darkmode ? "div2-dark" : "div2-regular"}> 
-            
-            </div>
 
-
+              </div>
 
               <div className="div4" id={darkmode ? "div2-dark" : "div2-regular"}> 
-              
               </div>
-      </div>
 
+      </div>
     )
   }
 

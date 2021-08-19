@@ -63,10 +63,10 @@ fetch('http://localhost:3000/signin', {
     // localStorage.setItem("user", JSON.stringify(user))
     setCurrentUser(user)
     history.push('/')
-    // swal(`Welcome back ${user.first_name} ${user.last_name}!`, {
-    //   buttons: false,
-    //   timer: 2000,
-    // });
+    swal(`Welcome back ${user.first_name} ${user.last_name}!`, {
+      buttons: false,
+      timer: 2000,
+    });
    }
   });
 }

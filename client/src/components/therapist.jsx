@@ -28,12 +28,11 @@ const [therapists, setTherapists] = useState ([])
       }
       
     return (
-        <div className="alltherapist-div">
-            
+        <div className="alltherapist-div">      
             <h1>Our therapists</h1>
             {therapistsCards}
         </div>
-    )
+ )
 }
 
 

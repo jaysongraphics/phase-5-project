@@ -36,14 +36,12 @@ function App() {
     })
     .then(res => res.json())
     .then(user => {
-  //   if(user.errors) {
-  //     setAuthorizeError(user.errors);
-  //   } else {
-  //     setCurrentUser(user)
-  //   }
-  // })
-  setCurrentUser(user)
-    })
+    if(user.errors) {
+      setAuthorizeError(user.errors);
+    } else {
+      setCurrentUser(user)
+    }
+  })
 },[])
 
 

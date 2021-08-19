@@ -1,6 +1,9 @@
 import { Button, Icon, Image, Modal } from 'semantic-ui-react'
 import React from 'react';
 import {useState} from 'react'
+import logo from '../images/LOGOGFINALBLACK.png'
+import clumsy from '../images/clumsy.png'
+
 
 function Profilemodal({submitProfileUpdate, currentUser}) {
     const [open, setOpen] = React.useState(false)
@@ -16,16 +19,20 @@ function Profilemodal({submitProfileUpdate, currentUser}) {
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      trigger={<Button className='button is-danger is-rounded'>Update Profile</Button>}
-    >
-      <Modal.Header>Profile Picture</Modal.Header>
+      trigger={<Button className='button is-danger is-rounded'>Update Profile</Button>}>
+   <br/>
+<br/>
+      <Modal.Header>Update your profile information</Modal.Header>
+<br/>
+<br/>
       <Modal.Content image scrolling>
-        {/* <Image size='medium' src='https://react.semantic-ui.com/images/wireframe/image.png' wrapped /> */}
+
+       <Image size='small' src={logo} wrapped />
 
         <Modal.Description>
-          <p>
-            Please choose from the following locations:
-          </p>
+          {/* <p>
+            Update your profile information.
+          </p> */}
 
           <div className="field">
                   <label id="label-id"className="label">image</label>
@@ -84,11 +91,8 @@ function Profilemodal({submitProfileUpdate, currentUser}) {
                       onChange={(e) => setEmail(e.target.value)}></input>
                     </div>
                 </div>
-{/* 
-          <Image
-            src='https://react.semantic-ui.com/images/wireframe/paragraph.png'
-            style={{ marginBottom: 10 }}
-          /> */}
+                <br/>
+        <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/> 
 
     </Modal.Description>
       </Modal.Content>

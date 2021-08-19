@@ -27,11 +27,10 @@ function bookAppointment (date, time, location) {
       }),
   })  .then(res => res.json())
       .then(data => console.log(data))
-        // swal("Booked!", {
-        //   icon: "success",
-        // });  
+        swal("Booked!", {
+          icon: "success",
+        });  
 }
-
 
   function deleteReview(id){
     const token = localStorage.getItem('token'); 
@@ -71,8 +70,13 @@ function bookAppointment (date, time, location) {
 
   return ( 
       <div className="therapist-cards">
+        
           <div id="id-card" className="ui card">
               <div className="image"><img id="img-div"src={therapist.image} alt="image1"/></div>
+          <Modal 
+             currentUser={currentUser}
+            bookAppointment={bookAppointment}
+            />
               <div id="therapits-detail-info" className="content">
                   <div className="titl">{therapist.name}</div>
                   <div className="meta">Phone number: {therapist.phone_number}</div>
@@ -84,26 +88,29 @@ function bookAppointment (date, time, location) {
             <hr />
             </div>
             <div className="meta">
-              {addReview.map(review => <div>{review.review}
-                <i style={{cursor: 'pointer'}} onClick={()=>deleteReview(review.id)}>✖️</i></div>)}
+              
+              {addReview.map(review =>
+                <div>
+                  {review.review} <i style={{cursor: 'pointer'}} 
+                  onClick={()=>deleteReview(review.id)}>✖️</i>
+                   <hr />
+                </div>
+              )}
+
               <br />
               <br />
-                <form onSubmit={handleSubmit} className="ui form">
-                    <input type="text" 
-                    value={review} 
-                    placeholder="How did I do?" onChange={(e) => setReview(e.target.value)}/>
-                     <br />
-                     <br />
-                      <button className='button is-danger is-rounded'>Submit</button>
-                      <br/>
-                      <hr />
-                      <br/>
+            <form id="card-thera-button" 
+                  onSubmit={handleSubmit}className="ui form">
+                <input type="text" value={review} 
+                placeholder="How did I do?" 
+                onChange={(e) => setReview(e.target.value)}
+                />
+            <br />
+            <br />
+              <button className='button is-danger is-rounded'>
+                Submit
+              </button>
                   </form>
-                  <Modal 
-                  currentUser={currentUser}
-                  bookAppointment={bookAppointment}
-                  />
-                  <br />
                 </div>                 
             </div>
         </div>
