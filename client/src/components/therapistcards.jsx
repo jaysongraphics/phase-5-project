@@ -1,15 +1,13 @@
-import {useState} from 'react'
 import Modal from './modal'
 import swal from 'sweetalert';
+import Loading from './loading';
+import {useState, useEffect} from 'react'
 
 
 function TherapistCards({therapist, currentUser, therapistReview}) {
   const [review, setReview] = useState("")
   const [addReview, setAddReview] = useState(therapistReview)
 
-if(!currentUser) {
-  return <div>loading...</div>
-}
 
 function bookAppointment (date, time, location) {
   const token = localStorage.getItem('token'); 
@@ -29,7 +27,7 @@ function bookAppointment (date, time, location) {
       .then(data => console.log(data))
         swal("Booked!", {
           icon: "success",
-        });  
+      });  
 }
 
   function deleteReview(id){
@@ -82,13 +80,13 @@ function bookAppointment (date, time, location) {
                   <div className="meta">Phone number: {therapist.phone_number}</div>
                   <div className="description">Specificity: {therapist.speciality}</div>
                   <div className="description">Age: {therapist.age}
-                  </div>  
-                 <hr />
+              </div> 
+                
+        <hr />
             <div className="header">Feedback
             <hr />
             </div>
             <div className="meta">
-              
               {addReview.map(review =>
                 <div>
                   {review.review} <i style={{cursor: 'pointer'}} 
@@ -96,7 +94,6 @@ function bookAppointment (date, time, location) {
                    <hr />
                 </div>
               )}
-
               <br />
               <br />
             <form id="card-thera-button" 

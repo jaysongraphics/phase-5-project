@@ -1,8 +1,3 @@
-// import {useHistory} from 'react-router-dom';
-// import Banner from './components/banner'
-// import MidBanner from  './components/midbanner'
-// import Influencers from  './components/influencers'
-// import SiteReviews from  './components/sitereviews'
 import React from 'react';
 import './App.css';
 import {useState, useEffect} from 'react'
@@ -17,9 +12,8 @@ import SignIn from './components/signin'
 import Signup from './components/signup'
 import Profile from './components/profile'
 import Home from './components/home'
+import Chat from './components/Chat'
 
-// loading
-//<progress class="progress is-danger" max="100">30%</progress>
 
 function App() {
  
@@ -44,9 +38,7 @@ function App() {
   })
 },[])
 
-
-
-  console.log(currentUser);
+// console.log(currentUser);
 
   return (
     <div className="App">
@@ -87,10 +79,17 @@ function App() {
                       currentUser={currentUser}
                         />
                       </Route> 
+
+
+                      <Route path ='/chat'>
+                      <Chat 
+                        />
+                      </Route> 
+                      
               </Switch>
           <Footer /> 
-    </div>
-  );
+  </div>
+ );
 }
 
 export default App;

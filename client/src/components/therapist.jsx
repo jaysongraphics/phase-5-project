@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import TherapistCards from './therapistcards';
+import Loading from './loading';
 
 function Therapist({currentUser}) {
 const [therapists, setTherapists] = useState ([])
@@ -23,9 +24,9 @@ const [therapists, setTherapists] = useState ([])
         therapistReview={therapist.reviews}
     />)
 
-    if(!therapistsCards) {
-        return<div>loading...</div>
-      }
+      if(!therapistsCards) {
+        return <Loading />
+    }
       
     return (
         <div className="alltherapist-div">      

@@ -15,8 +15,27 @@
     "bootstrap-toggle": "^2.2.2",
     "cirrus-ui": "^0.6.2-patch-1",
     "client": "^0.0.1",
+    "express": "^4.17.1",
     "prefix": "^1.0.0",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3"
-  }
+    "semantic-ui-react": "^2.0.3",
+    "socket.io-client": "^1.0.6"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaysongraphics/phase-5-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaysongraphics/phase-5-project/issues"
+  },
+  "homepage": "https://github.com/jaysongraphics/phase-5-project#readme"
 }

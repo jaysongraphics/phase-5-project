@@ -54,6 +54,12 @@ const history = useHistory();
                     <button onClick={logOut} id="nav-button" className='button is-danger is-rounded'>Sign Out
                     </button>
                     </Link> 
+
+                    <Link to="chat">
+                    <button className='button is-danger is-rounded'>Chat
+                    </button>
+                    </Link> 
+
             </>
             ):(
              <>

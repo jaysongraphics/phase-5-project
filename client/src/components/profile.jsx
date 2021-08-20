@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import Profilemodal from './profilemodal'
 import swal from 'sweetalert';
+import Loading from './loading'
 
 function Profile({setdarkMode, darkmode}) {
   const [tweet, setTweet] = useState([])
@@ -11,21 +12,22 @@ function Profile({setdarkMode, darkmode}) {
   let apps;
   let twets;
 
-  useEffect(() => {
-    const token = localStorage.getItem('token'); 
-    fetch("http://localhost:3000/me",{
-      headers: {
-       Authorization: `Bearer ${token}`,
-      },
-    })
-    .then(res => res.json())
-    .then(user => {
-     setCurrentUser(user)
-    })
-},[deleteAppointmets])
+    useEffect(() => {
+      const token = localStorage.getItem('token'); 
+      fetch("http://localhost:3000/me",{
+        headers: {
+        Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(res => res.json())
+      .then(user => {
+        setCurrentUser(user)
+        setAddTweet(user.tweets)
+      })
+  },[deleteAppointmets, deletetweets])
 
   if(!currentUser) {
-    return <div>loading...</div>
+    return <Loading />
   }
 
   if(currentUser){
@@ -33,20 +35,14 @@ function Profile({setdarkMode, darkmode}) {
     twets = currentUser.tweets
   }
 
-  console.log(currentUser);
-  console.log(currentUser.tweets);
-  console.log(tweet);
-  console.log(addTweet);
-
-
 function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
   const profile ={
     'image': image,
-    'first_name':  firstName,
-    'last_name':  lastName,
-    'birthday':   birthday,
+    'first_name': firstName,
+    'last_name': lastName,
+    'birthday': birthday,
     'username': username,
-    'email':  email
+    'email': email
   }
   const token = localStorage.getItem('token'); 
     fetch("http://localhost:3000/me", {
@@ -67,6 +63,7 @@ function submitProfileUpdate(image, firstName, lastName, birthday, username, ema
 }
 
  function handleTweet (e) {
+  setTweet('')
   e.preventDefault();
   const token = localStorage.getItem('token'); 
   fetch("http://localhost:3000/tweets", {
@@ -141,21 +138,19 @@ function deleteTweet(id){
                        apps.map(ap => 
                     <div className={darkmode ? "blk-whitefont" : ''}>
                       <br />
-                      <div className="app-divv">
-                      Location: {ap.location}<br />
-                      Date: {ap.appointment_date}<br />
-                      Time: {ap.appointment_time}<br />
-                      <button className='button is-danger is-rounded' style={{cursor: 'pointer'}} 
-                          onClick={()=>deleteApp(ap.id)}>x</button>
-                      </div>
 
-                        {/* <div>Location: {item.location}</div>
-                         <div>Date: {item.appointment_date}</div>
-                          <div>Time: {item.appointment_time}</div>
-                          <button className='button is-danger is-rounded' style={{cursor: 'pointer'}} 
-                          onClick={()=>deleteApp(item.id)}>x</button>
-                        </div> */}
-                     </div> 
+            <div className="app-divv">
+                Location: {ap.location}<br />
+                Date: {ap.appointment_date}<br />
+                Time: {ap.appointment_time}<br />  
+                <button 
+                  className='button is-danger is-outlined' 
+                  style={{cursor: 'pointer'}} 
+                  onClick={()=>deleteApp(ap.id)}>Cancel appointment
+                  <i class="fas fa-times"></i>
+                </button>
+            </div>
+                    </div> 
                         )
                         :
                         null}
@@ -170,31 +165,18 @@ function deleteTweet(id){
           id="input-div"
           className="tweets-div">
               <h6 className={darkmode ? "blk-whitefont" : ''} >What's on your mind?</h6>
-                <div id="textbox-profile" className="ui input">
-                     <input onChange={(e) => setTweet(e.target.value)} type="text" placeholder="What's on your mind?"
-                     value={tweet}
-                     /> 
-                  </div>
-                  {/* <div >
-                    {tweet.length >  0  ? 
-                       tweets.map(tweet => 
-                    <div className={darkmode ? "blk-whitefont" : ''}>
-                      <br />
-                      <div className="app-diva">
-                        {tweet.tweet}<br />
-                        {tweet.id}<br />
-                      <button className='button is-danger is-rounded' style={{cursor: 'pointer'}} 
-                          onClick={()=>deleteTweet(tweet.id)}>Delete</button>
-                      </div>
-                     </div> 
-                        )
-                        :
-                        null}
-                    </div>  */}
+      <div id="textbox-profile" className="ui input">
+        <input onChange={(e) => setTweet(e.target.value)} type="text" placeholder="What's on your mind?"
+      value={tweet}/>
+      <button className='button is-danger is-outlined'>post</button>
+    </div>
+    
       <div> 
           {addTweet.map(tweet => 
              <div>
                 <div className={darkmode ? "blk-whitefont" : ''}> 
+                <br/>
+                <hr/>
                   {tweet.tweet} 
                   <i style={{cursor: 'pointer'}} 
                       onClick={()=>deleteTweet(tweet.id)}>✖️
