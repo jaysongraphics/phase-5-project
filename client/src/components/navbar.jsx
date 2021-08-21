@@ -55,7 +55,8 @@ const history = useHistory();
                     </Link>
                     
                     <Link to="/">
-                    <button onClick={logOut} id="nav-button" className='button is-danger is-rounded'>Sign Out
+                    <button onClick={logOut} id="nav-button" 
+                    className='button is-danger is-rounded'>Sign Out
                     </button>
                     </Link> 
 {/* 
@@ -69,11 +70,13 @@ const history = useHistory();
              <>
                     <div className="nav-buttons">
                     <Link to='/signin'>
-                        <button id="nav-button-in-out"className='button is-danger is-rounded'>Sign In</button>
+                        <button id="nav-button-in-out"
+                        className='button is-danger is-rounded'>Sign In</button>
                     </Link>
 
                     <Link to='/signup'>
-                        <button id="nav-button-in-out"className='button is-danger is-rounded'>Sign Up</button>
+                        <button id="nav-button-in-out"
+                        className='button is-danger is-rounded'>Sign Up</button>
                     </Link> 
                 </div>
              </>)}
@@ -81,8 +84,6 @@ const history = useHistory();
     </div>
   )
 }
-
-
 
 
 export default NavBar;

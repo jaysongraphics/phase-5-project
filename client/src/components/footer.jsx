@@ -1,6 +1,4 @@
-// import logo from '../images/LOGOGFINALBLACK.png'
 import { Link } from 'react-router-dom';
-
 
 function Footer() {
     return (
@@ -13,13 +11,14 @@ function Footer() {
                 href="#">Vision
                 </Link>
             </div>
+
             <div>
                 <h1 className="footer-color-tilt">Store</h1>
                 <a id="member-already"href="https://www.selflax.com/collections/mental-health-awareness" 
                 className="footer-color"
                 title="example">Shop Selflax</a>
-                {/* <Link href="https://www.selflax.com/collections/mental-health-awareness">Shop Selflax</Link> */}
             </div>
+
             <div>
                 <h1 className="footer-color-tilt">Contact Us</h1>
                 <Link to=''
@@ -27,30 +26,28 @@ function Footer() {
                 href="#">Uttar Pradesh
                 </Link>
             </div>
+
             <div>
                 <h1 className="footer-color-tilt">Social Media</h1>
-                <div>
-                <a id="member-already"
-                // target="_blank" 
-                href="https://www.instagram.com/selflax/"
-                className="footer-color"
-                title="example">Instagram</a>
-                </div>
+                    <div>
+                        <a id="member-already"
+                        href="https://www.instagram.com/selflax/"
+                        className="footer-color"
+                        title="example">Instagram</a>
+                    </div>
 
-                <div>
-                <a id="member-already"
-                // target="_blank" 
-                href="https://www.facebook.com/Selflax/" 
-                className="footer-color"
-                title="example">Facebook</a>
-                </div>
+                        <div>
+                            <a id="member-already"
+                            href="https://www.facebook.com/Selflax/" 
+                            className="footer-color"
+                            title="example">Facebook</a>
+                        </div>
 
-                <div>
-                <a id="member-already"
-                // target="_blank" 
-                href="https://twitter.com/selflax" className="footer-color" 
-                title="example">Twitter</a>
-                </div>   
+                    <div>
+                        <a id="member-already"
+                        href="https://twitter.com/selflax" className="footer-color" 
+                        title="example">Twitter</a>
+                    </div>   
             </div>
     </div>
   )

@@ -29,24 +29,16 @@ class UsersController < ApplicationController
         end
     end
 
-    # show one user / users/1
-    # def show
-    #     user = User.find_by(id: params[:id])
-    #     if user
-    #         render json:user, Serializer: :UsersubsSerializer
-    #     else record_not_found
-    #     end
-    # end 
-
-
     # GET /me
      def me
         render json: @online_user
       end
     
       # PATCH /me
-      def update
-        @online_user.update(image: params[:image], 
+    def update
+        # byebug
+        @online_user.update(
+            image: params[:image], 
             first_name: params[:first_name], 
             last_name: params[:last_name], 
             birthday: params[:birthday], 
@@ -58,14 +50,11 @@ class UsersController < ApplicationController
     
       
 private 
-
-        def record_not_found
-            render json: {error: "User not found"}, status: :not_found
-        end 
-
-        def user_params
-            params.permit(:image, :first_name, :last_name, :birthday, :username, :email, :password)
-        end 
-
+    def record_not_found
+         render json: {error: "User not found"}, status: :not_found
+    end 
+    def user_params
+        params.permit(:image, :first_name, :last_name, :birthday, :username, :email, :password)
+    end 
 
 end

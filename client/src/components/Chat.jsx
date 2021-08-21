@@ -1,12 +1,12 @@
-import React from 'react'
-import ConversationsList from './ConversationsList';
+// import React from 'react'
+// import ConversationsList from './ConversationsList';
 
-function Chat() {
-    return (
-        <div>
-            <ConversationsList />
-        </div>
-    )
-}
+// function Chat() {
+//     return (
+//         <div>
+//             <ConversationsList />
+//         </div>
+//     )
+// }
 
-export default Chat;
+// export default Chat;

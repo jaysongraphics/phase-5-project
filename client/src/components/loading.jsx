@@ -4,15 +4,15 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
+      width: '100%',
+      '& > * + *': {
+        marginTop: theme.spacing(2),
+      },
     },
-  },
-}));
+  }));
 
-export default function Loading() {
-  const classes = useStyles();
+    export default function Loading() {
+      const classes = useStyles();
 
   return (
     <div className={classes.root}>

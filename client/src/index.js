@@ -13,7 +13,7 @@ ReactDOM.render(
       <Router >
       <ActionCableProvider url={API_WS_ROOT}>
         <App/>
-        </ActionCableProvider>,  
+      </ActionCableProvider>,  
       </Router>
     </React.StrictMode>,
   document.getElementById('root')

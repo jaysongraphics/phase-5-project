@@ -16,7 +16,6 @@ class TweetsController < ApplicationController
         end
     end
 
-
     def destroy
         # byebug
         tweet = Tweet.find_by(id: params[:id])
@@ -25,11 +24,11 @@ class TweetsController < ApplicationController
     end
 
 
-    private
-
+private
     def sub_params
         params.permit(:tweet, :user_id)
     end
 
+    
 end
 

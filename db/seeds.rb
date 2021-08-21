@@ -272,21 +272,30 @@ Review.create(
 
 # tweets
 puts "🐦 Seeding Tweets..."
-20.times do
+10.times do
     Tweet.create(
         tweet: 'In this situation, it is okay to feel sad or angry', 
         user_id: User.ids.sample
     )
 end 
 
-20.times do
+10.times do
     Tweet.create(
         tweet: 'Everything is temporary.', 
         user_id: User.ids.sample
     )
 end 
 
+10.times do
+    Tweet.create(
+        tweet: 'I am so grateful!!', 
+        user_id: User.ids.sample
+    )
+end 
 
+Conversation.create(
+    title: 'Pry me a river'
+)
 
 puts "🙌 Seeding Complete!"
 

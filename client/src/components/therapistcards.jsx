@@ -1,13 +1,17 @@
 import Modal from './modal'
 import swal from 'sweetalert';
 import Loading from './loading';
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 
-function TherapistCards({therapist, currentUser, therapistReview}) {
+function TherapistCards({therapist, currentUser, therapistReview, search, setSearch}) {
   const [review, setReview] = useState("")
   const [addReview, setAddReview] = useState(therapistReview)
-
+  // const [therapists, setTherapists] = useState ([])
+  
+  if(!therapist) {
+    return <Loading />
+}
 
 function bookAppointment (date, time, location) {
   const token = localStorage.getItem('token'); 
@@ -51,6 +55,7 @@ function bookAppointment (date, time, location) {
   function handleSubmit (e) {
     const token = localStorage.getItem('token'); 
       e.preventDefault();
+      setReview('')
       fetch("http://localhost:3000/reviews", {
         method: 'POST',
         headers: {'Content-Type': 'application/json',
@@ -64,15 +69,30 @@ function bookAppointment (date, time, location) {
         })
           .then((res) => res.json())
           .then((newreview) => setAddReview([...addReview, newreview]))
-   }
+       }
+
+
+      
+console.log(therapist);
+      
+// const filteredTherapist = therapist.filter(thera => {
+//   return (
+//     thera.name.toLowerCase().includes(search.toLowerCase())
+//     )
+//   ||
+//   (
+//     thera.speciality.toLowerCase().includes(search.toLowerCase())
+//     )
+// })
+
+// console.log(filteredTherapist);
 
   return ( 
-      <div className="therapist-cards">
-        
-          <div id="id-card" className="ui card">
-              <div className="image"><img id="img-div"src={therapist.image} alt="image1"/></div>
+     <div className="therapist-cards">  
+      <div id="id-card" className="ui card">
+        <div className="image"><img id="img-div"src={therapist.image} alt="image1"/></div>
           <Modal 
-             currentUser={currentUser}
+            currentUser={currentUser}
             bookAppointment={bookAppointment}
             />
               <div id="therapits-detail-info" className="content">
@@ -83,32 +103,35 @@ function bookAppointment (date, time, location) {
               </div> 
                 
         <hr />
-            <div className="header">Feedback
-            <hr />
-            </div>
+          <div className="header">Feedback
+        <hr />
+          </div>
             <div className="meta">
-              {addReview.map(review =>
-                <div>
-                  {review.review} <i style={{cursor: 'pointer'}} 
-                  onClick={()=>deleteReview(review.id)}>✖️</i>
-                   <hr />
-                </div>
-              )}
-              <br />
-              <br />
-            <form id="card-thera-button" 
-                  onSubmit={handleSubmit}className="ui form">
-                <input type="text" value={review} 
-                placeholder="How did I do?" 
-                onChange={(e) => setReview(e.target.value)}
-                />
-            <br />
-            <br />
-              <button className='button is-danger is-rounded'>
-                Submit
-              </button>
+                {addReview.map(review =>
+                    <div>                      
+                      {review.review} <i style={{cursor: 'pointer'}} 
+                      onClick={()=>deleteReview(review.id)}>✖️</i>
+                      <hr />
+                    </div>
+                    
+                   )}
+                          <br />
+                          <br />
+
+                  <form id="card-thera-button" onSubmit={handleSubmit}
+                      className="ui form"> 
+                        <input type="text" value={review} 
+                          placeholder="How did I do?" 
+                          onChange={(e) => setReview(e.target.value)}
+                        />
+                              <br />
+                              <br />
+                        <button className='button is-danger is-rounded'>
+                          Submit
+                        </button>
                   </form>
-                </div>                 
+
+                </div>  
             </div>
         </div>
     </div>

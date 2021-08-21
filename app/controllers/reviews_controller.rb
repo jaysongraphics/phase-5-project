@@ -24,9 +24,8 @@ class ReviewsController < ApplicationController
         render json: subs, status: :ok
     end
 
-    private
-
+private
     def sub_params
-        params.permit(:user_id, :review, :therapist_id)
+       params.permit(:user_id, :review, :therapist_id)
     end
 end

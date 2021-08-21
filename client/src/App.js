@@ -14,7 +14,6 @@ import Profile from './components/profile'
 import Home from './components/home'
 // import ConversationsList from './components/ConversationsList';
 
-
 function App() {
  
   const [currentUser, setCurrentUser] = useState(null)
@@ -30,7 +29,6 @@ function App() {
     })
     .then(res => res.json())
     .then(user => {
-
       if(user.errors) {
       setAuthorizeError(user.errors);
     } else {

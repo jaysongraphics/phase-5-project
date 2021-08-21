@@ -3,7 +3,6 @@ import React from 'react';
 import {useState} from 'react'
 import logo from '../images/LOGOGFINALBLACK.png'
 import clumsy from '../images/clumsy.png'
-import Dropdown from 'react-bootstrap/Dropdown'
 
 function ModalComponent({bookAppointment, currentUser}) {
     const [open, setOpen] = React.useState(false)
@@ -11,110 +10,99 @@ function ModalComponent({bookAppointment, currentUser}) {
     const [appoTime, setAppoTime] = useState (currentUser.appointments.appointment_time)
     const [appoLocation, setAppoLocation] = useState (currentUser.appointments.location)
 
-    return (
+return (
     <Modal
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       trigger={<Button className='button is-danger is-light' id="modalApp">Make an Appointment</Button>}>
-<br/>
-<br/>
+    <br/>
+    <br/>
       <Modal.Header>Book your next appointment</Modal.Header>
-<br/>
-<br/>
+    <br/>
+    <br/>
       <Modal.Content image scrolling>
         <Image size='small' src={logo} wrapped />
-        <Modal.Description>
+      <Modal.Description>
 
           <div className="field">
-                  <label id="label-id"className="label">date</label>
-                  <div className="control">
-                    <input 
+              <label id="label-id"className="label">date</label>
+                <div className="control">
+                  <input 
                       value={appoDate}
                       className="ui input" type="date" placeholder="Birthday" 
                       onChange={(e) => setAppoDate(e.target.value)}>
-                    </input>
-                    </div>
-                 </div>    
+                  </input>
+                </div>
+          </div>    
 
                 <div className="field">
                   <label id="label-id"className="label">time</label>
                   <div className="control">
-                      <input 
+                    <input 
                       value={appoTime}
-                      className="ui input" type="time" placeholder="Birthday" onChange={(e) => setAppoTime(e.target.value)}></input>
-                    </div>
+                      className="ui input" type="time" placeholder="Birthday" onChange={(e) => setAppoTime(e.target.value)}>
+                     </input>
+                  </div>
                 </div>
                 <br/>
-
                   <p>
                     Please choose from the following locations:
                   </p>
                     <label id="label-id"className="label">Location</label>
-                  <br/>
-                  <br/>
-                    <select className="ui selection dropdown" onChange={(e) => setAppoLocation(e.target.value)}
-                        name="hospitals" id="hospital">
-                      <option 
-                          value="All">All
-                        </option>
+          <br/>
+          <br/>
+            <select className="ui selection dropdown" 
+            onChange={(e) => setAppoLocation(e.target.value)}
+            name="hospitals" id="hospital">
+                  <option 
+                    value="All">All
+                  </option>
 
-                        <option 
-                          value="Holy Name Medical Center">Holy Name Medical Center
-                        </option>
-                        <option 
-                         value="Columbia University Medical Center">Columbia University Medical Center
-                         </option>
-                        <option 
-                         value="Mount Sinai West">Mount Sinai West
-                         </option>
-                          <option 
-                           value="Montefiore Medical Center">Montefiore Medical Center
-                          </option>
-                          <option 
-                           value="New York Presbyterian Hospital">New York Presbyterian Hospital
-                          </option>
-                    </select>   
+                  <option 
+                    value="Holy Name Medical Center">Holy Name Medical Center
+                  </option>
 
-{/* <Dropdown >
-  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-    All Locations
+                  <option 
+                    value="Columbia University Medical Center">Columbia University Medical Center
+                  </option>
 
-  <Dropdown.Menu>
-    <Dropdown.Item onChange={(e) => setAppoLocation(e.target.value)}
-    value="New York Presbyterian Hospital">New York Presbyterian Hospital</Dropdown.Item>
+                  <option 
+                    value="Mount Sinai West">Mount Sinai West
+                  </option>
 
-    <Dropdown.Item value="Montefiore Medical Center">Montefiore Medical Center</Dropdown.Item>
-    
-    <Dropdown.Item value="Mount Sinai West">Mount Sinai West</Dropdown.Item>
-    <Dropdown.Item  alue="Columbia University Medical Center">Columbia University Medical Center</Dropdown.Item>
-    <Dropdown.Item value="Holy Name Medical Center">Holy Name Medical Center</Dropdown.Item>
-  </Dropdown.Menu>
-  </Dropdown.Toggle>
-</Dropdown> */}
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-      <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/>
+                  <option 
+                    value="Montefiore Medical Center">Montefiore Medical Center
+                  </option>
 
-    </Modal.Description>
-      </Modal.Content>
+                    <option 
+                      value="New York Presbyterian Hospital">New York Presbyterian Hospital
+                    </option>
+
+              </select>   
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          
+                <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/>
+
+              </Modal.Description>
+          </Modal.Content>
       <Modal.Actions>
-        <Button 
-        className='button is-danger is-light'
-        onClick={()=> bookAppointment(appoDate, appoTime, appoLocation)} 
-        primary>
-          Book it <Icon name='chevron right'/>
-        </Button>
+                      <Button 
+                      className='button is-danger is-light'
+                      onClick={()=> bookAppointment(appoDate, appoTime, appoLocation)} 
+                      primary>
+                        Book it <Icon name='chevron right'/>
+                      </Button>
       </Modal.Actions>
     </Modal>
-      
     )
   }
   
