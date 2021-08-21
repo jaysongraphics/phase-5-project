@@ -38,6 +38,7 @@
 }
 
 
+
 /* logo */
 .logo-image{
   width: 100px;
@@ -465,18 +466,31 @@ float: left;
 }
 
 
+/* profile */
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+  
+  .div1 { grid-area: 1 / 1 / 6 / 2; }
+  .div2 { grid-area: 1 / 5 / 6 / 6; }
+  .div3 { grid-area: 1 / 2 / 6 / 5; }
+
+
 #profile-detail{
   margin-top: -36px;
   height: 100%;
+  background-color: rgb(214, 214, 214)  
   /* width: 400px; */
   /* margin-top: -103px; */
   /* width: 25%; */
   /* padding: 10px; */
-  background-color: rgb(214, 214, 214)  
   /* background-color: rgb(241,70,103); */
   /* background: linear-gradient(rgb(241,70,103), rgb(255, 255, 255)); */
 }
-
 
 #profile-detail-blk-white{
   margin-top: -36px;
@@ -491,9 +505,32 @@ float: left;
 /* background: linear-gradient(rgb(66, 17, 27), rgb(255, 255, 255)); */
 }
 
+#chat-profile{
+  margin-top: 0px;
+  height: 100%;
+  background-color: rgb(214, 214, 214)  
+}
+
+#chat-profile-blk{
+  margin-top: 0px;
+  height: 100%;
+  background-color: rgb(59, 59, 59)
+}
+
+#twwpic{
+  float: left;
+  margin-left: 90px;
+}
+
 #dark-button{
   float: center;
   margin-left: 200px;
+}
+
+#profile-x{
+  float: right;
+  margin-right: 100px;
+
 }
 
 #div2-dark{
@@ -551,13 +588,12 @@ float: left;
 #input-div{
 margin-top: 20px;
 margin-bottom: 100%;
-
 /* margin-bottom: 933px; */
 }
 
 
 /* new profile */
-
+/* 
 .parent {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -569,5 +605,35 @@ margin-bottom: 100%;
   .div1 { grid-area: 1 / 1 / 6 / 2; }
   .div2 { grid-area: 1 / 2 / 4 / 5; }
   .div3 { grid-area: 4 / 2 / 6 / 5; }
-  .div4 { grid-area: 1 / 5 / 6 / 6; }
+  .div4 { grid-area: 1 / 4 / 6 / 6; }
+ */
 
+
+#groupchat-div{
+margin-top: 50px;
+}
+
+#groupchat-text{
+  color:  rgb(255,85,120);
+}
+
+#groups-text:hover{
+  color:  rgb(255,85,120);
+}
+
+#cretegroupchat{
+  font-weight: bold;
+}
+
+#input-group{
+  /* margin-left: 20px;  */
+  margin-right: -150px; 
+}
+
+#buttonsubmit{
+  float: right;
+}
+
+.tes{
+  margin-top: 0px;
+}

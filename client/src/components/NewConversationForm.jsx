@@ -20,18 +20,21 @@ class NewConversationForm extends React.Component {
     this.setState({ title: '' });
   };
 
-  render = () => {
-    return (
-      <div className="newConversationForm">
-        <form onSubmit={this.handleSubmit}>
-          <label>Create a new group chat</label>
+render = () => {
+  return (
+    <div className="newConversationForm">
+      <form onSubmit={this.handleSubmit}>
+        <label id="cretegroupchat">Create a new group chat</label>
           <br />
-          <input
+
+        <input
+        id="input-group"
+          className="ui input"
             type="text"
             value={this.state.title}
             onChange={this.handleChange}
           />
-          <input type="submit" />
+          <input id="buttonsubmit" className='button is-danger is-outlined'type="submit" />
         </form>
       </div>
     );

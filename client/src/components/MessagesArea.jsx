@@ -6,8 +6,8 @@ const MessagesArea = ({
 }) => {
   return (
     <div className="messagesArea">
-      <h2>{title}</h2>
-      <ul>{orderedMessages(messages)}</ul>
+      <h2 id="groupchat-text"className="">{title}</h2>
+      <ul >{orderedMessages(messages)}</ul>
       <NewMessageForm conversation_id={id} />
     </div>
   );
@@ -23,4 +23,3 @@ const orderedMessages = messages => {
 };
 
 export default MessagesArea;
-

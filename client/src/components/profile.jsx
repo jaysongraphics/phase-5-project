@@ -1,7 +1,9 @@
+// import Chat from  './Chat';
 import {useState, useEffect} from 'react'
 import Profilemodal from './profilemodal'
 import swal from 'sweetalert';
-import Loading from './loading'
+import Loading from './loading';
+import ConversationsList from './ConversationsList';
 
 function Profile({setdarkMode, darkmode}) {
   const [tweet, setTweet] = useState([])
@@ -11,6 +13,7 @@ function Profile({setdarkMode, darkmode}) {
   const [deletetweets, setDeletetweets] = useState(false)
   let apps;
   let twets;
+  let img;
 
     useEffect(() => {
       const token = localStorage.getItem('token'); 
@@ -33,6 +36,7 @@ function Profile({setdarkMode, darkmode}) {
   if(currentUser){
     apps = currentUser.appointments
     twets = currentUser.tweets
+    img = currentUser.image
   }
 
 function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
@@ -107,6 +111,9 @@ function deleteTweet(id){
     setdarkMode(!darkmode)
   }
 
+  // console.log(currentUser?.map(tweetpic => console.log(tweetpic.image)));
+  // console.log(img);
+  // console.log(currentUser);
   return (
     <div className="parent">
         <div className="div1"> 
@@ -133,11 +140,11 @@ function deleteTweet(id){
           <div> 
             <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments
             </h6>
-                <div >
-                    {apps.length >  0  ? 
-                       apps.map(ap => 
+              <div >
+                 {apps.length >  0  ? 
+                     apps.map(ap => 
                     <div className={darkmode ? "blk-whitefont" : ''}>
-                      <br />
+                  <br />
 
             <div className="app-divv">
                 Location: {ap.location}<br />
@@ -159,7 +166,7 @@ function deleteTweet(id){
             </div> : null }   
         </div>
 
-        <div className="div2" id={darkmode ? "div2-dark" : "div2-regular"}> 
+        <div className="div3" id={darkmode ? "div2-dark" : "div2-regular"}> 
           <form 
           onSubmit={handleTweet}
           id="input-div"
@@ -168,32 +175,35 @@ function deleteTweet(id){
       <div id="textbox-profile" className="ui input">
         <input onChange={(e) => setTweet(e.target.value)} type="text" placeholder="What's on your mind?"
       value={tweet}/>
-      <button className='button is-danger is-outlined'>post</button>
+      <button className='button is-danger is-outlined'>Send Thought</button>
     </div>
-    
+
       <div> 
           {addTweet.map(tweet => 
              <div>
                 <div className={darkmode ? "blk-whitefont" : ''}> 
                 <br/>
                 <hr/>
-                  {tweet.tweet} 
-                  <i style={{cursor: 'pointer'}} 
-                      onClick={()=>deleteTweet(tweet.id)}>✖️
+                  <img id="twwpic"src={img} style={{width: 36, height: 36}}/>
+                  {tweet.tweet}
+                  <i id="profile-x"style={{cursor: 'pointer'}} 
+                      onClick={()=>deleteTweet(tweet.id)}>
+                        {/* ✖️ */}
+                        💢
+                        {/* 🗑️ */}
                     </i>
                      </div>
-                   </div>)}
+                   </div>
+                   )}
+                   <hr/>
                 </div> 
  
             </form>  
       </div>  
 
-            <div className="div3" id={darkmode ? "div2-dark" : "div2-regular"}> 
-
-              </div>
-
-              <div className="div4" id={darkmode ? "div2-dark" : "div2-regular"}> 
-              </div>
+      <div className="div2" id={darkmode ? "chat-profile-blk" : "chat-profile"}>
+          <ConversationsList /> 
+      </div> 
 
       </div>
     )

@@ -1,5 +1,6 @@
 class MessagesChannel < ApplicationCable::Channel
-  # before_action :authenticate, only: [:subscribed, :unsubscribed]
+
+
 
   def subscribed
     conversation = Conversation.find(params[:conversation])
@@ -8,5 +9,7 @@ class MessagesChannel < ApplicationCable::Channel
 
   def unsubscribed
   end
+  
 
+  
 end

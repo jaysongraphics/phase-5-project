@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 
 
 function Footer() {
-
-
     return (
-    <div className="footer-div">
+         <div className="footer-div">
             <div>
                 <h1 className="footer-color-tilt">About Us</h1>
                 <Link to=''
@@ -56,7 +54,6 @@ function Footer() {
             </div>
     </div>
   )
-}
-    
+}  
 
 export default Footer;

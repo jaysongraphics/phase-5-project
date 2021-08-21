@@ -28,8 +28,12 @@ const history = useHistory();
 
         {currentUser ?     
             <div className="current-user">
-                <img className="ui avatar image" alt="useerr"style={{width: 36, height: 36}}
-                src={currentUser.image}/>
+                <img 
+                className="ui avatar image" 
+                alt={currentUser.first_name}
+                style={{width: 36, height: 36}}
+                src={currentUser.image}
+                />
                 <p 
                 className="useronluine">Hi, {currentUser.username}!</p>
              </div>
@@ -54,11 +58,11 @@ const history = useHistory();
                     <button onClick={logOut} id="nav-button" className='button is-danger is-rounded'>Sign Out
                     </button>
                     </Link> 
-
-                    <Link to="chat">
+{/* 
+               <Link to="chat">
                     <button className='button is-danger is-rounded'>Chat
                     </button>
-                    </Link> 
+                </Link>   */}
 
             </>
             ):(

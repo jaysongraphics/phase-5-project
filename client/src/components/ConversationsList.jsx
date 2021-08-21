@@ -1,7 +1,6 @@
 import React from 'react';
 import { ActionCable } from 'react-actioncable-provider';
 import { API_ROOT } from '../constants/index';
-import { API_WS_ROOT } from '../constants/index';
 import NewConversationForm from './NewConversationForm';
 import MessagesArea from './MessagesArea';
 import Cable from './Cable';
@@ -12,9 +11,9 @@ class ConversationsList extends React.Component {
     activeConversation: null
   };
   componentDidMount = () => {
-    const token =localStorage.getItem('token') 
+     const token =localStorage.getItem('token') 
     fetch(`${API_ROOT}/conversations`, {
-      // method: 'POST',
+      //  method: 'POST',
       headers: { 
         // 'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`
@@ -48,7 +47,7 @@ class ConversationsList extends React.Component {
   render = () => {
     const { conversations, activeConversation } = this.state;
     return (
-      <div className="conversationsList">
+      <div id="groupchat-div" className="conversationsList">
         <ActionCable
           channel={{ channel: 'ConversationsChannel' }}
           onReceived={this.handleReceivedConversation}
@@ -59,9 +58,13 @@ class ConversationsList extends React.Component {
             handleReceivedMessage={this.handleReceivedMessage}
           />
         ) : null}
-        <h2>Group Chats</h2>
-        <ul>{mapConversations(conversations, this.handleClick)}</ul>
+
+        <h2 id="groupchat-text"className="">Group Chats</h2>
+        <ul id="" style={{cursor: 'pointer'}}>{mapConversations(conversations, this.handleClick)}</ul>
         <NewConversationForm />
+        <br />
+        <br />
+        <hr />
         {activeConversation ? (
           <MessagesArea
             conversation={findActiveConversation(

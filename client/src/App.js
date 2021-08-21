@@ -12,7 +12,7 @@ import SignIn from './components/signin'
 import Signup from './components/signup'
 import Profile from './components/profile'
 import Home from './components/home'
-import Chat from './components/Chat'
+// import ConversationsList from './components/ConversationsList';
 
 
 function App() {
@@ -30,7 +30,8 @@ function App() {
     })
     .then(res => res.json())
     .then(user => {
-    if(user.errors) {
+
+      if(user.errors) {
       setAuthorizeError(user.errors);
     } else {
       setCurrentUser(user)
@@ -80,16 +81,15 @@ function App() {
                         />
                       </Route> 
 
-
-                      <Route path ='/chat'>
-                      <Chat 
-                        />
-                      </Route> 
+                    {/* <Route path ='/chat'>
+                        <ConversationsList />
+                    </Route>   */}
                       
               </Switch>
           <Footer /> 
   </div>
  );
 }
+
 
 export default App;

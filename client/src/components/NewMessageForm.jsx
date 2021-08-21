@@ -29,14 +29,16 @@ class NewMessageForm extends React.Component {
     return (
       <div className="newMessageForm">
         <form onSubmit={this.handleSubmit}>
-          <label>New Message:</label>
+          <label id="cretegroupchat" className="tes">New Message:</label>
           <br />
           <input
+          id="input-group"
+          className="ui input"
             type="text"
             value={this.state.text}
             onChange={this.handleChange}
           />
-          <input type="submit" />
+          <input id="buttonsubmit" className='button is-danger is-outlined'type="submit" />
         </form>
       </div>
     );
@@ -44,3 +46,4 @@ class NewMessageForm extends React.Component {
 }
 
 export default NewMessageForm;
+
