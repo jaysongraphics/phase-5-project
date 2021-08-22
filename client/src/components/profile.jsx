@@ -1,9 +1,8 @@
-// import Chat from  './Chat';
 import {useState, useEffect} from 'react'
 import Profilemodal from './profilemodal'
 import swal from 'sweetalert';
 import Loading from './loading';
-import ConversationsList from './ConversationsList';
+import Chat from './ChatBot';
 
 function Profile({setdarkMode, darkmode}) {
   const [tweet, setTweet] = useState([])
@@ -122,7 +121,7 @@ function deleteTweet(id){
                 <div className="userOnline" > 
                     <img id="userOnline-img" alt="profpic"
                     className="ui avatar image" 
-                    style={{width: 200, height: 200}}src={currentUser.image} />
+                    style={{width: 200, height: 200}}src={currentUser.avatar.url} />
                 <br/>
 
                 <div className={darkmode ? "blk-whitefont" : ''}/>
@@ -202,7 +201,8 @@ function deleteTweet(id){
       </div>  
 
           <div className="div2" id={darkmode ? "chat-profile-blk" : "chat-profile"}>
-              {/* <ConversationsList />  */}
+            <Chat
+            currentUser={currentUser}/>
           </div> 
 
     </div>

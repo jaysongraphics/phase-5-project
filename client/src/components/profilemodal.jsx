@@ -92,12 +92,11 @@ function Profilemodal({submitProfileUpdate, currentUser}) {
                 </div>
           <br/>
 
-        <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/> 
+      <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/> 
 
            </Modal.Description>
         </Modal.Content>
       <Modal.Actions>
-
 
         <Button className='button is-danger is-light' 
           onClick={()=> submitProfileUpdate(image, firstName, lastName, birthday, username, email)} primary>Update <Icon name='chevron right' />
@@ -109,5 +108,4 @@ function Profilemodal({submitProfileUpdate, currentUser}) {
     )
   }
   
-  export default Profilemodal;
-  
+export default Profilemodal;

@@ -9,10 +9,6 @@ Tweet.destroy_all
 Tweet.reset_pk_sequence
 Therapist.destroy_all
 Therapist.reset_pk_sequence
-Message.destroy_all
-Message.reset_pk_sequence
-Conversation.destroy_all
-Conversation.reset_pk_sequence
 
 #users 
 puts "🙇 Seeding Users..."
@@ -293,9 +289,8 @@ end
     )
 end 
 
-Conversation.create(
-    title: 'Pry me a river'
-)
+
+
 
 puts "🙌 Seeding Complete!"
 

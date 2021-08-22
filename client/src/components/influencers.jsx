@@ -82,7 +82,6 @@ function Influencers() {
                     </p>
             </div>
         </div>
-
   </div>
 
   )

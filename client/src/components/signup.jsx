@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useHistory, Link} from 'react-router-dom'
 import swal from 'sweetalert';
+import { InputFile } from 'semantic-ui-react-input-file'
 
 
 function SignUp({setCurrentUser}) {
@@ -17,22 +18,22 @@ function SignUp({setCurrentUser}) {
 
     function handleSignUp(e){
       e.preventDefault()
-      const signUpNewUser = {
-          "image": newUserImage,
-          "first_name": newUserFirstName,
-          "last_name": newUserLastName,
-          "birthday": newUserBirthday,
-          "username": newUserUsername,
-          "email": newUserEmail,
-          "password": newUserPassword
-    }
+      const signUpNewUser = new FormData();
+        signUpNewUser.append("avatar", newUserImage);
+        signUpNewUser.append("first_name", newUserFirstName);
+        signUpNewUser.append("last_name", newUserLastName);
+        signUpNewUser.append("birthday", newUserBirthday);
+        signUpNewUser.append("username", newUserUsername);
+        signUpNewUser.append("email",newUserEmail);
+        signUpNewUser.append("password", newUserPassword);
+  
     const token =localStorage.getItem('token'); 
     fetch('http://localhost:3000/signup', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json',
+      headers: { 
                   Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(signUpNewUser),
+       body: signUpNewUser,
     })
       .then((res) => res.json())
       .then((data) => {
@@ -49,19 +50,32 @@ function SignUp({setCurrentUser}) {
             timer: 2000,
           });
         }
+      // console.log(data);
+
       });
     }
+
+    console.log(newUserImage);
+
     return (
         <div className="signup-div"> 
             <form onSubmit={handleSignUp}id="sign-form" className="box">
                 <div className="field">
                   <label id="label-id"className="label">Image</label>
                     <div className="control">
-                        <input className="input" type="text" placeholder="Image Url"
-                        onChange={(e) => setNewUserImage(e.target.value)}></input>
+
+                    {/* <InputFile button={{ ...buttonProps }}
+                          input={{
+                            id: 'input-control-id',
+                            onChange: handleUpload
+                          }}/> */}
+
+                        <input className="input" type="file" 
+                        placeholder="Image Url" 
+                        onChange={(e) => setNewUserImage(e.target.files[0])}>
+                        </input>
                     </div>
                   </div>
-
                 <div className="field">
                   <label id="label-id"className="label">First Name</label>
                     <div className="control">
@@ -129,45 +143,3 @@ function SignUp({setCurrentUser}) {
 }
 
 export default SignUp;
-
-
-
-
-
-
-
-
-
-//     function handleSignUp(e){
-//     e.preventDefault()
-//     const signUpNewUser = {
-//         "image": newUserImage,
-//         "first_name": newUserFirstName,
-//         "last_name": newUserLastName,
-//         "birthday": newUserBirthday,
-//         "username": newUserUsername,
-//         "email": newUserEmail,
-//         "password": newUserPassword
-// }
-
-// fetch('http://localhost:3000/signup', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' 
-//     },
-//     body: JSON.stringify(signUpNewUser),
-// })
-//     .then((res) => res.json())
-//     .then((data) => {
-//         if(data.errors) {
-//         setSignUpErrors(data.errors.map((error) => 
-//            <p>{error}</p>));
-//     } else {
-//         const {user, token} = data;
-//         localStorage.setItem("token", token)
-//         setCurrentUser(user)
-//         history.push('/')
-//     }
-//   });
-// }
-
-//testing

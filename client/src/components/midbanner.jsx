@@ -53,7 +53,4 @@ function MidBanner() {
   )
 }
 
-
-
-
 export default MidBanner;

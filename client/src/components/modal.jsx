@@ -106,4 +106,4 @@ return (
     )
   }
   
-  export default ModalComponent;
+export default ModalComponent;

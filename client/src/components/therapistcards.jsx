@@ -70,20 +70,9 @@ function bookAppointment (date, time, location) {
           .then((res) => res.json())
           .then((newreview) => setAddReview([...addReview, newreview]))
        }
-
-
-      
-console.log(therapist);
-      
-// const filteredTherapist = therapist.filter(thera => {
-//   return (
-//     thera.name.toLowerCase().includes(search.toLowerCase())
-//     )
-//   ||
-//   (
-//     thera.speciality.toLowerCase().includes(search.toLowerCase())
-//     )
-// })
+  
+// console.log(therapist);
+   
 
 // console.log(filteredTherapist);
 

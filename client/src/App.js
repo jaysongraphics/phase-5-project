@@ -12,7 +12,6 @@ import SignIn from './components/signin'
 import Signup from './components/signup'
 import Profile from './components/profile'
 import Home from './components/home'
-// import ConversationsList from './components/ConversationsList';
 
 function App() {
  
@@ -22,10 +21,10 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token'); 
-    fetch("http://localhost:3000/me",{
-      headers: {
-       Authorization: `Bearer ${token}`,
-      },
+      fetch("http://localhost:3000/me",{
+        headers: {
+        Authorization: `Bearer ${token}`,
+        },
     })
     .then(res => res.json())
     .then(user => {
@@ -38,55 +37,47 @@ function App() {
 },[])
 
 // console.log(currentUser);
-
   return (
     <div className="App">
           <NavBar  
             currentUser={currentUser}
             authorizeError={authorizeError}
-            setCurrentUser={setCurrentUser} 
-          />
-                <Switch>
-                  <Route exact path='/'>
-                    <Home />
-                  </Route> 
+            setCurrentUser={setCurrentUser}/>
 
-                  <Route path='/profile'>
-                    <Profile 
-                     setdarkMode={setdarkMode}
-                     darkmode={darkmode}
-                     currentUser={currentUser}
-                     setCurrentUser={setCurrentUser}
-                     />
-                  </Route>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route> 
 
-                  <Route path='/Signup'>
-                    <Signup 
-                    setCurrentUser={setCurrentUser}
-                    currentUser={currentUser}
-                    />
-                  </Route>
+            <Route path='/profile'>
+              <Profile 
+                setdarkMode={setdarkMode}
+                darkmode={darkmode}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}/>
+            </Route>
 
-                  <Route path='/Signin'>
-                   <SignIn 
-                   currentUser={currentUser}
-                   setCurrentUser={setCurrentUser}
-                   />
-                  </Route>
-                    <Route path ='/Therapists'>
-                      <Therapist 
-                      currentUser={currentUser}
-                        />
-                      </Route> 
+            <Route path='/Signup'>
+              <Signup 
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}/>
+            </Route>
 
-                    {/* <Route path ='/chat'>
-                        <ConversationsList />
-                    </Route>   */}
-                      
-              </Switch>
-          <Footer /> 
+            <Route path='/Signin'>
+              <SignIn 
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}/>
+            </Route>
+
+            <Route path ='/Therapists'>
+               <Therapist 
+                 currentUser={currentUser}/>
+            </Route>      
+
+        </Switch>
+    <Footer />
   </div>
- );
+ )
 }
 
 

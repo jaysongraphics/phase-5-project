@@ -269,15 +269,17 @@ height: 220px;
 }
 
 .whole-banner-div{
-  margin-top: -30px;
-
+  margin-top: 0px;
 }
+
 .mid-section{
-  margin-left: 80px;
+  margin-left: 0px;
 
 }
 .mid-banner-div{
-  margin-top: 90px;
+  margin-top: 150px;
+  margin-bottom: 0px;
+
 }
 
 .mid-services-div{
@@ -338,14 +340,18 @@ float: left;
 
 .mid-share{
   float: left;
-  margin-right: 90px;
+  margin-right: 80px;
   margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .mid-chat{
   float: left;
   margin-right: 100px;
   margin-left: 0px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 /* influencers */
@@ -359,6 +365,7 @@ float: left;
   font-family: 'Rubik', sans-serif;
   font-weight: bold;
   font-size: 50px;
+  margin-left: -300px;
 }
 
 #influencers-div{
@@ -455,9 +462,9 @@ float: left;
 .current-user{
   /* font-size: 12px; */
   float: left;
-  margin-left: 45px;
+  margin-left: 40px;
   margin-right: 900px;
-  margin-top: -5px;
+  margin-top: 20px;
   /* background-color: black; */
 }
 .useronluine{
@@ -465,6 +472,10 @@ float: left;
   font-size: 20px;
 }
 
+#useronluine{
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
 
 /* profile */
 .parent {
@@ -642,3 +653,4 @@ margin-top: 50px;
   margin-left: 0px;
   width:300px;
 }
+

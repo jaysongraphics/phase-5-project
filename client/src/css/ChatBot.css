@@ -1,0 +1,36 @@
+.bot-cover-photo {
+    width: 40px;
+}
+.human-input {
+}
+
+.text-chat{
+    font-size: 20px;
+}
+
+#text-chat{
+    font-size: 20px;
+}
+
+#user-input {
+    background-color: rgba(219, 219, 219, 0.646);
+}
+
+#bot-reply {
+ background-color: rgb(255,85,120);
+ padding-bottom: 10px;
+}
+
+#user-input, #bot-reply {
+    padding-left: 1rem;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.conversation-box {
+}
+.chatbox {
+    overflow-y: scroll;
+    overflow-y: auto;
+    height: 1000px;
+}

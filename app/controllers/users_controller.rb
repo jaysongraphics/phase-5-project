@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     end 
 
     # POST /signup
+    
     def signup
         newUser = User.create(user_params)
         if newUser.valid?
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
     
       # PATCH /me
     def update
-        # byebug
+        byebug
         @online_user.update(
             image: params[:image], 
             first_name: params[:first_name], 
@@ -48,13 +49,13 @@ class UsersController < ApplicationController
         render json: @online_user
       end
     
-      
 private 
     def record_not_found
          render json: {error: "User not found"}, status: :not_found
     end 
+
     def user_params
-        params.permit(:image, :first_name, :last_name, :birthday, :username, :email, :password)
+        params.permit(:image, :avatar, :first_name, :last_name, :birthday, :username, :email, :password)
     end 
 
 end

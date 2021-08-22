@@ -27,15 +27,20 @@ const history = useHistory();
             </Link>
 
         {currentUser ?     
-            <div className="current-user">
-                <img 
+            <div id="useronluine" className="current-user"> <img 
+            className="ui avatar image" 
+            alt={currentUser.first_name}
+            style={{width: 36, height: 36}}
+            src={currentUser.avatar.url}
+            />Hi, {currentUser.username}!
+                {/* <img 
                 className="ui avatar image" 
                 alt={currentUser.first_name}
                 style={{width: 36, height: 36}}
-                src={currentUser.image}
-                />
-                <p 
-                className="useronluine">Hi, {currentUser.username}!</p>
+                src={currentUser.avatar.url}
+                /> */}
+                {/* <p 
+                className="useronluine">Hi, {currentUser.username}!</p> */}
              </div>
               :
          null }
@@ -46,12 +51,12 @@ const history = useHistory();
                         <a className="a-buttons">Home</a>
                     </Link>
 
-                    <Link to='/profile'>
-                        <a className="a-buttons">Profile</a>
-                    </Link>
-
                     <Link to='/therapists'>
                         <a className="a-buttons">Therapists</a>
+                    </Link>
+
+                    <Link to='/profile'>
+                        <a className="a-buttons">Profile</a>
                     </Link>
                     
                     <Link to="/">
@@ -59,12 +64,6 @@ const history = useHistory();
                     className='button is-danger is-rounded'>Sign Out
                     </button>
                     </Link> 
-{/* 
-               <Link to="chat">
-                    <button className='button is-danger is-rounded'>Chat
-                    </button>
-                </Link>   */}
-
             </>
             ):(
              <>
