@@ -21,19 +21,21 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token'); 
-      fetch("http://localhost:3000/me",{
-        headers: {
-        Authorization: `Bearer ${token}`,
-        },
+      if (token){   
+        fetch("http://localhost:3000/me",{
+          headers: {
+          Authorization: `Bearer ${token}`,
+          },
+      })
+      .then(res => res.json())
+      .then(user => {
+        if(user.errors) {
+        setAuthorizeError(user.errors);
+      } else {
+        setCurrentUser(user)
+      }
     })
-    .then(res => res.json())
-    .then(user => {
-      if(user.errors) {
-      setAuthorizeError(user.errors);
-    } else {
-      setCurrentUser(user)
-    }
-  })
+      }
 },[])
 
 // console.log(currentUser);

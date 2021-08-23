@@ -9,6 +9,11 @@ Tweet.destroy_all
 Tweet.reset_pk_sequence
 Therapist.destroy_all
 Therapist.reset_pk_sequence
+Chat.destroy_all
+Chat.reset_pk_sequence
+Message.destroy_all
+Message.reset_pk_sequence
+
 
 #users 
 puts "🙇 Seeding Users..."

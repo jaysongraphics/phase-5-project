@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :messages, only: [:index, :create]
+  resources :chats, only: [:index, :create, :show, :update]
   resources :tweets, only: [:index, :create, :destroy]
   resources :reviews, only: [:index, :create, :destroy]
   resources :appointments, only: [:index, :create, :destroy]
@@ -11,11 +13,9 @@ Rails.application.routes.draw do
   post "/signup", to: "users#signup"
   delete "/signout", to: "users#destroy"
 
-  Rails.application.routes.draw do
-    resources :conversations, only: [:index, :create]
-    resources :messages, only: [:create]
-    mount ActionCable.server => '/cable'
-  end
+  
+  mount ActionCable.server => '/cable'
+
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
