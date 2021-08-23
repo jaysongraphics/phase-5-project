@@ -6,7 +6,6 @@ class ChatsController < ApplicationController
     end 
 
     def create
-        # byebug
         chat = Chat.create(chat_params)
         if chat.valid?
             render json: chat, status: :created

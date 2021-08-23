@@ -5,15 +5,17 @@ import Loading from './loading';
 import ChatBot from './ChatBot';
 import Chat from './chat';
 
-function Profile({setdarkMode, darkmode}) {
+function Profile({navpic, setdarkMode, darkmode}) {
   const [tweet, setTweet] = useState([])
   const [addTweet, setAddTweet] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
   const [deleteAppointmets, setdeleteAppointmets] = useState(false)
   const [deletetweets, setDeletetweets] = useState(false)
+  const [profilePic, setProfilePic] = useState ("")
+
   let apps;
   let twets;
-  let img;
+  let avatar;
 
     useEffect(() => {
       const token = localStorage.getItem('token'); 
@@ -36,33 +38,64 @@ function Profile({setdarkMode, darkmode}) {
   if(currentUser){
     apps = currentUser.appointments
     twets = currentUser.tweets
-    img = currentUser.image
+    avatar = currentUser.avatar.url
   }
 
-  function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
-    const profile ={
-      'image': image,
-      'first_name': firstName,
-      'last_name': lastName,
-      'birthday': birthday,
-      'username': username,
-      'email': email
-    }
-  const token = localStorage.getItem('token'); 
-    fetch("http://localhost:3000/me", {
-        method: 'PATCH',
-        headers: { 
-          'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-      },
-        body: JSON.stringify(profile),
-    })
-        .then(res => res.json())
-        .then(user => setCurrentUser(user))
-          swal('Profile updated!',{
-            icon: "info",
-      });
+
+// console.log(avatar);
+
+//   function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
+//     const profile ={
+//       'image': image,
+//       'first_name': firstName,
+//       'last_name': lastName,
+//       'birthday': birthday,
+//       'username': username,
+//       'email': email
+//     }
+//   const token = localStorage.getItem('token'); 
+//     fetch("http://localhost:3000/me", {
+//         method: 'PATCH',
+//         headers: { 
+//           'Content-Type': 'application/json',
+//             Authorization: `Bearer ${token}`,
+//       },
+//         body: JSON.stringify(profile),
+//     })
+//         .then(res => res.json())
+//         .then(user => setCurrentUser(user))
+//           swal('Profile updated!',{
+//             icon: "info",
+//       });
+// }
+
+function submitProfileUpdate(profilePic, firstName, lastName, birthday, username, email) { 
+  const profileUpdate = new FormData();
+  profileUpdate.append("avatar", profilePic);
+  profileUpdate.append("first_name", firstName);
+  profileUpdate.append("last_name", lastName);
+  profileUpdate.append("birthday", birthday);
+  profileUpdate.append("username", username);
+  profileUpdate.append("email", email);
+  
+const token = localStorage.getItem('token'); 
+  fetch("http://localhost:3000/me", {
+      method: 'PATCH',
+      headers: { 
+          Authorization: `Bearer ${token}`,
+    },
+      body: profileUpdate,
+  })
+      .then(res => res.json())
+      .then(user => {
+        setCurrentUser(user)
+        navpic(user)
+      })
+        swal('Profile updated!',{
+          icon: "info",
+    });
 }
+
 
  function handleTweet (e) {
   setTweet('')
@@ -109,6 +142,10 @@ function deleteTweet(id){
     setdarkMode(!darkmode)
   }
 
+  console.log(currentUser.first_name);
+  console.log(currentUser.last_name);
+  console.log(currentUser);
+
   return (
     <div className="parent">
         <div className="div1"> 
@@ -123,8 +160,8 @@ function deleteTweet(id){
                     <img id="userOnline-img" alt="profpic"
                     className="ui avatar image" 
                     style={{width: 200, height: 200}}
-                    // src={currentUser.avatar.url} />
-                     src={currentUser.image} />
+                    src={currentUser.avatar.url} />
+                     {/* src={currentUser.image} /> */}
                 <br/>
 
                 <div className={darkmode ? "blk-whitefont" : ''}/>
@@ -133,9 +170,12 @@ function deleteTweet(id){
                       <p className={darkmode ? "blk-whitefont" : ''}>Email: {currentUser.email}</p>
                       <p className={darkmode ? "blk-whitefont" : ''}>DOB: {currentUser.birthday}</p>
                       <Profilemodal
+                      profilePic={profilePic}
+                      setProfilePic={setProfilePic}
                       currentUser={currentUser} 
-                      submitProfileUpdate={submitProfileUpdate}/>
-              </div>
+                      submitProfileUpdate={submitProfileUpdate}
+                      />
+              </div> 
 
         <hr className={darkmode ? "blk-whitefont" : ''}/>
           <div> 
@@ -152,6 +192,7 @@ function deleteTweet(id){
                                 Date: {ap.appointment_date}<br />
                                 Time: {ap.appointment_time}<br />  
                                 <button 
+                                    id="cancel-app"
                                     className='button is-danger is-outlined' 
                                     style={{cursor: 'pointer'}} 
                                     onClick={()=>deleteApp(ap.id)}>Cancel appointment
@@ -187,7 +228,7 @@ function deleteTweet(id){
                     <div className={darkmode ? "blk-whitefont" : ''}> 
                     <br/>
                     <hr/>
-                      <img id="twwpic"src={img} style={{width: 36, height: 36}}/>
+                      <img className="ui avatar image" id="twwpic"src={avatar} style={{width: 30, height: 30}}/>
                       {tweet.tweet}
                         <i id="profile-x"style={{cursor: 'pointer'}} 
                             onClick={()=>deleteTweet(tweet.id)}>
@@ -204,11 +245,11 @@ function deleteTweet(id){
       </div>  
 
           <div className="div2" id={darkmode ? "chat-profile-blk" : "chat-profile"}>
-            {/* <ChatBot
-            currentUser={currentUser}/> */}
+            <ChatBot
+            currentUser={currentUser}/>
 
-            <Chat 
-            currentUser={currentUser}/> 
+            {/* <Chat 
+            currentUser={currentUser}/>  */}
           </div> 
     </div>
   )

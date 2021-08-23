@@ -37,15 +37,9 @@ class UsersController < ApplicationController
     
       # PATCH /me
     def update
-        byebug
-        @online_user.update(
-            image: params[:image], 
-            first_name: params[:first_name], 
-            last_name: params[:last_name], 
-            birthday: params[:birthday], 
-            username: params[:username], 
-            email: params[:username] 
-        )
+        # byebug
+        @online_user.assign_attributes(user_params)
+        @online_user.save(validate: false)
         render json: @online_user
       end
     
@@ -55,7 +49,7 @@ private
     end 
 
     def user_params
-        params.permit(:image, :avatar, :first_name, :last_name, :birthday, :username, :email, :password)
+        params.permit(:avatar, :first_name, :last_name, :birthday, :username, :email, :password)
     end 
 
 end

@@ -9,7 +9,7 @@ class User < ApplicationRecord
     has_one_attached :avatar
     
     has_many :messages
-
+    has_many :chats
 #todo the below will allow us to the the following two things
     #password "123" => password_digest "erret44rrffvd24rrfet3"
     #user.authenticate("123")

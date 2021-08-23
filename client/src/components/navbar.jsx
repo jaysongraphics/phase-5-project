@@ -2,10 +2,16 @@ import logo from '../images/LOGOGFINALBLACK.png'
 import {useHistory, Link} from 'react-router-dom'
 import swal from 'sweetalert';
 import Loading from './loading';
+import Chat from './chat';
+import {useState, useEffect} from 'react'
 
 function NavBar({currentUser, setCurrentUser}) {
       
 const history = useHistory();
+
+useEffect(() => {
+
+}, [currentUser])
 
     function logOut(){
         localStorage.removeItem("token")
@@ -58,8 +64,8 @@ if(!currentUser) {
             className="ui avatar image" 
             alt={currentUser.first_name}
             style={{width: 36, height: 36}}
-            // src={currentUser.avatar.url}
-            src={currentUser.image}
+            src={currentUser.avatar.url}
+            // src={currentUser.image}
             />Hi, {currentUser.username}!
              </div>
               :
@@ -78,7 +84,7 @@ if(!currentUser) {
                     <Link to='/profile'>
                         <a className="a-buttons">Profile</a>
                     </Link>
-                    
+
                     <Link to="/">
                     <button onClick={logOut} id="nav-button" 
                     className='button is-danger is-rounded'>Sign Out

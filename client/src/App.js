@@ -55,8 +55,7 @@ function App() {
               <Profile 
                 setdarkMode={setdarkMode}
                 darkmode={darkmode}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}/>
+                navpic={setCurrentUser}/>
             </Route>
 
             <Route path='/Signup'>

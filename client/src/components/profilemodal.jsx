@@ -5,15 +5,17 @@ import logo from '../images/LOGOGFINALBLACK.png'
 import clumsy from '../images/clumsy.png'
 
 
-function Profilemodal({submitProfileUpdate, currentUser}) {
+function Profilemodal({submitProfileUpdate, currentUser, setProfilePic, profilePic}) {
     const [open, setOpen] = React.useState(false)
-    const [image, setImage] = useState (currentUser.image)
     const [firstName, setFirstName] = useState (currentUser.first_name)
     const [lastName, setLastName] = useState (currentUser.last_name)
-    const [birthday, setBirthday] = useState (currentUser.birthday)
+    const [birthday, setBirthday] = useState ("")
     const [username, setUsername] = useState (currentUser.username)
     const [email, setEmail] = useState (currentUser.email)
 
+
+
+console.log(profilePic);
     return (
     <Modal
       open={open}
@@ -34,9 +36,9 @@ function Profilemodal({submitProfileUpdate, currentUser}) {
                 <div className="field">
                     <label id="label-id"className="label">image</label>
                       <div className="control">
-                          <input value={image} className="input" 
-                          type="text" placeholder="image" 
-                          onChange={(e) => setImage(e.target.value)}>
+                          <input className="input" 
+                          type="file" placeholder="image" 
+                          onChange={(e) => setProfilePic(e.target.files[0])}>
                           </input>
                       </div>
                 </div>    
@@ -66,7 +68,7 @@ function Profilemodal({submitProfileUpdate, currentUser}) {
                       <div className="control">
                           <input 
                             value={birthday}
-                            className="input" type="text" placeholder="Birthday" 
+                            className="input" type="date" placeholder="Birthday" 
                             onChange={(e) => setBirthday(e.target.value)}>
                             </input>
                         </div>
@@ -99,7 +101,7 @@ function Profilemodal({submitProfileUpdate, currentUser}) {
       <Modal.Actions>
 
         <Button className='button is-danger is-light' 
-          onClick={()=> submitProfileUpdate(image, firstName, lastName, birthday, username, email)} primary>Update <Icon name='chevron right' />
+          onClick={()=> submitProfileUpdate(profilePic, firstName, lastName, birthday, username, email)} primary>Update <Icon name='chevron right' />
         </Button>
 
       </Modal.Actions>
