@@ -4,7 +4,7 @@ import Loading from './loading';
 import {useState} from 'react'
 
 
-function TherapistCards({therapist, currentUser, therapistReview, search, setSearch}) {
+function TherapistCards({therapist, currentUser, therapistReview, search, setSearch,}) {
   const [review, setReview] = useState("")
   const [addReview, setAddReview] = useState(therapistReview)
   // const [therapists, setTherapists] = useState ([])
@@ -72,8 +72,6 @@ function bookAppointment (date, time, location) {
        }
   
 // console.log(therapist);
-   
-
 // console.log(filteredTherapist);
 
   return ( 

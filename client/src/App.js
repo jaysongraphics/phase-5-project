@@ -12,6 +12,7 @@ import SignIn from './components/signin'
 import Signup from './components/signup'
 import Profile from './components/profile'
 import Home from './components/home'
+import Bot from './components/bot'
 
 function App() {
  
@@ -32,7 +33,7 @@ function App() {
         if(user.errors) {
         setAuthorizeError(user.errors);
       } else {
-        setCurrentUser(user)
+        setTimeout(() =>{setCurrentUser(user)}, 200)
       }
     })
       }
@@ -41,6 +42,7 @@ function App() {
 // console.log(currentUser);
   return (
     <div className="App">
+       
           <NavBar  
             currentUser={currentUser}
             authorizeError={authorizeError}
@@ -48,7 +50,8 @@ function App() {
 
           <Switch>
             <Route exact path='/'>
-              <Home />
+              <Home 
+                currentUser={currentUser}/>
             </Route> 
 
             <Route path='/profile'>
@@ -75,8 +78,11 @@ function App() {
                  currentUser={currentUser}/>
             </Route>      
 
+          
         </Switch>
     <Footer />
+
+    <Bot currentUser={currentUser} />
   </div>
  )
 }

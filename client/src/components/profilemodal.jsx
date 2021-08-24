@@ -13,10 +13,9 @@ function Profilemodal({submitProfileUpdate, currentUser, setProfilePic, profileP
     const [username, setUsername] = useState (currentUser.username)
     const [email, setEmail] = useState (currentUser.email)
 
+// console.log(profilePic);
 
-
-console.log(profilePic);
-    return (
+return (
     <Modal
       open={open}
       onClose={() => setOpen(false)}

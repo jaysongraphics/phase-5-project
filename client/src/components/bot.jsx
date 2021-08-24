@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import { Button, Icon, Image, Modal } from 'semantic-ui-react'
+import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import '../css/ChatBot.css'
-// import logo from '../images/LOGOGFINALBLACK.png'
+import logo from '../images/LOGOGFINALBLACK.png'
+import 'semantic-ui-css/semantic.min.css';
 
-function ChatBot({currentUser}) {
+const Bot = ({currentUser}) => {
+    const [open, setOpen] = React.useState(false)
     const [userInput, setUserInput] = useState('')
     const [userHistory, setUserHistory] = useState([])
     const [botHistory, setBotHistory] = useState([])
@@ -65,22 +68,34 @@ const matchReply = (userInput) => {
         return item;
     }
 
-    return (
-        <div className='chatbot-card'>
-            {/* <div>
-                <img style={{width: 100, height: 100}}
+  return (
+    <Modal
+      id="modal-trigger"
+      open={open}
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      trigger={<Button id="bot-button" className="button is-rounded"><i class="user icon"></i></Button>}>
+        
+      <Modal.Header></Modal.Header>
+      <Modal.Content>
+        <Modal.Description>
+
+            <div className='chatbot-logo'>
+                <img className='chatbot-logoo'
+                    style={{width: 200, height: 200}}
                     src={logo}
-                    alt='bot-pic'
-                />  
-            </div> */}
-                
+                    alt='bot-pic'/>  
+            </div> 
+
+            <div className='chatbot-card'>    
             <div className='human-input'>
                 <InputGroup className="mb-3">
 
                     <Form.Control
-                        className="mb-2"
+                        id="chat-input"
+                        className="ui input"
                         type="text" 
-                        placeholder="Ask me something"
+                        placeholder="Ask me anything!"
                         value={userInput}
                         onChange={handleChange}
                         onKeyPress={onKeyUp}
@@ -105,7 +120,21 @@ const matchReply = (userInput) => {
          )}        
         </div>  
     </div>
+  
+          {/* <Image
+            src='https://react.semantic-ui.com/images/wireframe/paragraph.png'
+            style={{ marginBottom: 10 }}
+          />  */}
+
+         </Modal.Description>
+        </Modal.Content>
+       <Modal.Actions>
+       {/* <Button onClick={() => setOpen(false)} primary>
+          Proceed <Icon name='chevron right' />
+        </Button> */}
+      </Modal.Actions>
+    </Modal>
   )
 }
 
-export default ChatBot;
+export default Bot;

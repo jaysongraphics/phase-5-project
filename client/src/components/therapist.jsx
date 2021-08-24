@@ -6,6 +6,10 @@ function Therapist({currentUser}) {
 const [therapists, setTherapists] = useState ([])
 const [search, setSearch] = useState("")
 
+
+// useEffect(() => {
+// }, [therapistsCards])
+
     useEffect(() =>{
         const token = localStorage.getItem('token'); 
         fetch('http://localhost:3000/therapists', {
@@ -14,19 +18,23 @@ const [search, setSearch] = useState("")
         },
     })
         .then(res => res.json())
-        .then(data => setTherapists(data))
+        .then(data =>
+        //   setTimeout(() =>{setTherapists(data)}, 200)
+           setTherapists(data)
+        )
+        
 }, [])
 
-    if(!therapists) {
-        return <Loading />
-    }
+if(!therapists) {
+    return <Loading />
+}
 
-    const filteredTherapist = therapists.filter(filteredCard => 
-    filteredCard.name.toLowerCase().includes(search.toLowerCase())
+const filteredTherapist = therapists.filter(
+    filteredCard => filteredCard.name.toLowerCase().includes(search.toLowerCase())
     ||
     filteredCard.speciality.toLowerCase().includes(search.toLowerCase())
     )
-
+    
     const therapistsCards = filteredTherapist.map(therapist => 
         <TherapistCards 
         key={therapist.id}
@@ -36,12 +44,13 @@ const [search, setSearch] = useState("")
         therapist={therapist}
         therapistReview={therapist.reviews}
         />)
-
+  
     return (
         <div className="alltherapist-div">      
             <h1>Our therapists</h1>
 
-            <input id="therasearch"className="input is-danger"onChange={(e) => setSearch(e.target.value)} type="text" value={search} placeholder="Search by name or speciality..."/>
+            <input id="therasearch"className="input is-danger"onChange={(e) => 
+                setSearch(e.target.value)} type="text" value={search} placeholder="Search by name or speciality..."/>
             <button className='button is-danger is-outlined'>Search
             </button>
 

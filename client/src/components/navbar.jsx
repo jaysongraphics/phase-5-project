@@ -7,18 +7,17 @@ import {useState, useEffect} from 'react'
 
 function NavBar({currentUser, setCurrentUser}) {
       
-const history = useHistory();
+    const history = useHistory();
 
-useEffect(() => {
-
-}, [currentUser])
+    useEffect(() => {
+    }, [currentUser])
 
     function logOut(){
         localStorage.removeItem("token")
         localStorage.removeItem("user")
         setCurrentUser(null)
          history.push('/')
-            swal(`See you soon${currentUser.first_name} ${currentUser.last_name}!`, {
+            swal(`See you soon ${currentUser.first_name} ${currentUser.last_name}!`, {
             buttons: false,
             timer: 2000,
     });
@@ -47,7 +46,7 @@ if(!currentUser) {
                 </div>
         </nav>
     </div>
-  )
+    )
   }
 
     return (

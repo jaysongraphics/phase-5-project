@@ -2,8 +2,6 @@ import {useState, useEffect} from 'react'
 import Profilemodal from './profilemodal'
 import swal from 'sweetalert';
 import Loading from './loading';
-import ChatBot from './ChatBot';
-import Chat from './chat';
 
 function Profile({navpic, setdarkMode, darkmode}) {
   const [tweet, setTweet] = useState([])
@@ -26,7 +24,7 @@ function Profile({navpic, setdarkMode, darkmode}) {
       })
       .then(res => res.json())
       .then(user => {
-        setCurrentUser(user)
+        setTimeout(() =>{setCurrentUser(user)}, 150)
         setAddTweet(user.tweets)
       })
   },[deleteAppointmets, deletetweets])
@@ -43,7 +41,6 @@ function Profile({navpic, setdarkMode, darkmode}) {
 
 
 // console.log(avatar);
-
 //   function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
 //     const profile ={
 //       'image': image,
@@ -71,12 +68,12 @@ function Profile({navpic, setdarkMode, darkmode}) {
 
 function submitProfileUpdate(profilePic, firstName, lastName, birthday, username, email) { 
   const profileUpdate = new FormData();
-  profileUpdate.append("avatar", profilePic);
-  profileUpdate.append("first_name", firstName);
-  profileUpdate.append("last_name", lastName);
-  profileUpdate.append("birthday", birthday);
-  profileUpdate.append("username", username);
-  profileUpdate.append("email", email);
+    profileUpdate.append("avatar", profilePic);
+    profileUpdate.append("first_name", firstName);
+    profileUpdate.append("last_name", lastName);
+    profileUpdate.append("birthday", birthday);
+    profileUpdate.append("username", username);
+    profileUpdate.append("email", email);
   
 const token = localStorage.getItem('token'); 
   fetch("http://localhost:3000/me", {
@@ -142,9 +139,9 @@ function deleteTweet(id){
     setdarkMode(!darkmode)
   }
 
-  console.log(currentUser.first_name);
-  console.log(currentUser.last_name);
-  console.log(currentUser);
+  // console.log(currentUser.first_name);
+  // console.log(currentUser.last_name);
+  // console.log(currentUser);
 
   return (
     <div className="parent">
@@ -163,12 +160,13 @@ function deleteTweet(id){
                     src={currentUser.avatar.url} />
                      {/* src={currentUser.image} /> */}
                 <br/>
-
+                <br/>
                 <div className={darkmode ? "blk-whitefont" : ''}/>
-                      <p className={darkmode ? "blk-whitefont" : ''}>First Name: {currentUser.first_name}</p>
-                      <p className={darkmode ? "blk-whitefont" : ''}>Last Name: {currentUser.last_name}</p>
-                      <p className={darkmode ? "blk-whitefont" : ''}>Email: {currentUser.email}</p>
-                      <p className={darkmode ? "blk-whitefont" : ''}>DOB: {currentUser.birthday}</p>
+                      <p className={darkmode ? "blk-whitefont" : ''}><b>First Name:</b> {currentUser.first_name}</p>
+                      <p className={darkmode ? "blk-whitefont" : ''}><b>Last Name:</b> {currentUser.last_name}</p>
+                      <p className={darkmode ? "blk-whitefont" : ''}><b>Email:
+                        </b>{currentUser.email}</p>
+                      <p className={darkmode ? "blk-whitefont" : ''}><b>DOB:</b> {currentUser.birthday}</p>
                       <Profilemodal
                       profilePic={profilePic}
                       setProfilePic={setProfilePic}
@@ -179,35 +177,32 @@ function deleteTweet(id){
 
         <hr className={darkmode ? "blk-whitefont" : ''}/>
           <div> 
-            <h6 className={darkmode ? "blk-whitefont" : ''}>Upcoming Appointments</h6>
+            <h6 className={darkmode ? "blk-whitefont" : ''}><b>Upcoming Appointments</b></h6>
 
               <div >
                  {apps.length >  0  ? 
                      apps.map(ap => 
                   <div className={darkmode ? "blk-whitefont" : ''}>
             <br />
+                <div className="app-divv">
+                <b>Location:</b> {ap.location}<br/>
+                <b>Date:</b> {ap.appointment_date}<br/>
+                <b>Time:</b> {ap.appointment_time}<br/>  
+                   <button id="cancel-app"
+                    className='button is-danger is-outlined' 
+                    style={{cursor: 'pointer'}} 
+                    onClick={()=>deleteApp(ap.id)}>Cancel appointment
+                      <i class="fas fa-times"></i>
+                       </button>
+                    </div>
 
-                            <div className="app-divv">
-                                Location: {ap.location}<br />
-                                Date: {ap.appointment_date}<br />
-                                Time: {ap.appointment_time}<br />  
-                                <button 
-                                    id="cancel-app"
-                                    className='button is-danger is-outlined' 
-                                    style={{cursor: 'pointer'}} 
-                                    onClick={()=>deleteApp(ap.id)}>Cancel appointment
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-
-                          </div> 
-                              )
-                              :
-                              null}
-                      </div> 
                   </div> 
-
-            </div> : null }   
+                   )
+                    :
+                   null}
+                </div> 
+            </div> 
+           </div> : null }   
       </div>
 
         <div className="div3" id={darkmode ? "div2-dark" : "div2-regular"}> 
@@ -245,9 +240,8 @@ function deleteTweet(id){
       </div>  
 
           <div className="div2" id={darkmode ? "chat-profile-blk" : "chat-profile"}>
-            <ChatBot
-            currentUser={currentUser}/>
-
+            {/* <ChatBot
+            currentUser={currentUser}/> */}
             {/* <Chat 
             currentUser={currentUser}/>  */}
           </div> 

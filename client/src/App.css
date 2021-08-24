@@ -657,3 +657,19 @@ margin-top: 50px;
 #cancel-app{
   margin-bottom: 20px;
 }
+
+.chatbot-logo{
+  margin-left: 80px;
+  margin-bottom: 8px;
+}
+
+#bot-button{
+  float: left;
+}
+
+#modal-trigger{
+  margin-left: 1200px;
+  margin-top: 400px;
+  width: 400px;
+  height: 800px;
+}
