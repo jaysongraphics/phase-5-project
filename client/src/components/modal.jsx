@@ -12,6 +12,7 @@ function ModalComponent({bookAppointment, currentUser}) {
 
 return (
     <Modal
+      id="modal-appo"
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
@@ -26,7 +27,7 @@ return (
       <Modal.Description>
 
           <div className="field">
-              <label id="label-id"className="label">date</label>
+              <label id="label-id"className="label">Date</label>
                 <div className="control">
                   <input 
                       value={appoDate}
@@ -37,7 +38,7 @@ return (
           </div>    
 
                 <div className="field">
-                  <label id="label-id"className="label">time</label>
+                  <label id="label-id"className="label">Time</label>
                   <div className="control">
                     <input 
                       value={appoTime}
@@ -46,16 +47,16 @@ return (
                   </div>
                 </div>
                 <br/>
-                  <p>
+                  <p className="field">
                     Please choose from the following locations:
                   </p>
-                    <label id="label-id"className="label">Location</label>
+                    <label id="label-id"className="field"><b>Location</b></label>
           <br/>
           <br/>
-            <select className="ui selection dropdown" 
+            <select id="field" className="ui selection dropdown" 
             onChange={(e) => setAppoLocation(e.target.value)}
-            name="hospitals" id="hospital">
-                  <option 
+            name="hospitals">
+                  <option id="field"
                     value="All">All
                   </option>
 
@@ -85,22 +86,15 @@ return (
           <br/>
           <br/>
           <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          
-                <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/>
 
+          <Image id="therea-clumsy"size='large' src={clumsy} style={{ marginBottom: 10 }}/>
               </Modal.Description>
           </Modal.Content>
       <Modal.Actions>
-                      <Button 
-                      className='button is-danger is-light'
-                      onClick={()=> bookAppointment(appoDate, appoTime, appoLocation)} 
-                      primary>
-                        Book it <Icon name='chevron right'/>
-                      </Button>
+            <Button className='button is-danger is-light'
+               onClick={()=> bookAppointment(appoDate, appoTime, appoLocation)} primary>
+                Book it <Icon name='chevron right'/>
+            </Button>
       </Modal.Actions>
     </Modal>
     )

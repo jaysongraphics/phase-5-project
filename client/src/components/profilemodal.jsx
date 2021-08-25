@@ -17,10 +17,11 @@ function Profilemodal({submitProfileUpdate, currentUser, setProfilePic, profileP
 
 return (
     <Modal
+      id="modal-profile"
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      trigger={<Button className='button is-danger is-rounded'>Update Profile</Button>}>
+      trigger={<Button className='button is-danger is-rounded'>Edit Profile</Button>}>
 <br/>
 <br/>
       <Modal.Header>Update your profile information</Modal.Header>
@@ -28,22 +29,41 @@ return (
 <br/>
       <Modal.Content image scrolling>
 
-       <Image size='small' src={logo} wrapped />
+       {/* <Image size='small' src={logo} wrapped /> */}
 
-        <Modal.Description>
-
+        <Modal.Description className="modaldesp">
+{/* 
                 <div className="field">
                     <label id="label-id"className="label">image</label>
+
                       <div className="control">
                           <input className="input" 
                           type="file" placeholder="image" 
                           onChange={(e) => setProfilePic(e.target.files[0])}>
-                          </input>
+                          </input> 
                       </div>
-                </div>    
-
+                </div>    */}
+<div className="profile-img-div">
+  <label id="label-id-img"className="label">Image</label>
+  <div className="file is-danger has-name is-boxed">
+   <label className="file-label">
+        <input className="file-input" type="file" onChange={(e) => setProfilePic(e.target.files[0])} name="profilepic" />
+          <i className="fas fa-cloud-upload-alt"></i>
+            <span className="file-cta">
+            <i className="cloud upload icon"></i>
+              <span className="file-label">
+                Choose File
+              </span>
+            </span>
+            <span className="file-name">
+                profile-pic.jpg
+            </span>
+      </label>
+  </div>
+  <br/>
+</div>              
                 <div className="field">
-                  <label id="label-id"className="label">firstName</label>
+                  <label id="label-id"className="label">FirstName</label>
                     <div className="control">
                           <input value={firstName} className="input" 
                           type="text" placeholder="firstName" 
@@ -53,7 +73,7 @@ return (
                 </div>
 
                 <div className="field">
-                  <label id="label-id"className="label">lastName</label>
+                  <label id="label-id"className="label">Last Name</label>
                       <div className="control">
                           <input value={lastName} className="input" 
                           type="text" placeholder="lastName" 
@@ -63,7 +83,7 @@ return (
                 </div>
 
                 <div className="field">
-                  <label id="label-id"className="label">birthday</label>
+                  <label id="label-id"className="label">Birthday</label>
                       <div className="control">
                           <input 
                             value={birthday}
@@ -74,7 +94,7 @@ return (
                 </div>
 
                 <div className="field">
-                  <label id="label-id"className="label">username</label>
+                  <label id="label-id"className="label">Username</label>
                       <div className="control">
                           <input value={username}
                             className="input" type="text" placeholder="username" 
@@ -84,7 +104,7 @@ return (
                   </div>
 
                 <div className="field">
-                  <label id="label-id"className="label">email</label>
+                  <label id="label-id"className="label">Email</label>
                     <div className="control">
                         <input value={email} className="input" type="text" 
                         placeholder="email" onChange={(e) => setEmail(e.target.value)}>
@@ -93,12 +113,11 @@ return (
                 </div>
           <br/>
 
-      <Image size='large' src={clumsy} style={{ marginBottom: 10 }}/> 
+      <Image id="clumsy-img"size='medium' src={clumsy} style={{ marginBottom: 10 }}/> 
 
            </Modal.Description>
         </Modal.Content>
       <Modal.Actions>
-
         <Button className='button is-danger is-light' 
           onClick={()=> submitProfileUpdate(profilePic, firstName, lastName, birthday, username, email)} primary>Update <Icon name='chevron right' />
         </Button>

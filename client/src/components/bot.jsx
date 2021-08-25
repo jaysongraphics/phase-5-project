@@ -98,9 +98,7 @@ const matchReply = (userInput) => {
                         placeholder="Ask me anything!"
                         value={userInput}
                         onChange={handleChange}
-                        onKeyPress={onKeyUp}
-                    />
-
+                        onKeyPress={onKeyUp}/>
                 </InputGroup>
             </div>
             <div className='chatbox'>

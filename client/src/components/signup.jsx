@@ -60,22 +60,43 @@ function SignUp({setCurrentUser}) {
     return (
         <div className="signup-div"> 
             <form onSubmit={handleSignUp}id="sign-form" className="box">
-                <div className="field">
-                  <label id="label-id"className="label">Image</label>
-                    <div className="control">
+                {/* <div className="field">
+                  <label id="label-id"className="label">Image</label> */}
+                    {/* <div className="control"> */}
 
                     {/* <InputFile button={{ ...buttonProps }}
                           input={{
                             id: 'input-control-id',
                             onChange: handleUpload
                           }}/> */}
-
+{/* 
                         <input className="input" type="file" 
                         placeholder="Image Url" 
                         onChange={(e) => setNewUserImage(e.target.files[0])}>
                         </input>
-                    </div>
-                  </div>
+                    </div> */}
+                  {/* </div> */}
+<div className="profile-img-div">
+  <label id="label-id-imgg"className="label">Image</label>
+  <div className="file is-danger has-name is-boxed">
+   <label className="file-label">
+        <input className="file-input" type="file" onChange={(e) => setNewUserImage(e.target.files[0])} name="profilepic" />
+          <i className="fas fa-cloud-upload-alt"></i>
+            <span className="file-cta">
+            <i className="cloud upload icon"></i>
+              <span className="file-label">
+                Choose File
+              </span>
+            </span>
+            <span className="file-name">
+                profile_picture.jpg
+            </span>
+      </label>
+  </div>
+  <br/>
+</div> 
+                    
+                
                 <div className="field">
                   <label id="label-id"className="label">First Name</label>
                     <div className="control">

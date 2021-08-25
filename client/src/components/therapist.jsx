@@ -6,10 +6,6 @@ function Therapist({currentUser}) {
 const [therapists, setTherapists] = useState ([])
 const [search, setSearch] = useState("")
 
-
-// useEffect(() => {
-// }, [therapistsCards])
-
     useEffect(() =>{
         const token = localStorage.getItem('token'); 
         fetch('http://localhost:3000/therapists', {
@@ -44,7 +40,11 @@ const filteredTherapist = therapists.filter(
         therapist={therapist}
         therapistReview={therapist.reviews}
         />)
-  
+
+if(!therapistsCards) {
+    return <Loading />
+}
+
     return (
         <div className="alltherapist-div">      
             <h1>Our therapists</h1>
