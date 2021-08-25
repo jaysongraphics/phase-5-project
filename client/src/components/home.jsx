@@ -1,6 +1,7 @@
 import Banner from './banner'
 import MidBanner from  './midbanner'
 import Influencers from  './influencers'
+import SiteReviews from "./siteReviews";
 
 function Home() {
 
@@ -8,7 +9,8 @@ function Home() {
         <>
             <Banner />
                 <MidBanner />
-            <Influencers />
+                <Influencers />
+            <SiteReviews />
         </>
   )
 }

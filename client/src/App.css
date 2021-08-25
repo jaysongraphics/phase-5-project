@@ -58,7 +58,59 @@
   text-align: center;
   background-color: #ffffff;
   /* padding: 1px; */
+  overflow-y: scroll;
+  overflow-y: auto;
+  height: 1100px;
 }
+
+#id-card::-webkit-scrollbar-track {
+  /* border: 1px solid #000;
+  padding: 2px 0;
+  background-color: #404040; */
+}
+
+#id-card::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+#id-card::-webkit-scrollbar-thumb {
+  border-radius: 80px;
+  box-shadow: inset 0 0 6px rgb(255,85,120);
+  /* background-color: rgb(255,85,120); */
+}
+
+
+/* ::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(163, 163, 163);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(255,85,120);
+}  */
+
+/* ::-webkit-scrollbar-thumb:hover {
+  background: rgb(180, 28, 28);
+} */
+
+/* navbar! */
+ /* ::-webkit-scrollbar {
+  width: 10px;
+} 
+
+ ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 rgb(187, 6, 6);
+} 
+
+::-webkit-scrollbar-thumb {
+  background: rgb(255,85,120);
+  border-radius: 10px;
+}  */
+
 
 #id-card:hover{
   margin-up: 5px;
@@ -255,7 +307,7 @@ height: 220px;
 }
 
 #banner-button{
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   text-decoration: none;
 }
 
@@ -277,16 +329,16 @@ height: 220px;
 
 }
 .mid-banner-div{
-  margin-top: 150px;
-  margin-bottom: 0px;
-
+  margin-top: 100px;
 }
 
 .mid-services-div{
-   margin-left: 500px;
-   padding-top: 50px;
+   margin-left: 450px;
+   margin-top: 60px;
 }
 .mid-bannerimg{
+  /* margin-left: 50px; */
+  margin-top: 50px;
   width: 600px;
   height: 500px;
   float: left;
@@ -296,6 +348,7 @@ height: 220px;
   font-family: 'Rubik', sans-serif;
   font-weight: bold;
   font-size: 50px;
+  /* margin-left: -300px; */
   /* background-color:rgb(255,85,120) */
 }
 
@@ -326,24 +379,32 @@ height: 220px;
 }
 
 .mid-book{
-float: left;
+  float: left;
   margin-right: 40px;
-  margin-left: 100px;
+  margin-left: 170px;
 }
 
 .mid-review{
   float: left;
   margin-right: 50px;
-  margin-left: 0px;
-
+  /* margin-left: 0px; */
 }
 
+/* .review-feedback{
+  overflow-y: scroll;
+    overflow-y: auto;
+    height: 100px;
+} */
+
+#therapits-detail-info{
+  height: 100px;
+}
 .mid-share{
   float: left;
   margin-right: 80px;
-  margin-left: 100px;
+  margin-left: 170px;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 .mid-chat{
@@ -351,21 +412,22 @@ float: left;
   margin-right: 100px;
   margin-left: 0px;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 /* influencers */
 .influencers-section{
   margin-left: 250px;
-  margin-top: 250px;
-  padding-top: 150px;
+  /* margin-top: 500px;  */
+  /* padding-top: 150px; */
 }
 
 .influencers-title{
   font-family: 'Rubik', sans-serif;
   font-weight: bold;
   font-size: 50px;
-  margin-left: -300px;
+  margin-left: -150px;
+  margin-top: 20px;
 }
 
 #influencers-div{
@@ -373,6 +435,7 @@ float: left;
   display: flex; 
   justify-content: space-between; 
   margin-right: 40px;
+  margin-top: 20px;
   padding-bottom: 380px;
 }
 
@@ -426,19 +489,19 @@ color: white;
   margin-top: 100px;
   display:flex; 
   justify-content: space-between; 
-  margin-left: 500px;
+  margin-left: 400px;
   padding-bottom: 100px;
 }
 
 .signin-div{
-  margin-top: 130px;
+  margin-top: 200px;
   display:flex; 
   justify-content: space-between; 
-  margin-left: 500px;
+  margin-left: 400px;
   padding-bottom: 400px; 
 }
 #sign-form{
-  width: 800px; 
+  width: 800px;
 }
 
 #label-id{

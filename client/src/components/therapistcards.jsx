@@ -95,16 +95,14 @@ function bookAppointment (date, time, location) {
           </div>
             <div className="meta">
                 {addReview.map(review =>
-                    <div>                      
+                    <div className="review-feedback">   
                       {review.review} <i style={{cursor: 'pointer'}} 
                       onClick={()=>deleteReview(review.id)}>✖️</i>
                       <hr />
                     </div>
-                    
                    )}
                           <br />
                           <br />
-
                   <form id="card-thera-button" onSubmit={handleSubmit}
                       className="ui form"> 
                         <input type="text" value={review} 

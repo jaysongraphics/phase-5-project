@@ -1,30 +1,30 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
          <div className="footer-div">
             <div>
                 <h1 className="footer-color-tilt">About Us</h1>
-                <Link to=''
+                <p to=''
                 id="member-already"
                 className="footer-color"
-                href="#">Vision
-                </Link>
+                >Vision
+                </p>
             </div>
 
             <div>
                 <h1 className="footer-color-tilt">Store</h1>
-                <a id="member-already"href="https://www.selflax.com/collections/mental-health-awareness" 
+                <a id="member-already"href="https://www.selflax.com/" 
                 className="footer-color"
                 title="example">Shop Selflax</a>
             </div>
 
             <div>
                 <h1 className="footer-color-tilt">Contact Us</h1>
-                <Link to=''
+                <p
                 id="member-already" className="footer-color"
-                href="#">Uttar Pradesh
-                </Link>
+                >selflax@email.com
+                </p>
             </div>
 
             <div>

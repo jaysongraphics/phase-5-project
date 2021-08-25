@@ -132,9 +132,15 @@ function deleteTweet(id){
     },             
   })
       .then(res => res.json())
-      .then(data => setdeleteAppointmets(!deleteAppointmets))
+      .then(data => { 
+        setdeleteAppointmets(!deleteAppointmets)
+    })
+    swal(`Your appointment has been canceled!`, {
+      buttons: false,
+      timer: 2000,
+    });
   }
-
+  
     function darkModeToggle(){
     setdarkMode(!darkmode)
   }
@@ -182,7 +188,7 @@ function deleteTweet(id){
               <div >
                  {apps.length >  0  ? 
                      apps.map(ap => 
-                  <div className={darkmode ? "blk-whitefont" : ''}>
+                      <div className={darkmode ? "blk-whitefont" : ''}>
             <br />
                 <div className="app-divv">
                 <b>Location:</b> {ap.location}<br/>

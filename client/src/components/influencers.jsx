@@ -23,7 +23,8 @@ function Influencers() {
                     src={beyonce} className="ui small image" 
                     style={{width: 200, height: 200}}/>
                 <br />
-                    <p className="influencer-paragraph">Beyoncé <br/>
+                    <p className="influencer-paragraph">
+                        <b>Beyoncé</b><br/>
                         "It was beginning to get fuzzy―I couldn't even tell which day or which city I was at. I would sit there at ceremonies and they would give me an award and I was just thinking about the next performance," she told The Sun in 2011. "My mother was very persistent and she kept saying that I had to take care of my mental health."
                     </p>
                 </div>
@@ -42,7 +43,8 @@ function Influencers() {
                     style={{width: 200, height: 200}}/>
                     <br />
 
-                    <p className="influencer-paragraph">Dwayne Johnson<br/>
+                    <p className="influencer-paragraph">
+                    <b>Dwayne Johnson</b><br/>
                     "I found that, with depression, one of the most important things you could realize is that you're not alone," he said in a YouTube video "You're not the first to go through it; you're not going to be the last to go through it. And oftentimes—it happens—you just feel like you're alone. You feel like it's only you. You're in your bubble. And I wish I had someone at that time who could just pull me aside and [say], 'Hey, it's gonna be OK. It'll be OK.' So, I wish I knew that."
                     </p>
                 </div>
@@ -60,7 +62,8 @@ function Influencers() {
                 src={selena} className="ui small image" 
                 style={{width: 200, height: 200}}/>
                 <br />
-                    <p className="influencer-paragraph">Selena Gomez<br/>
+                    <p className="influencer-paragraph">
+                    <b>Selena Gomez</b><br/>
                     "I've discovered that anxiety, panic attacks and depression can be side effects of lupus, which can present their own challenges," she told People. "I want to be proactive and focus on maintaining my health and happiness and have decided that the best way forward is to take some time off […] I know I am not alone by sharing this, I hope others will be encouraged to address their own issues."
                 </p>
             </div>
@@ -77,7 +80,8 @@ function Influencers() {
                 style={{width: 200, height: 200}}/>
                 <br />
 
-                    <p className="influencer-paragraph">Prince Harry<br/>
+                    <p className="influencer-paragraph">
+                    <b>Prince Harry</b><br/>
                     "I've spent most of my life saying 'I'm fine,'" Prince Harry said in an interview with The Telegraph journalist Bryony Gordon on her mental health podcast. "I can safely say that losing my mum at the age of 12 and therefore shutting down all of my emotions for the last 20 years has had a quite serious effect on not only my personal life but also my work as well...I have probably been very close to a complete breakdown on numerous occasions."
                     </p>
             </div>

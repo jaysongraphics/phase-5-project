@@ -78,10 +78,8 @@ function App() {
                  currentUser={currentUser}/>
             </Route>      
 
-          
         </Switch>
-    <Footer />
-
+     <Footer />
     <Bot currentUser={currentUser} />
   </div>
  )

@@ -1,7 +1,7 @@
+// import logo from '../images/LOGOGFINALBLACK.png'
 import { Button, Icon, Image, Modal } from 'semantic-ui-react'
 import React from 'react';
 import {useState} from 'react'
-import logo from '../images/LOGOGFINALBLACK.png'
 import clumsy from '../images/clumsy.png'
 
 

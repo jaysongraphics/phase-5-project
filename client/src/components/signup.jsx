@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {useHistory, Link} from 'react-router-dom'
 import swal from 'sweetalert';
-import { InputFile } from 'semantic-ui-react-input-file'
+// import { InputFile } from 'semantic-ui-react-input-file'
 
 
 function SignUp({setCurrentUser}) {

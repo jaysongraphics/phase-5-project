@@ -6,9 +6,9 @@ import clumsy from '../images/clumsy.png'
 
 function ModalComponent({bookAppointment, currentUser}) {
     const [open, setOpen] = React.useState(false)
-    const [appoDate, setAppoDate] = useState (currentUser.appointments.appointment_date)
-    const [appoTime, setAppoTime] = useState (currentUser.appointments.appointment_time)
-    const [appoLocation, setAppoLocation] = useState (currentUser.appointments.location)
+    const [appoDate, setAppoDate] = useState ("")
+    const [appoTime, setAppoTime] = useState ("")
+    const [appoLocation, setAppoLocation] = useState ("")
 
 return (
     <Modal

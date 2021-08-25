@@ -41,10 +41,6 @@ const filteredTherapist = therapists.filter(
         therapistReview={therapist.reviews}
         />)
 
-if(!therapistsCards) {
-    return <Loading />
-}
-
     return (
         <div className="alltherapist-div">      
             <h1>Our therapists</h1>
