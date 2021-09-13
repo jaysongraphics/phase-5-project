@@ -24,7 +24,7 @@ function Profile({navpic, setdarkMode, darkmode}) {
       })
       .then(res => res.json())
       .then(user => {
-        setTimeout(() =>{setCurrentUser(user)}, 150)
+        setTimeout(() =>{setCurrentUser(user)}, 500)
         setAddTweet(user.tweets)
       })
   },[deleteAppointmets, deletetweets])
@@ -38,33 +38,6 @@ function Profile({navpic, setdarkMode, darkmode}) {
     twets = currentUser.tweets
     avatar = currentUser.avatar.url
   }
-
-
-// console.log(avatar);
-//   function submitProfileUpdate(image, firstName, lastName, birthday, username, email) { 
-//     const profile ={
-//       'image': image,
-//       'first_name': firstName,
-//       'last_name': lastName,
-//       'birthday': birthday,
-//       'username': username,
-//       'email': email
-//     }
-//   const token = localStorage.getItem('token'); 
-//     fetch("http://localhost:3000/me", {
-//         method: 'PATCH',
-//         headers: { 
-//           'Content-Type': 'application/json',
-//             Authorization: `Bearer ${token}`,
-//       },
-//         body: JSON.stringify(profile),
-//     })
-//         .then(res => res.json())
-//         .then(user => setCurrentUser(user))
-//           swal('Profile updated!',{
-//             icon: "info",
-//       });
-// }
 
 function submitProfileUpdate(profilePic, firstName, lastName, birthday, username, email) { 
   const profileUpdate = new FormData();
@@ -92,7 +65,6 @@ const token = localStorage.getItem('token');
           icon: "info",
     });
 }
-
 
  function handleTweet (e) {
   setTweet('')
@@ -144,10 +116,6 @@ function deleteTweet(id){
     function darkModeToggle(){
     setdarkMode(!darkmode)
   }
-
-  // console.log(currentUser.first_name);
-  // console.log(currentUser.last_name);
-  // console.log(currentUser);
 
   return (
     <div className="parent">
@@ -246,10 +214,6 @@ function deleteTweet(id){
       </div>  
 
           <div className="div2" id={darkmode ? "chat-profile-blk" : "chat-profile"}>
-            {/* <ChatBot
-            currentUser={currentUser}/> */}
-            {/* <Chat 
-            currentUser={currentUser}/>  */}
           </div> 
     </div>
   )

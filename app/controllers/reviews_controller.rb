@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
 
     def create
         rev = Review.create(sub_params)
-        # byebug
         if rev.valid?
             render json: rev, status: :created
         else
@@ -18,7 +17,6 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        # byebug
         subs = Review.find_by(id: params[:id])
         subs.destroy
         render json: subs, status: :ok

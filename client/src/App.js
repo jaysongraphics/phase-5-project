@@ -33,7 +33,7 @@ function App() {
         if(user.errors) {
         setAuthorizeError(user.errors);
       } else {
-        setTimeout(() =>{setCurrentUser(user)}, 200)
+        setCurrentUser(user)
       }
     })
       }

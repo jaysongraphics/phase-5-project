@@ -8,7 +8,6 @@ class TweetsController < ApplicationController
 
     def create
         tweet = Tweet.create(sub_params)
-        # byebug
         if tweet.valid?
             render json: tweet, status: :created
         else
@@ -17,7 +16,6 @@ class TweetsController < ApplicationController
     end
 
     def destroy
-        # byebug
         tweet = Tweet.find_by(id: params[:id])
         tweet.destroy
         render json: tweet, status: :ok

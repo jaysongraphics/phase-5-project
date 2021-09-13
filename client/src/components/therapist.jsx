@@ -14,16 +14,11 @@ const [search, setSearch] = useState("")
         },
     })
         .then(res => res.json())
-        .then(data =>
-        //   setTimeout(() =>{setTherapists(data)}, 200)
-           setTherapists(data)
-        )
-        
+        .then(data =>{
+             setTimeout(() =>{setTherapists(data)}, 100)
+        })   
 }, [])
 
-if(!therapists) {
-    return <Loading />
-}
 
 const filteredTherapist = therapists.filter(
     filteredCard => filteredCard.name.toLowerCase().includes(search.toLowerCase())
@@ -41,15 +36,21 @@ const filteredTherapist = therapists.filter(
         therapistReview={therapist.reviews}
         />)
 
+    if(!therapistsCards) {
+        return <Loading />
+    }
+    
+    if(!therapists) {
+        return <Loading />
+    }
+
     return (
         <div className="alltherapist-div">      
             <h1>Our therapists</h1>
-
             <input id="therasearch"className="input is-danger"onChange={(e) => 
                 setSearch(e.target.value)} type="text" value={search} placeholder="Search by name or speciality..."/>
             <button className='button is-danger is-outlined'>Search
             </button>
-
 <br />
 <br />
             {therapistsCards}

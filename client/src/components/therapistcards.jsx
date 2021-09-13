@@ -7,7 +7,6 @@ import {useState} from 'react'
 function TherapistCards({therapist, currentUser, therapistReview, search, setSearch,}) {
   const [review, setReview] = useState("")
   const [addReview, setAddReview] = useState(therapistReview)
-  // const [therapists, setTherapists] = useState ([])
   
   if(!therapist) {
     return <Loading />
@@ -70,9 +69,6 @@ function bookAppointment (date, time, location) {
           .then((res) => res.json())
           .then((newreview) => setAddReview([...addReview, newreview]))
        }
-  
-// console.log(therapist);
-// console.log(filteredTherapist);
 
   return ( 
      <div className="therapist-cards">  

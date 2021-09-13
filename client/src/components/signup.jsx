@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import {useHistory, Link} from 'react-router-dom'
 import swal from 'sweetalert';
-// import { InputFile } from 'semantic-ui-react-input-file'
-
 
 function SignUp({setCurrentUser}) {
     const [newUserImage, setNewUserImage] = useState("")
@@ -50,7 +48,6 @@ function SignUp({setCurrentUser}) {
             timer: 2000,
           });
         }
-      // console.log(data);
 
       });
     }
@@ -95,8 +92,6 @@ function SignUp({setCurrentUser}) {
   </div>
   <br/>
 </div> 
-                    
-                
                 <div className="field">
                   <label id="label-id"className="label">First Name</label>
                     <div className="control">

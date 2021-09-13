@@ -37,7 +37,6 @@ class UsersController < ApplicationController
     
       # PATCH /me
     def update
-        # byebug
         @online_user.assign_attributes(user_params)
         @online_user.save(validate: false)
         render json: @online_user

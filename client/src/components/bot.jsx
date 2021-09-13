@@ -35,7 +35,7 @@ const Bot = ({currentUser}) => {
         
     const reply = [
         ["Hola!","Hello!", "Hi!", "Happy you are here, how may I help you?", "Hey, How can I assist you today?"],
-        ["I'm doing good... how are you?", "I feel fine, how is it going for you?", "I feel happy, how are you?"],
+        ["I'm doing good... how are you?", "I feel fine, how is it going for you?", "I am happy, how are you?"],
         ["Nothing much", "Exciting things!", "I'm happy to see you!"],
         ["Glad to hear it", "Yayyy!! That's the spirit!", "Good to know!", "Awesome!", "I like the sound of that!", "A.M.A.Z.I.N.G", "super!", "whoo hoo!!", "I love hearing that!"],
         ["There is always a rainbow after the rain!", "You do not find the happy life. You make it.", "There are two ways of spreading light: to be the candle or the mirror that reflects it.", "Life changes very quickly, in a very positive way, if you let it."],

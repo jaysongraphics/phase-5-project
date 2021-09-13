@@ -13,8 +13,6 @@ function Profilemodal({submitProfileUpdate, currentUser, setProfilePic, profileP
     const [username, setUsername] = useState (currentUser.username)
     const [email, setEmail] = useState (currentUser.email)
 
-// console.log(profilePic);
-
 return (
     <Modal
       id="modal-profile"
@@ -28,21 +26,7 @@ return (
 <br/>
 <br/>
       <Modal.Content image scrolling>
-
-       {/* <Image size='small' src={logo} wrapped /> */}
-
         <Modal.Description className="modaldesp">
-{/* 
-                <div className="field">
-                    <label id="label-id"className="label">image</label>
-
-                      <div className="control">
-                          <input className="input" 
-                          type="file" placeholder="image" 
-                          onChange={(e) => setProfilePic(e.target.files[0])}>
-                          </input> 
-                      </div>
-                </div>    */}
 <div className="profile-img-div">
   <label id="label-id-img"className="label">Image</label>
   <div className="file is-danger has-name is-boxed">

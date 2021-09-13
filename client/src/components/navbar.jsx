@@ -1,5 +1,3 @@
-// import Loading from './loading';
-// import Chat from './chat';
 import logo from '../images/LOGOGFINALBLACK.png'
 import {useHistory, Link} from 'react-router-dom'
 import swal from 'sweetalert';
